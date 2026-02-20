@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/png" href="src/icon1.png">
+    <title>DreamAlchemy - Disclaimer</title>
+    <link rel="stylesheet" href="css/mypage.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+        header.header {
+            background: rgba(23, 11, 56, 0.2);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .page-section {
+            min-height: 100vh;
+            padding: 12rem 9% 4rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .page-section .heading {
+            font-size: 4rem;
+            font-weight: 700;
+            color: var(--text-color);
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        .page-section .heading span {
+            color: var(--main-color);
+        }
+        .page-section .sub-heading {
+            font-size: 1.6rem;
+            color: var(--text-color);
+            opacity: 0.6;
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+        .disclaimer-box {
+            width: 100%;
+            max-width: 850px;
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+        }
+        .disclaimer-item {
+            background: rgba(255,255,255,0.04);
+            border: .1rem solid rgba(124, 130, 255, 0.18);
+            border-radius: 1.2rem;
+            padding: 2.8rem 3rem;
+        }
+        .disclaimer-item h3 {
+            font-size: 1.9rem;
+            color: var(--main-color);
+            margin-bottom: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: .8rem;
+        }
+        .disclaimer-item h3 i {
+            font-size: 2.2rem;
+        }
+        .disclaimer-item p {
+            font-size: 1.5rem;
+            color: var(--text-color);
+            opacity: 0.72;
+            line-height: 1.8;
+        }
+        .back-btn-wrap {
+            margin-top: 4rem;
+        }
+        .btn-box {
+            width: 16rem;
+            height: 5rem;
+            justify-content: center;
+        }
+    </style>
+    <script src="https://unpkg.com/scrollreveal"></script>
+</head>
+<body>
+    <header class="header">
+        <a href="my_page.html" class="logo">
+            <img src="src/icon1.png" alt="Company Logo" style="height: 40px;">
+            <span class="animate" style="--i:1;"></span>
+        </a>
+        <div class="bx bx-menu" id="menu-icon"><span class="animate" style="--i:2;"></span></div>
+        <nav class="navbar">
+            <a href="my_page.html">Hero</a>
+            <a href="features.html">Features</a>
+            <a href="why-us.html">Why Us</a>
+            <a href="demo.html">Demo</a>
+            <a href="pricing.html">Pricing</a>
+            <a href="contact.html">Contact</a>
+            <a href="disclaimer.html" class="active">Disclaimer</a>
+
+            <span class="active-nav"></span>
+            <span class="animate" style="--i:2;"></span>
+        </nav>
+        <a href="#" class="btn header-download-btn">
+            <i class="bx bx-download"></i> Download
+            <span class="animate" style="--i:3;"></span>
+        </a>
+    </header>
+
+    <section class="page-section">
+        <h2 class="heading">Dis<span>claimer</span></h2>
+        <p class="sub-heading">Please read this carefully before using DreamAlchemy</p>
+
+        <div class="disclaimer-box">
+            <div class="disclaimer-item">
+                <h3><i class="bx bx-error-circle"></i> Not a Medical Product</h3>
+                <p>DreamAlchemy is a personal wellness and self-reflection tool. It is not a medical device, clinical treatment, or diagnostic service. Nothing on this platform constitutes medical advice, and it should not be used as a substitute for professional medical or psychiatric care.</p>
+            </div>
+            <div class="disclaimer-item">
+                <h3><i class="bx bx-brain"></i> Not a Therapy Service</h3>
+                <p>Use of DreamAlchemy does not establish a therapeutic relationship between the user and any healthcare provider. Our AI-generated insights are for personal reflection purposes only and are not a replacement for licensed psychological or mental health therapy.</p>
+            </div>
+            <div class="disclaimer-item">
+                <h3><i class="bx bx-shield-x"></i> No Liability for Outcomes</h3>
+                <p>DreamAlchemy and its developers accept no responsibility or liability for any decisions made or actions taken by users based on content or insights provided within the platform. Individual experiences may vary significantly.</p>
+            </div>
+            <div class="disclaimer-item">
+                <h3><i class="bx bx-phone-call"></i> Crisis Situations</h3>
+                <p>DreamAlchemy is not a crisis service. If you are experiencing a mental health emergency, suicidal thoughts, or are in immediate danger, please contact your local emergency services or a crisis helpline immediately. Do not rely on this platform in emergency situations.</p>
+            </div>
+            <div class="disclaimer-item">
+                <h3><i class="bx bx-lock"></i> Privacy & Data</h3>
+                <p>While we take all reasonable measures to protect your data, DreamAlchemy cannot guarantee absolute security of information transmitted over the internet. By using this platform you acknowledge and accept this inherent risk.</p>
+            </div>
+        </div>
+
+        <div class="back-btn-wrap">
+            <div class="btn-box">
+                <a href="my_page.html" class="btn">Back to Home</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-text">
+            <p>Copyright &copy;2023 by DreamAlchemy | All Rights Reserved.</p>
+        </div>
+        <div class="footer-iconTop">
+            <a href="#"><i class='bx bxs-hand-up'></i></a>
+        </div>
+    </footer>
+    <script src="js/script.js"></script>
+</body>
+</html>

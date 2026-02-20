@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/png" href="src/icon1.png">
+    <title>DreamAlchemy - Contact</title>
+    <link rel="stylesheet" href="css/mypage.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+        header.header {
+            background: rgba(23, 11, 56, 0.2);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .page-section {
+            min-height: 100vh;
+            padding: 12rem 9% 4rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .page-section .heading {
+            font-size: 4rem;
+            font-weight: 700;
+            color: var(--text-color);
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        .page-section .heading span {
+            color: var(--main-color);
+        }
+        .page-section .sub-heading {
+            font-size: 1.6rem;
+            color: var(--text-color);
+            opacity: 0.7;
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 5rem;
+            width: 100%;
+            max-width: 1000px;
+        }
+        @media(max-width: 768px) {
+            .contact-wrapper { grid-template-columns: 1fr; }
+        }
+        .contact-info h3 {
+            font-size: 2.2rem;
+            color: var(--text-color);
+            margin-bottom: 2rem;
+        }
+        .contact-info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        .contact-info-item i {
+            font-size: 2.4rem;
+            color: var(--main-color);
+            flex-shrink: 0;
+            margin-top: .2rem;
+        }
+        .contact-info-item p {
+            font-size: 1.5rem;
+            color: var(--text-color);
+            opacity: 0.75;
+            line-height: 1.6;
+        }
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.8rem;
+        }
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 1.4rem 1.8rem;
+            background: rgba(255,255,255,0.05);
+            border: .15rem solid rgba(124, 130, 255, 0.25);
+            border-radius: .8rem;
+            font-size: 1.5rem;
+            color: var(--text-color);
+            outline: none;
+            transition: .3s;
+            font-family: inherit;
+        }
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            border-color: var(--main-color);
+            background: rgba(124, 130, 255, 0.06);
+        }
+        .contact-form textarea {
+            height: 14rem;
+            resize: vertical;
+        }
+        .contact-form input::placeholder,
+        .contact-form textarea::placeholder {
+            color: var(--text-color);
+            opacity: 0.4;
+        }
+        .btn-box {
+            width: 100%;
+            height: 5rem;
+            justify-content: flex-start;
+        }
+        .disclaimer-note {
+            margin-top: 4rem;
+            max-width: 900px;
+            text-align: center;
+            font-size: 1.25rem;
+            color: var(--text-color);
+            opacity: 0.4;
+            line-height: 1.6;
+            border-top: .1rem solid rgba(255,255,255,0.08);
+            padding-top: 2rem;
+        }
+    </style>
+    <script src="https://unpkg.com/scrollreveal"></script>
+</head>
+<body>
+    <header class="header">
+        <a href="my_page.html" class="logo">
+            <img src="src/icon1.png" alt="Company Logo" style="height: 40px;">
+            <span class="animate" style="--i:1;"></span>
+        </a>
+        <div class="bx bx-menu" id="menu-icon"><span class="animate" style="--i:2;"></span></div>
+        <nav class="navbar">
+            <a href="my_page.html">Hero</a>
+            <a href="features.html">Features</a>
+            <a href="why-us.html">Why Us</a>
+            <a href="demo.html">Demo</a>
+            <a href="pricing.html">Pricing</a>
+            <a href="contact.html" class="active">Contact</a>
+            <a href="disclaimer.html">Disclaimer</a>
+
+            <span class="active-nav"></span>
+            <span class="animate" style="--i:2;"></span>
+        </nav>
+        <a href="#" class="btn header-download-btn">
+            <i class="bx bx-download"></i> Download
+            <span class="animate" style="--i:3;"></span>
+        </a>
+    </header>
+
+    <section class="page-section">
+        <h2 class="heading">Get In <span>Touch</span></h2>
+        <p class="sub-heading">We'd love to hear from you — questions, feedback, or partnership inquiries</p>
+        <div class="contact-wrapper">
+            <div class="contact-info">
+                <h3>Contact Info</h3>
+                <div class="contact-info-item">
+                    <i class="bx bx-envelope"></i>
+                    <p>hello@dreamalchemy.app</p>
+                </div>
+                <div class="contact-info-item">
+                    <i class="bx bx-map"></i>
+                    <p>Auckland, New Zealand</p>
+                </div>
+                <div class="contact-info-item">
+                    <i class="bx bx-time"></i>
+                    <p>Mon – Fri, 9am – 5pm NZST<br>We typically reply within 24 hours.</p>
+                </div>
+                <div class="contact-info-item">
+                    <i class="bx bx-info-circle"></i>
+                    <p>For urgent mental health support, please contact your local crisis line or a qualified healthcare professional. DreamAlchemy is not a crisis service.</p>
+                </div>
+            </div>
+            <form class="contact-form" onsubmit="return false;">
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <input type="text" placeholder="Subject">
+                <textarea placeholder="Your Message"></textarea>
+                <div class="btn-box">
+                    <button type="submit" class="btn" style="border:none; cursor:pointer; width:15rem;">Send Message</button>
+                </div>
+            </form>
+        </div>
+        <p class="disclaimer-note">
+            Disclaimer: DreamAlchemy is a personal wellness and self-reflection tool. It is not a medical device, clinical service, or substitute for professional psychological or psychiatric care. Use of this platform does not constitute a therapeutic relationship. If you are experiencing a mental health crisis, please seek immediate professional help.
+        </p>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-text">
+            <p>Copyright &copy;2023 by DreamAlchemy | All Rights Reserved.</p>
+        </div>
+        <div class="footer-iconTop">
+            <a href="#"><i class='bx bxs-hand-up'></i></a>
+        </div>
+    </footer>
+    <script src="js/script.js"></script>
+</body>
+</html>

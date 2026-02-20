@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/png" href="src/icon1.png">
+    <title>DreamAlchemy - Explore Your Inner World</title>
+    <link rel="stylesheet" href="css/mypage.css">
+    <link rel="stylesheet" href="css/project-section.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+        header.header {
+            background: rgba(23, 11, 56, 0.2);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+
+        .glow {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 20px;
+            height: 20px;
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        .glow-inner {
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(124, 130, 255, 0.8) 0%, rgba(255, 255, 255, 0) 70%);
+            animation: glow-animation 2s linear infinite;
+        }
+
+        @keyframes glow-animation {
+            0%  { transform: scale(0.5); opacity: 1; }
+            100%{ transform: scale(2);   opacity: 0; }
+        }
+
+        /* Moon container */
+        .moon-container {
+            position: absolute;
+            right: 6%;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 420px;
+            height: 420px;
+            pointer-events: none;
+        }
+
+        #moon-canvas {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        @media (max-width: 991px) {
+            .moon-container {
+                width: 300px;
+                height: 300px;
+                right: 2%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .moon-container {
+                display: none;
+            }
+        }
+    </style>
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body>
+    <header class="header">
+        <a href="my_page.html" class="logo">
+            <img src="src/icon1.png" alt="Company Logo" style="height: 40px;">
+            <span class="animate" style="--i:1;"></span>
+        </a>
+        <div class="bx bx-menu" id="menu-icon"><span class="animate" style="--i:2;"></span></div>
+        <nav class="navbar">
+            <a href="my_page.html" class="active">Hero</a>
+            <a href="features.html">Features</a>
+            <a href="why-us.html">Why Us</a>
+            <a href="demo.html">Demo</a>
+            <a href="pricing.html">Pricing</a>
+            <a href="contact.html">Contact</a>
+            <a href="disclaimer.html">Disclaimer</a>
+
+            <span class="active-nav"></span>
+            <span class="animate" style="--i:2;"></span>
+        </nav>
+        <a href="#" class="btn header-download-btn">
+            <i class="bx bx-download"></i> Download
+            <span class="animate" style="--i:3;"></span>
+        </a>
+    </header>
+
+    <!-- home section -->
+    <section class="home show-animate" id="home">
+        <div class="home-content">
+            <h1 class="dreamalchemy-title">DreamAlchemy<span class="animate" style="--i:3;"></span></h1>
+            <div class="text-animate">
+                <h3>Explore Your Inner World<span class="animate" style="--i:4;"></span></h3>
+            </div>
+            <p>To create a world where everyone has safe, engaging tools to explore their inner worlds, turning distress into creativity and self-knowledge.<span class="animate" style="--i:5;"></span></p>
+            <div class="btn-box">
+                <a href="features.html" class="btn">Learn More</a>
+                <a href="pricing.html" class="btn">Get Started</a>
+                <span class="animate" style="--i:6;"></span>
+            </div>
+        </div>
+
+        <!-- 3D Moon -->
+        <div class="moon-container">
+            <canvas id="moon-canvas"></canvas>
+        </div>
+
+        <div class="home-sci">
+            <a href="#"><i class='bx bxl-facebook-square'></i></a>
+            <a href="#"><i class='bx bxl-instagram-alt'></i></a>
+            <a href="#"><i class='bx bxl-twitter'></i></a>
+            <span class="animate" style="--i:7;"></span>
+        </div>
+
+        <div class="home-imgHover"><span class="animate-other" style="--i:8;"></span></div>
+    </section>
+
+    <div id="back"></div>
+
+    <footer class="footer">
+        <div class="footer-text">
+            <p>Copyright &copy;2023 by DreamAlchemy | All Rights Reserved.</p>
+        </div>
+        <div class="footer-iconTop">
+            <a href="#"><i class='bx bxs-hand-up'></i></a>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+
+    <!-- Three.js Moon -->
+    <script>
+    (function () {
+        const canvas = document.getElementById('moon-canvas');
+        const container = canvas.parentElement;
+
+        function getSize() {
+            return { w: container.offsetWidth, h: container.offsetHeight };
+        }
+
+        const { w, h } = getSize();
+        const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+        renderer.setSize(w, h);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(45, w / h, 0.1, 100);
+        camera.position.z = 3.2;
+
+        /* ── Procedural moon texture ── */
+        function makeMoonTexture() {
+            const size = 512;
+            const c = document.createElement('canvas');
+            c.width = c.height = size;
+            const ctx = c.getContext('2d');
+            const g = ctx.createRadialGradient(size * 0.38, size * 0.32, 0, size / 2, size / 2, size / 2);
+            g.addColorStop(0,   '#e8edf5');
+            g.addColorStop(0.5, '#c0cade');
+            g.addColorStop(1,   '#7888aa');
+            ctx.fillStyle = g;
+            ctx.fillRect(0, 0, size, size);
+            const craters = [
+                [160,140,28],[320,200,18],[240,320,22],[100,280,14],
+                [380,350,16],[200,180,10],[300,120,12],[420,260,10],
+                [140,380,8], [360,80,9],  [80,160,7],  [450,160,11],
+                [260,420,13],[50,320,6],  [480,420,8]
+            ];
+            craters.forEach(([x, y, r]) => {
+                const cg = ctx.createRadialGradient(x - r*0.2, y - r*0.2, 0, x, y, r);
+                cg.addColorStop(0,   'rgba(70,80,105,0.6)');
+                cg.addColorStop(0.6, 'rgba(130,145,165,0.2)');
+                cg.addColorStop(1,   'rgba(255,255,255,0)');
+                ctx.fillStyle = cg;
+                ctx.beginPath();
+                ctx.arc(x, y, r, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.strokeStyle = 'rgba(220,232,250,0.22)';
+                ctx.lineWidth = 1.2;
+                ctx.beginPath();
+                ctx.arc(x - r*0.15, y - r*0.15, r*0.82, 0, Math.PI * 2);
+                ctx.stroke();
+            });
+            return new THREE.CanvasTexture(c);
+        }
+
+        /* ── Moon sphere ── */
+        const moon = new THREE.Mesh(
+            new THREE.SphereGeometry(1, 64, 64),
+            new THREE.MeshPhongMaterial({
+                map: makeMoonTexture(),
+                shininess: 10,
+                specular: new THREE.Color(0x445588),
+            })
+        );
+        moon.rotation.x = 0.15;
+        scene.add(moon);
+
+        /* ── Glow layers ── */
+        [
+            { r: 1.22, color: 0x7c82ff, opacity: 0.22 },
+            { r: 1.48, color: 0x5060cc, opacity: 0.09 },
+            { r: 1.80, color: 0x3040aa, opacity: 0.04 },
+        ].forEach(({ r, color, opacity }) => {
+            scene.add(new THREE.Mesh(
+                new THREE.SphereGeometry(r, 32, 32),
+                new THREE.MeshBasicMaterial({ color, transparent: true, opacity, side: THREE.BackSide })
+            ));
+        });
+
+        /* ── Floating particles ── */
+        const particleCount = 320;
+        const positions = new Float32Array(particleCount * 3);
+        for (let i = 0; i < particleCount; i++) {
+            const theta = Math.random() * Math.PI * 2;
+            const phi   = Math.acos(2 * Math.random() - 1);
+            const r     = 1.3 + Math.random() * 0.9;
+            positions[i * 3]     = r * Math.sin(phi) * Math.cos(theta);
+            positions[i * 3 + 1] = r * Math.sin(phi) * Math.sin(theta);
+            positions[i * 3 + 2] = r * Math.cos(phi);
+        }
+        const ptGeo = new THREE.BufferGeometry();
+        ptGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+        const ptMat = new THREE.PointsMaterial({
+            color: 0xaab4ff,
+            size: 0.022,
+            transparent: true,
+            opacity: 0.7,
+            sizeAttenuation: true,
+        });
+        const particles = new THREE.Points(ptGeo, ptMat);
+        scene.add(particles);
+
+        /* ── Lighting ── */
+        scene.add(new THREE.AmbientLight(0x334466, 0.7));
+        const sun = new THREE.DirectionalLight(0xccd8ff, 2.0);
+        sun.position.set(4, 2, 3);
+        scene.add(sun);
+        const fill = new THREE.PointLight(0x7c82ff, 0.5, 12);
+        fill.position.set(-3, -1, 2);
+        scene.add(fill);
+
+        /* ── Animation loop ── */
+        function animate() {
+            requestAnimationFrame(animate);
+            moon.rotation.y      += 0.0022;
+            particles.rotation.y += 0.0008;
+            particles.rotation.x += 0.0003;
+            renderer.render(scene, camera);
+        }
+        animate();
+
+        /* ── Resize ── */
+        window.addEventListener('resize', () => {
+            const { w: nw, h: nh } = getSize();
+            camera.aspect = nw / nh;
+            camera.updateProjectionMatrix();
+            renderer.setSize(nw, nh);
+        });
+    })();
+    </script>
+
+    <script>
+        ScrollReveal({
+            reset: true,
+            distance: '60px',
+            duration: 2500,
+            delay: 400
+        });
+        ScrollReveal().reveal('.main-title',  { delay: 500, origin: 'left' });
+        ScrollReveal().reveal('.heading',     { delay: 500, origin: 'left' });
+        ScrollReveal().reveal('.project .image, .info', { delay: 600, origin: 'bottom' });
+        ScrollReveal().reveal('.text-box, .project-15 .image', { delay: 700, origin: 'right' });
+        ScrollReveal().reveal('.project-02 .image', { delay: 500, origin: 'top' });
+        ScrollReveal().reveal('.media-icons i',  { delay: 500, origin: 'bottom', interval: 200 });
+        ScrollReveal().reveal('.media-info li',  { delay: 500, origin: 'left',   interval: 200 });
+    </script>
+</body>
+</html>

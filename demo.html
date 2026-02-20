@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/png" href="src/icon1.png">
+    <title>DreamAlchemy - Demo</title>
+    <link rel="stylesheet" href="css/mypage.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+        header.header {
+            background: rgba(23, 11, 56, 0.2);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .page-section {
+            min-height: 100vh;
+            padding: 12rem 9% 4rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .page-section .heading {
+            font-size: 4rem;
+            font-weight: 700;
+            color: var(--text-color);
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        .page-section .heading span {
+            color: var(--main-color);
+        }
+        .page-section .sub-heading {
+            font-size: 1.6rem;
+            color: var(--text-color);
+            opacity: 0.7;
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        .video-wrapper {
+            width: 100%;
+            max-width: 900px;
+            border-radius: 1.5rem;
+            overflow: hidden;
+            border: .2rem solid rgba(124, 130, 255, 0.3);
+            box-shadow: 0 0 40px rgba(124, 130, 255, 0.15);
+        }
+        .video-wrapper video {
+            width: 100%;
+            display: block;
+        }
+        .demo-desc {
+            margin-top: 3rem;
+            max-width: 700px;
+            text-align: center;
+            font-size: 1.6rem;
+            color: var(--text-color);
+            opacity: 0.75;
+            line-height: 1.7;
+        }
+        .btn-box {
+            margin-top: 3rem;
+            width: 34.5rem;
+            height: 5rem;
+        }
+
+        /* ── Traction Section ── */
+        .traction-section {
+            width: 100%;
+            max-width: 960px;
+            margin-top: 7rem;
+            padding-top: 5rem;
+            border-top: .1rem solid rgba(124, 130, 255, 0.18);
+        }
+        .traction-section .section-label {
+            font-size: 1.2rem;
+            font-weight: 700;
+            letter-spacing: .18rem;
+            text-transform: uppercase;
+            color: var(--main-color);
+            text-align: center;
+            margin-bottom: .8rem;
+        }
+        .traction-section .traction-title {
+            font-size: 3.2rem;
+            font-weight: 700;
+            color: var(--text-color);
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+        .traction-section .traction-title span {
+            color: var(--main-color);
+        }
+        .traction-quote {
+            background: rgba(124, 130, 255, 0.07);
+            border-left: .4rem solid var(--main-color);
+            border-radius: .8rem;
+            padding: 2.2rem 2.8rem;
+            margin: 2.5rem 0 1.5rem;
+        }
+        .traction-quote p {
+            font-size: 1.6rem;
+            color: var(--text-color);
+            opacity: 0.85;
+            line-height: 1.8;
+            font-style: italic;
+        }
+        .traction-quote .quote-note {
+            margin-top: 1rem;
+            font-size: 1.4rem;
+            color: var(--text-color);
+            opacity: 0.55;
+            font-style: normal;
+        }
+
+        /* Stats bar */
+        .traction-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+            gap: 2rem;
+            margin: 3.5rem 0;
+        }
+        .stat-card {
+            background: rgba(255,255,255,0.04);
+            border: .1rem solid rgba(124, 130, 255, 0.2);
+            border-radius: 1.4rem;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            transition: .3s;
+        }
+        .stat-card:hover {
+            border-color: var(--main-color);
+            background: rgba(124, 130, 255, 0.07);
+        }
+        .stat-card .stat-num {
+            font-size: 4rem;
+            font-weight: 800;
+            color: var(--main-color);
+            line-height: 1;
+            margin-bottom: .6rem;
+        }
+        .stat-card .stat-label {
+            font-size: 1.4rem;
+            color: var(--text-color);
+            opacity: 0.7;
+            line-height: 1.5;
+        }
+
+        /* MVP badge */
+        .mvp-bar {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            background: rgba(124, 130, 255, 0.06);
+            border: .1rem solid rgba(124, 130, 255, 0.2);
+            border-radius: 1rem;
+            padding: 1.8rem 2.4rem;
+            margin-bottom: 3.5rem;
+            flex-wrap: wrap;
+        }
+        .mvp-bar i {
+            font-size: 2.6rem;
+            color: var(--main-color);
+            flex-shrink: 0;
+        }
+        .mvp-bar .mvp-text {
+            font-size: 1.5rem;
+            color: var(--text-color);
+            opacity: 0.8;
+            line-height: 1.6;
+        }
+        .mvp-bar .mvp-text strong {
+            color: var(--main-color);
+            font-weight: 700;
+        }
+
+        /* Insights */
+        .insights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(27rem, 1fr));
+            gap: 2.5rem;
+        }
+        .insight-card {
+            background: rgba(255,255,255,0.04);
+            border: .1rem solid rgba(124, 130, 255, 0.18);
+            border-radius: 1.4rem;
+            padding: 2.8rem 2.4rem;
+            transition: .3s;
+        }
+        .insight-card:hover {
+            border-color: var(--main-color);
+            transform: translateY(-4px);
+        }
+        .insight-card .insight-num {
+            font-size: 1.1rem;
+            font-weight: 700;
+            letter-spacing: .12rem;
+            text-transform: uppercase;
+            color: var(--main-color);
+            margin-bottom: .8rem;
+        }
+        .insight-card h4 {
+            font-size: 1.7rem;
+            font-weight: 700;
+            color: var(--text-color);
+            margin-bottom: 1rem;
+            line-height: 1.4;
+        }
+        .insight-card p {
+            font-size: 1.45rem;
+            color: var(--text-color);
+            opacity: 0.68;
+            line-height: 1.7;
+        }
+    </style>
+    <script src="https://unpkg.com/scrollreveal"></script>
+</head>
+<body>
+    <header class="header">
+        <a href="my_page.html" class="logo">
+            <img src="src/icon1.png" alt="Company Logo" style="height: 40px;">
+            <span class="animate" style="--i:1;"></span>
+        </a>
+        <div class="bx bx-menu" id="menu-icon"><span class="animate" style="--i:2;"></span></div>
+        <nav class="navbar">
+            <a href="my_page.html">Hero</a>
+            <a href="features.html">Features</a>
+            <a href="why-us.html">Why Us</a>
+            <a href="demo.html" class="active">Demo</a>
+            <a href="pricing.html">Pricing</a>
+            <a href="contact.html">Contact</a>
+            <a href="disclaimer.html">Disclaimer</a>
+
+            <span class="active-nav"></span>
+            <span class="animate" style="--i:2;"></span>
+        </nav>
+        <a href="#" class="btn header-download-btn">
+            <i class="bx bx-download"></i> Download
+            <span class="animate" style="--i:3;"></span>
+        </a>
+    </header>
+
+    <section class="page-section">
+        <h2 class="heading">See It In <span>Action</span></h2>
+        <p class="sub-heading">Watch how DreamAlchemy transforms your inner world into meaningful insights</p>
+        <div class="video-wrapper">
+            <video controls>
+                <source src="src/Team%2016%20DEMO.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        <p class="demo-desc">
+            This demo showcases the core features of DreamAlchemy — from dream journaling and AI-powered analysis to progress tracking and creative expression tools.
+        </p>
+        <div class="btn-box">
+            <a href="pricing.html" class="btn">Get Started</a>
+            <a href="disclaimer.html" class="btn">Disclaimer</a>
+        </div>
+
+        <!-- Traction Section -->
+        <div class="traction-section">
+            <p class="section-label">Traction &amp; Validation</p>
+            <h3 class="traction-title">DreamAlchemy <span>In Numbers</span></h3>
+
+            <div class="traction-quote">
+                <p>"The potential to correlate user interactions with longitudinal data on nightmare frequency and sleep quality is a game-changer for both consumer wellness and future clinical research."</p>
+                <p class="quote-note">This is more than an idea — it's a validated concept with early users proving the demand. The engine is built; now we need the fuel to launch.</p>
+            </div>
+
+            <!-- Stats -->
+            <div class="traction-stats">
+                <div class="stat-card">
+                    <div class="stat-num">255</div>
+                    <div class="stat-label">Potential users<br>interviewed</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-num">73%</div>
+                    <div class="stat-label">Reported strong interest<br>in DreamAlchemy</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-num">65%</div>
+                    <div class="stat-label">Willing to pay<br>£8+ per month</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-num">32s</div>
+                    <div class="stat-label">MVP converts free-text dream<br>to playable level</div>
+                </div>
+            </div>
+
+            <!-- MVP Status -->
+            <div class="mvp-bar">
+                <i class="bx bx-rocket"></i>
+                <p class="mvp-text">
+                    <strong>MVP Built &amp; Alpha Testing Complete —</strong>
+                    Initial NLP-to-game pipeline working for simple dream stories. MVP turns free-text dream input into a fully playable game level in just <strong>32 seconds</strong>.
+                </p>
+            </div>
+
+            <!-- Alpha Insights -->
+            <div class="insights-grid">
+                <div class="insight-card">
+                    <p class="insight-num">Alpha Insight · 01</p>
+                    <h4>Emotion Mechanic Matters</h4>
+                    <p>The 'transform' mechanic generated a significantly more positive emotional response than the 'destroy' mechanism, informing our core UX design direction.</p>
+                </div>
+                <div class="insight-card">
+                    <p class="insight-num">Alpha Insight · 02</p>
+                    <h4>Custom NLP Is Essential</h4>
+                    <p>Generic NLP models are insufficient for dream content. Alpha testing allowed us to collect an initial dataset of 50+ annotated dreams, now being used to train our specialised emotional analysis model.</p>
+                </div>
+                <div class="insight-card">
+                    <p class="insight-num">Alpha Insight · 03</p>
+                    <h4>Hybrid Generation System</h4>
+                    <p>Key performance bottlenecks in game generation led to the development of a more efficient hybrid system using templates and parametric customisation, ensuring a smooth user experience at scale.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-text">
+            <p>Copyright &copy;2023 by DreamAlchemy | All Rights Reserved.</p>
+        </div>
+        <div class="footer-iconTop">
+            <a href="#"><i class='bx bxs-hand-up'></i></a>
+        </div>
+    </footer>
+    <script src="js/script.js"></script>
+</body>
+</html>

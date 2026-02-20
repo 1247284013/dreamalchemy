@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/png" href="src/icon1.png">
+    <title>DreamAlchemy - Why Us</title>
+    <link rel="stylesheet" href="css/mypage.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+        header.header {
+            background: rgba(23, 11, 56, 0.2);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .page-section {
+            min-height: 100vh;
+            padding: 12rem 9% 4rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .page-section .heading {
+            font-size: 4rem;
+            font-weight: 700;
+            color: var(--text-color);
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        .page-section .heading span {
+            color: var(--main-color);
+        }
+        .page-section .sub-heading {
+            font-size: 1.6rem;
+            color: var(--text-color);
+            opacity: 0.7;
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+        .trust-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+            gap: 3rem;
+            width: 100%;
+            max-width: 1000px;
+        }
+        .trust-card {
+            background: rgba(255,255,255,0.05);
+            border-left: .4rem solid var(--main-color);
+            border-radius: 1rem;
+            padding: 3rem 2.5rem;
+            transition: .3s;
+        }
+        .trust-card:hover {
+            background: rgba(124, 130, 255, 0.08);
+            transform: translateX(6px);
+        }
+        .trust-card i {
+            font-size: 3.5rem;
+            color: var(--main-color);
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+        .trust-card h3 {
+            font-size: 2rem;
+            color: var(--text-color);
+            margin-bottom: 1rem;
+        }
+        .trust-card p {
+            font-size: 1.5rem;
+            color: var(--text-color);
+            opacity: 0.7;
+            line-height: 1.7;
+        }
+    </style>
+    <script src="https://unpkg.com/scrollreveal"></script>
+</head>
+<body>
+    <header class="header">
+        <a href="my_page.html" class="logo">
+            <img src="src/icon1.png" alt="Company Logo" style="height: 40px;">
+            <span class="animate" style="--i:1;"></span>
+        </a>
+        <div class="bx bx-menu" id="menu-icon"><span class="animate" style="--i:2;"></span></div>
+        <nav class="navbar">
+            <a href="my_page.html">Hero</a>
+            <a href="features.html">Features</a>
+            <a href="why-us.html" class="active">Why Us</a>
+            <a href="demo.html">Demo</a>
+            <a href="pricing.html">Pricing</a>
+            <a href="contact.html">Contact</a>
+            <a href="disclaimer.html">Disclaimer</a>
+
+            <span class="active-nav"></span>
+            <span class="animate" style="--i:2;"></span>
+        </nav>
+        <a href="#" class="btn header-download-btn">
+            <i class="bx bx-download"></i> Download
+            <span class="animate" style="--i:3;"></span>
+        </a>
+    </header>
+
+    <section class="page-section">
+        <h2 class="heading">Why <span>Trust Us</span></h2>
+        <p class="sub-heading">Three pillars that make DreamAlchemy the reliable choice for your wellbeing</p>
+        <div class="trust-grid">
+            <div class="trust-card">
+                <i class="bx bx-lock-alt"></i>
+                <h3>We Care About Your Privacy</h3>
+                <p>Your dreams and reflections are deeply personal. We use end-to-end encryption, never sell your data, and give you full control over what you share. Your inner world belongs only to you.</p>
+            </div>
+            <div class="trust-card">
+                <i class="bx bx-certification"></i>
+                <h3>Clinical & Psychological Validation</h3>
+                <p>Our methods are grounded in established psychological frameworks. DreamAlchemy is developed in collaboration with mental health professionals to ensure our tools are safe, effective, and evidence-based.</p>
+            </div>
+            <div class="trust-card">
+                <i class="bx bx-trending-up"></i>
+                <h3>Feedback, Outcome & Progression</h3>
+                <p>We believe in measurable growth. Our platform provides continuous feedback loops, tracks your emotional outcomes over time, and adapts to support your unique progression journey.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-text">
+            <p>Copyright &copy;2023 by DreamAlchemy | All Rights Reserved.</p>
+        </div>
+        <div class="footer-iconTop">
+            <a href="#"><i class='bx bxs-hand-up'></i></a>
+        </div>
+    </footer>
+    <script src="js/script.js"></script>
+</body>
+</html>
