@@ -99,6 +99,9 @@ header{
     width: 16rem;
     height: 4.5rem;
 }
+.header-download-wrapper{
+    position: relative;
+}
 .header-download-btn{
     position: relative;
     display: inline-flex;
@@ -181,9 +184,8 @@ h3{
     display: flex;
     align-items:center;
     padding:0 9%;
-    /* background:url('/src/home.png') no-repeat ; */
+    background: url('../src/back.png') no-repeat center center;
     background-size: cover;
-    background-position: center;
 }
 .home-content{
     max-width: 60rem;
@@ -234,7 +236,7 @@ h3{
 
 .home-content .text-animate{
     position:relative;
-    width:41rem;
+    width:43rem;
 }
 .home-content .text-animate h3{
     font-size: 3.2rem;
@@ -363,21 +365,6 @@ h3{
 }
 .home-sci a:hover::before{
     width: 100%;
-}
-.home-imgHover{
-    position: absolute;
-    top:0;
-    right:0;
-    width:45%;
-    height:100%;
-    background: transparent;
-    transition: 3s;
-    
-}
-.home-imgHover:hover{
-    background: var(--bg-color);
-    opacity: .7;
-    
 }
 .about{
     display: flex;
@@ -862,6 +849,7 @@ span{
     height:110%;
     background:var(--bg-color);
     z-index: 98;
+    pointer-events: none;
 }
 .home-content h1 .animate{
     top: -20px;
@@ -877,6 +865,7 @@ span{
     height:100%;
     background:var(--bg-color);
     z-index: 98;
+    pointer-events: none;
 }
 .animate-home-img{
     width: 50%;
@@ -887,11 +876,34 @@ span{
 .logo .animate,
 .navbar .animate,
 #menu-icon .animate,
-.header-download-btn .animate,
+.header-download-wrapper .animate{
+    background: transparent;
+    animation: none;
+}
+.logo,
+.navbar,
+#menu-icon,
+.header-download-wrapper{
+    opacity: 0;
+    animation: fadeInUp .6s ease forwards;
+    animation-delay: calc(.2s * var(--i, 1));
+}
+
+/* home section: use fade-in instead of solid cover to avoid visible boxes over bg image */
 .home.show-animate .animate,
 .home.show-animate .animate-other{
-    animation:showRight 1s ease forwards;
-    animation-delay:calc(.3s * var(--i));
+    background: transparent;
+    animation: none;
+}
+.home.show-animate .home-content h1,
+.home.show-animate .home-content .text-animate,
+.home.show-animate .home-content p,
+.home.show-animate .home-content .btn-box,
+.home.show-animate .home-sci,
+.home.show-animate .home-imgHover{
+    opacity: 0;
+    animation: fadeInUp .8s ease forwards;
+    animation-delay: calc(.2s * var(--i, 1));
 }
 
 .animate.scroll{
@@ -938,7 +950,7 @@ span{
     }
 }
 
-@media(max-width:768px){
+@media(max-width:1048px){
     .header{
         background: var(--bg-color);
     }
@@ -1113,6 +1125,16 @@ span{
 @keyframes showRight{
     100%{
         width: 0;
+    }
+}
+@keyframes fadeInUp{
+    0%{
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100%{
+        opacity: 1;
+        transform: translateY(0);
     }
 }
 

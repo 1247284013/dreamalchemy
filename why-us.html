@@ -19,6 +19,8 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            background: url('../src/back2.png') no-repeat center center;
+            background-size: cover;
         }
         .page-section .heading {
             font-size: 4rem;
@@ -45,15 +47,20 @@
             max-width: 1000px;
         }
         .trust-card {
-            background: rgba(255,255,255,0.05);
+            background: rgba(255,255,255,0.08);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
             border-left: .4rem solid var(--main-color);
             border-radius: 1rem;
             padding: 3rem 2.5rem;
             transition: .3s;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.18);
         }
         .trust-card:hover {
-            background: rgba(124, 130, 255, 0.08);
+            background: rgba(255,255,255,0.14);
+            border-left-color: rgba(124,130,255,0.9);
             transform: translateX(6px);
+            box-shadow: 0 12px 40px rgba(124,130,255,0.2);
         }
         .trust-card i {
             font-size: 3.5rem;
@@ -94,11 +101,12 @@
             <span class="active-nav"></span>
             <span class="animate" style="--i:2;"></span>
         </nav>
-        <a href="#" class="btn header-download-btn">
-            <i class="bx bx-download"></i> Download
+                <div class="header-download-wrapper">
+            <a href="#" class="btn header-download-btn">
+                <i class="bx bx-download"></i> Download
+            </a>
             <span class="animate" style="--i:3;"></span>
-        </a>
-    </header>
+        </div></header>
 
     <section class="page-section">
         <h2 class="heading">Why <span>Trust Us</span></h2>

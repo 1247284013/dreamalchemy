@@ -19,6 +19,8 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            background: url('../src/back2.png') no-repeat center center;
+            background-size: cover;
         }
         .page-section .heading {
             font-size: 4rem;
@@ -45,16 +47,21 @@
             max-width: 1100px;
         }
         .feature-card {
-            background: rgba(255,255,255,0.05);
-            border: .1rem solid rgba(124, 130, 255, 0.2);
+            background: rgba(255,255,255,0.08);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: .1rem solid rgba(255,255,255,0.18);
             border-radius: 1.5rem;
             padding: 3rem 2.5rem;
             text-align: center;
             transition: .3s;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.18);
         }
         .feature-card:hover {
-            border-color: var(--main-color);
+            background: rgba(255,255,255,0.14);
+            border-color: rgba(124, 130, 255, 0.6);
             transform: translateY(-6px);
+            box-shadow: 0 12px 40px rgba(124,130,255,0.2);
         }
         .feature-card i {
             font-size: 4rem;
@@ -113,19 +120,23 @@
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 0;
-            border: .1rem solid rgba(124, 130, 255, 0.22);
+            background: rgba(255,255,255,0.08);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: .1rem solid rgba(255,255,255,0.18);
             border-radius: 1.6rem;
             overflow: hidden;
             margin-bottom: 5rem;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.18);
         }
         .metric-item {
             padding: 3.5rem 2.8rem;
             text-align: center;
-            border-right: .1rem solid rgba(124, 130, 255, 0.15);
+            border-right: .1rem solid rgba(255,255,255,0.12);
             transition: background .3s;
         }
         .metric-item:last-child { border-right: none; }
-        .metric-item:hover { background: rgba(124, 130, 255, 0.07); }
+        .metric-item:hover { background: rgba(255,255,255,0.1); }
         .metric-item .metric-num {
             font-size: 6rem;
             font-weight: 800;
@@ -167,13 +178,16 @@
             gap: 2.8rem;
         }
         .tech-card {
-            background: rgba(255,255,255,0.04);
-            border: .1rem solid rgba(124, 130, 255, 0.2);
+            background: rgba(255,255,255,0.08);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: .1rem solid rgba(255,255,255,0.18);
             border-radius: 1.6rem;
             padding: 3.2rem 2.8rem;
             transition: .3s;
             position: relative;
             overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.18);
         }
         .tech-card::before {
             content: '';
@@ -185,8 +199,10 @@
             transition: .3s;
         }
         .tech-card:hover {
-            border-color: var(--main-color);
+            background: rgba(255,255,255,0.14);
+            border-color: rgba(124, 130, 255, 0.6);
             transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(124,130,255,0.2);
         }
         .tech-card:hover::before { opacity: 1; }
         .tech-card .tc-icon {
@@ -235,11 +251,12 @@
             <span class="active-nav"></span>
             <span class="animate" style="--i:2;"></span>
         </nav>
-        <a href="#" class="btn header-download-btn">
-            <i class="bx bx-download"></i> Download
+                <div class="header-download-wrapper">
+            <a href="#" class="btn header-download-btn">
+                <i class="bx bx-download"></i> Download
+            </a>
             <span class="animate" style="--i:3;"></span>
-        </a>
-    </header>
+        </div></header>
 
     <section class="page-section">
         <h2 class="heading">What We <span>Do</span></h2>

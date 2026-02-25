@@ -19,6 +19,8 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            background: url('../src/back3.png') no-repeat center center;
+            background-size: cover;
         }
         .page-section .heading {
             font-size: 4rem;
@@ -45,17 +47,23 @@
             max-width: 1000px;
         }
         .pricing-card {
-            background: rgba(255,255,255,0.04);
-            border: .15rem solid rgba(124, 130, 255, 0.2);
+            background: rgba(255,255,255,0.08);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: .15rem solid rgba(255,255,255,0.18);
             border-radius: 2rem;
             padding: 3.5rem 2.5rem;
             text-align: center;
             transition: .3s;
             position: relative;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.18);
         }
         .pricing-card.popular {
-            border-color: var(--main-color);
-            background: rgba(124, 130, 255, 0.08);
+            border-color: rgba(124,130,255,0.6);
+            background: rgba(124,130,255,0.15);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            box-shadow: 0 8px 40px rgba(124,130,255,0.25);
         }
         .pricing-card.popular::before {
             content: 'Most Popular';
@@ -73,7 +81,9 @@
         }
         .pricing-card:hover {
             transform: translateY(-8px);
-            border-color: var(--main-color);
+            background: rgba(255,255,255,0.14);
+            border-color: rgba(124,130,255,0.6);
+            box-shadow: 0 12px 40px rgba(124,130,255,0.2);
         }
         .pricing-card h3 {
             font-size: 2.2rem;
@@ -196,11 +206,12 @@
             <span class="active-nav"></span>
             <span class="animate" style="--i:2;"></span>
         </nav>
-        <a href="#" class="btn header-download-btn">
-            <i class="bx bx-download"></i> Download
+                <div class="header-download-wrapper">
+            <a href="#" class="btn header-download-btn">
+                <i class="bx bx-download"></i> Download
+            </a>
             <span class="animate" style="--i:3;"></span>
-        </a>
-    </header>
+        </div></header>
 
     <section class="page-section">
         <h2 class="heading">Flexible <span>Pricing</span></h2>
