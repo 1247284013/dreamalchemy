@@ -19,8 +19,6 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            background: url('../src/back2.png') no-repeat center center;
-            background-size: cover;
         }
         .page-section .heading {
             font-size: 4rem;
@@ -41,43 +39,158 @@
         }
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(28rem, 1fr));
-            gap: 3rem;
+            grid-template-columns: repeat(auto-fit, minmax(32rem, 1fr));
+            gap: 2.4rem;
             width: 100%;
             max-width: 1100px;
         }
         .feature-card {
-            background: rgba(255,255,255,0.08);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: .1rem solid rgba(255,255,255,0.18);
-            border-radius: 1.5rem;
-            padding: 3rem 2.5rem;
-            text-align: center;
+            display: flex;
+            align-items: flex-start;
+            gap: 2rem;
+            padding: 2.4rem 2rem;
+            border-radius: 1.2rem;
             transition: .3s;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.18);
         }
         .feature-card:hover {
-            background: rgba(255,255,255,0.14);
-            border-color: rgba(124, 130, 255, 0.6);
-            transform: translateY(-6px);
+            background: rgba(255,255,255,0.08);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            transform: translateX(6px);
+        }
+        .feature-card .fc-icon {
+            flex-shrink: 0;
+            font-size: 3.2rem;
+            color: var(--main-color);
+            margin-top: .2rem;
+        }
+        .feature-card .fc-content h3 {
+            font-size: 1.9rem;
+            font-weight: 700;
+            color: var(--text-color);
+            margin-bottom: .6rem;
+        }
+        .feature-card .fc-content p {
+            font-size: 1.45rem;
+            color: var(--text-color);
+            opacity: 0.68;
+            line-height: 1.7;
+        }
+
+        /* ── Section 2: Narrative ── */
+        .narrative-section {
+            min-height: 80vh;
+            padding: 10rem 9% 8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(40,20,80,0.95) 0%, rgba(20,10,50,0.98) 100%);
+            border-top: .1rem solid rgba(124,130,255,0.15);
+            border-bottom: .1rem solid rgba(124,130,255,0.15);
+        }
+        .narrative-inner {
+            max-width: 780px;
+            text-align: center;
+        }
+        .narrative-inner .hook {
+            font-size: 3.6rem;
+            font-weight: 900;
+            color: var(--text-color);
+            line-height: 1.25;
+            margin-bottom: 3rem;
+            letter-spacing: -.02em;
+        }
+        .narrative-inner .hook span {
+            color: var(--main-color);
+        }
+        .narrative-inner p {
+            font-size: 1.65rem;
+            color: var(--text-color);
+            opacity: 0.75;
+            line-height: 1.9;
+            margin-bottom: 1.4rem;
+        }
+        .narrative-inner .cta-line {
+            display: inline-block;
+            margin-top: 2.5rem;
+            font-size: 1.9rem;
+            font-weight: 700;
+            font-style: italic;
+            color: var(--main-color);
+            border-top: .1rem solid rgba(124,130,255,0.3);
+            padding-top: 2rem;
+            width: 100%;
+        }
+
+        /* ── Section 3: Steps ── */
+        .steps-section {
+            min-height: 80vh;
+            padding: 10rem 9% 8rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .steps-section .section-label {
+            font-size: 1.2rem;
+            font-weight: 700;
+            letter-spacing: .18rem;
+            text-transform: uppercase;
+            color: var(--main-color);
+            text-align: center;
+            margin-bottom: .8rem;
+        }
+        .steps-section .steps-title {
+            font-size: 3.4rem;
+            font-weight: 700;
+            color: var(--text-color);
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+        .steps-section .steps-title span { color: var(--main-color); }
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(24rem, 1fr));
+            gap: 2.4rem;
+            width: 100%;
+            max-width: 1100px;
+        }
+        .step-card {
+            background: rgba(255,255,255,0.06);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: .1rem solid rgba(255,255,255,0.12);
+            border-radius: 1.6rem;
+            padding: 3rem 2.4rem;
+            position: relative;
+            transition: .3s;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+        }
+        .step-card:hover {
+            background: rgba(255,255,255,0.12);
+            border-color: rgba(124,130,255,0.4);
+            transform: translateY(-5px);
             box-shadow: 0 12px 40px rgba(124,130,255,0.2);
         }
-        .feature-card i {
-            font-size: 4rem;
+        .step-card .step-num {
+            font-size: 5rem;
+            font-weight: 900;
             color: var(--main-color);
-            margin-bottom: 1.5rem;
+            opacity: 0.15;
+            line-height: 1;
+            margin-bottom: .4rem;
+            letter-spacing: -.04em;
         }
-        .feature-card h3 {
-            font-size: 2rem;
+        .step-card h4 {
+            font-size: 1.9rem;
+            font-weight: 700;
             color: var(--text-color);
             margin-bottom: 1rem;
         }
-        .feature-card p {
-            font-size: 1.5rem;
+        .step-card p {
+            font-size: 1.45rem;
             color: var(--text-color);
-            opacity: 0.7;
-            line-height: 1.6;
+            opacity: 0.68;
+            line-height: 1.7;
         }
 
         /* ── Tech Section ── */
@@ -216,6 +329,62 @@
             color: var(--text-color);
             margin-bottom: 1rem;
         }
+        /* Logo Loop */
+        .logo-loop-section {
+            margin-top: 6rem;
+            padding-top: 4rem;
+            border-top: .1rem solid rgba(124, 130, 255, 0.18);
+            width: 100%;
+        }
+        .logo-loop-section .section-label {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+        .logo-loop {
+            overflow: hidden;
+            width: 100%;
+            --logoloop-gap: 32px;
+            --logoloop-logoHeight: 36px;
+        }
+        .logo-loop__track {
+            display: flex;
+            width: max-content;
+            gap: var(--logoloop-gap);
+            will-change: transform;
+        }
+        .logo-loop__list {
+            display: flex;
+            align-items: center;
+            gap: var(--logoloop-gap);
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        .logo-loop__item {
+            display: flex;
+            align-items: center;
+            gap: .8rem;
+            flex-shrink: 0;
+            height: var(--logoloop-logoHeight);
+            padding: 0 1rem;
+            background: rgba(255,255,255,0.06);
+            border-radius: .8rem;
+            color: var(--text-color);
+            font-size: 1.4rem;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+        .logo-loop__item img {
+            height: var(--logoloop-logoHeight);
+            width: auto;
+            object-fit: contain;
+            opacity: 0.9;
+        }
+        .logo-loop__item .logoloop-icon {
+            font-size: 2rem;
+            color: var(--main-color);
+        }
+
         .tech-card p {
             font-size: 1.5rem;
             color: var(--text-color);
@@ -263,34 +432,86 @@
         <p class="sub-heading">Discover how DreamAlchemy helps you explore your inner world</p>
         <div class="features-grid">
             <div class="feature-card">
-                <i class="bx bx-moon"></i>
-                <h3>Dream Journaling</h3>
-                <p>Capture and document your dreams with an intuitive journaling experience designed for reflection and growth.</p>
+                <i class="bx bx-moon fc-icon"></i>
+                <div class="fc-content">
+                    <h3>Dream Journaling</h3>
+                    <p>Capture and document your dreams with an intuitive journaling experience designed for reflection and growth.</p>
+                </div>
             </div>
             <div class="feature-card">
-                <i class="bx bx-brain"></i>
-                <h3>AI-Powered Insights</h3>
-                <p>Get personalized psychological insights based on your dream patterns, powered by clinically validated models.</p>
+                <i class="bx bx-brain fc-icon"></i>
+                <div class="fc-content">
+                    <h3>AI-Powered Insights</h3>
+                    <p>Get personalized psychological insights based on your dream patterns, powered by clinically validated models.</p>
+                </div>
             </div>
             <div class="feature-card">
-                <i class="bx bx-line-chart"></i>
-                <h3>Progress Tracking</h3>
-                <p>Monitor your emotional wellbeing over time with visual feedback and progression metrics.</p>
+                <i class="bx bx-line-chart fc-icon"></i>
+                <div class="fc-content">
+                    <h3>Progress Tracking</h3>
+                    <p>Monitor your emotional wellbeing over time with visual feedback and progression metrics.</p>
+                </div>
             </div>
             <div class="feature-card">
-                <i class="bx bx-palette"></i>
-                <h3>Creative Expression</h3>
-                <p>Transform distress into creativity through guided prompts and expressive tools tailored to your journey.</p>
+                <i class="bx bx-microphone fc-icon"></i>
+                <div class="fc-content">
+                    <h3>Text / Speech to AI Game</h3>
+                    <p>Speak or type your dream and watch it become a living, interactive game world in seconds — powered by our custom NLP pipeline built specifically for dream content.</p>
+                </div>
             </div>
             <div class="feature-card">
-                <i class="bx bx-shield-quarter"></i>
-                <h3>Privacy First</h3>
-                <p>Your data stays yours. End-to-end encryption and strict privacy controls keep your inner world safe.</p>
+                <i class="bx bx-cube fc-icon"></i>
+                <div class="fc-content">
+                    <h3>Physical Companion Toy</h3>
+                    <p>A real object in your hands bridges the digital and physical. Squeeze, shake, or blow into the toy — and your actions directly reshape the dream world on screen.</p>
+                </div>
             </div>
             <div class="feature-card">
-                <i class="bx bx-group"></i>
-                <h3>Community Support</h3>
-                <p>Connect with a safe, moderated community of people on similar journeys of self-discovery.</p>
+                <i class="bx bx-group fc-icon"></i>
+                <div class="fc-content">
+                    <h3>Community Support</h3>
+                    <p>Connect with a safe, moderated community of people on similar journeys of self-discovery.</p>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- Section 2: Narrative -->
+    <section class="narrative-section">
+        <div class="narrative-inner">
+            <h2 class="hook">Your Stress Has a Shape.<br><span>You Just Haven't Seen It Yet.</span></h2>
+            <p>Nightmares replay your fears. Recurring dreams echo unresolved trauma. But right now, all you can do is wake up and endure them.</p>
+            <p>What if you could step back into that dream — and fight back?</p>
+            <p>Not by talking about it. Not by filling out a questionnaire. By physically destroying the monster, soothing the crying child, shaking apart the locked room, blowing away the fog.</p>
+            <span class="cta-line">Your hands become the therapy.</span>
+        </div>
+    </section>
+
+    <!-- Section 3: Steps -->
+    <section class="steps-section">
+        <p class="section-label">How It Works</p>
+        <h2 class="steps-title">Four Steps to <span>Reclaim Your Dreams</span></h2>
+        <div class="steps-grid">
+            <div class="step-card">
+                <div class="step-num">01</div>
+                <h4>Share Your Dream</h4>
+                <p>Tell us what you dreamed — type it or speak it. A nightmare about drowning. A recurring dream about being chased. A strange scene you can't shake.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-num">02</div>
+                <h4>AI Builds Your World</h4>
+                <p>Our AI transforms your dream content into a personalized interactive game environment. The monster you described? It's there. The dark room? You're in it. Every session is uniquely yours.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-num">03</div>
+                <h4>Take Physical Action</h4>
+                <p>Using our companion toy, you interact with your dream world through real physical gestures — crush, soothe, shake, or blow. Your body leads the healing.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-num">04</div>
+                <h4>Feel the Shift</h4>
+                <p>Watch the nightmare crumble under your grip. See the dark scene dissolve with your breath. Your physical actions directly reshape your dream world — turning fear into mastery, helplessness into agency.</p>
             </div>
         </div>
 
@@ -337,6 +558,31 @@
                     <p>Quantifies psychological stress via multimodal analysis to power adaptive therapy. Turns subjective emotional relief into objective, longitudinal data — bridging consumer wellness and future clinical research.</p>
                 </div>
             </div>
+
+            <!-- Logo Loop -->
+            <div class="logo-loop-section">
+                <p class="section-label">Trusted by innovators</p>
+                <div class="logo-loop" role="region" aria-label="Partner logos">
+                    <div class="logo-loop__track">
+                        <ul class="logo-loop__list">
+                            <li class="logo-loop__item"><img src="src/icon1.png" alt="DreamAlchemy" height="36"></li>
+                            <li class="logo-loop__item"><i class="bx bxl-react logoloop-icon"></i><span>React</span></li>
+                            <li class="logo-loop__item"><i class="bx bx-brain logoloop-icon"></i><span>NLP</span></li>
+                            <li class="logo-loop__item"><i class="bx bx-game logoloop-icon"></i><span>Unity</span></li>
+                            <li class="logo-loop__item"><i class="bx bx-chip logoloop-icon"></i><span>AI</span></li>
+                            <li class="logo-loop__item"><i class="bx bx-shield-alt logoloop-icon"></i><span>Security</span></li>
+                        </ul>
+                        <ul class="logo-loop__list" aria-hidden="true">
+                            <li class="logo-loop__item"><img src="src/icon1.png" alt="" height="36"></li>
+                            <li class="logo-loop__item"><i class="bx bxl-react logoloop-icon"></i><span>React</span></li>
+                            <li class="logo-loop__item"><i class="bx bx-brain logoloop-icon"></i><span>NLP</span></li>
+                            <li class="logo-loop__item"><i class="bx bx-game logoloop-icon"></i><span>Unity</span></li>
+                            <li class="logo-loop__item"><i class="bx bx-chip logoloop-icon"></i><span>AI</span></li>
+                            <li class="logo-loop__item"><i class="bx bx-shield-alt logoloop-icon"></i><span>Security</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -348,6 +594,9 @@
             <a href="#"><i class='bx bxs-hand-up'></i></a>
         </div>
     </footer>
+    <script src="js/blur-text.js"></script>
+    <script src="js/reveal-items.js"></script>
+    <script src="js/logo-loop.js"></script>
     <script src="js/script.js"></script>
 </body>
 </html>

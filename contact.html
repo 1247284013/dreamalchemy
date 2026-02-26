@@ -43,6 +43,7 @@
             gap: 5rem;
             width: 100%;
             max-width: 1000px;
+            align-items: end;
         }
         @media(max-width: 768px) {
             .contact-wrapper { grid-template-columns: 1fr; }
@@ -52,60 +53,132 @@
             color: var(--text-color);
             margin-bottom: 2rem;
         }
+        .contact-info-lead {
+            font-size: 1.5rem;
+            color: var(--text-color);
+            opacity: 0.65;
+            line-height: 1.8;
+            margin-bottom: 3rem;
+            padding-bottom: 2.4rem;
+            border-bottom: .1rem solid rgba(124,130,255,0.18);
+        }
+        .contact-info-lead span {
+            color: var(--main-color);
+            text-decoration: underline;
+            cursor: pointer;
+        }
         .contact-info-item {
             display: flex;
-            align-items: flex-start;
-            gap: 1.5rem;
-            margin-bottom: 2rem;
+            flex-direction: column;
+            margin-bottom: 2.2rem;
         }
-        .contact-info-item i {
-            font-size: 2.4rem;
+        .contact-info-item .ci-label {
+            font-size: 1.1rem;
+            font-weight: 700;
+            letter-spacing: .1rem;
+            text-transform: uppercase;
             color: var(--main-color);
-            flex-shrink: 0;
-            margin-top: .2rem;
+            opacity: 0.8;
+            margin-bottom: .4rem;
         }
+        .contact-info-item a,
         .contact-info-item p {
             font-size: 1.5rem;
             color: var(--text-color);
-            opacity: 0.75;
-            line-height: 1.6;
+            opacity: 0.8;
+            text-decoration: none;
+            transition: .2s;
+            line-height: 1.5;
+        }
+        .contact-info-item a:hover {
+            color: var(--main-color);
+            opacity: 1;
         }
         .contact-form {
             display: flex;
             flex-direction: column;
-            gap: 1.8rem;
+            gap: 1.6rem;
         }
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.6rem;
+        }
+        .form-field {
+            display: flex;
+            flex-direction: column;
+            gap: .5rem;
+        }
+        .form-field label {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--main-color);
+            letter-spacing: .04rem;
+        }
+        .form-field label .req { color: var(--main-color); }
         .contact-form input,
+        .contact-form select,
         .contact-form textarea {
             width: 100%;
-            padding: 1.4rem 1.8rem;
-            background: rgba(255,255,255,0.05);
-            border: .15rem solid rgba(124, 130, 255, 0.25);
+            padding: 1.3rem 1.6rem;
+            background: rgba(255,255,255,0.04);
+            border: .15rem solid rgba(124, 130, 255, 0.22);
             border-radius: .8rem;
             font-size: 1.5rem;
             color: var(--text-color);
             outline: none;
             transition: .3s;
             font-family: inherit;
+            appearance: none;
+            -webkit-appearance: none;
         }
         .contact-form input:focus,
-        .contact-form textarea:focus {
+        .contact-form select:focus {
             border-color: var(--main-color);
             background: rgba(124, 130, 255, 0.06);
         }
-        .contact-form textarea {
-            height: 14rem;
-            resize: vertical;
-        }
-        .contact-form input::placeholder,
-        .contact-form textarea::placeholder {
+        .contact-form input::placeholder {
             color: var(--text-color);
+            opacity: 0.35;
+        }
+        .select-wrapper {
+            position: relative;
+        }
+        .select-wrapper::after {
+            content: '▼';
+            position: absolute;
+            right: 1.6rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--main-color);
+            font-size: 1rem;
+            pointer-events: none;
+        }
+        .contact-form select option {
+            background: #170b38;
+            color: var(--text-color);
+        }
+        .contact-form select option:first-child {
             opacity: 0.4;
         }
+        .recaptcha-note {
+            font-size: 1.25rem;
+            color: var(--text-color);
+            opacity: 0.4;
+            line-height: 1.5;
+        }
+        .recaptcha-note a { color: var(--main-color); opacity: 1; }
         .btn-box {
-            width: 100%;
+            width: 16rem;
             height: 5rem;
             justify-content: flex-start;
+        }
+        .contact-form .btn-box .btn {
+            border-radius: 2.5rem;
+            border: .2rem solid var(--main-color);
+            cursor: pointer;
+            font-size: 1.6rem;
+            letter-spacing: .08rem;
         }
         .disclaimer-note {
             margin-top: 4rem;
@@ -149,34 +222,66 @@
 
     <section class="page-section">
         <h2 class="heading">Get In <span>Touch</span></h2>
-        <p class="sub-heading">We'd love to hear from you — questions, feedback, or partnership inquiries</p>
+        <p class="sub-heading">We are available to offer our support and respond to any inquiries that you may have.We are
+            excitedly anticipating hearing from you.</p>
         <div class="contact-wrapper">
             <div class="contact-info">
-                <h3>Contact Info</h3>
+                <h3>Looking for something specific?</h3>
+                <p class="contact-info-lead">
+                    See below for contacts related to your inquiry.<br>
+                    If you don't find what you need, <span>fill out our contact form.</span>
+                </p>
                 <div class="contact-info-item">
-                    <i class="bx bx-envelope"></i>
-                    <p>hello@dreamalchemy.app</p>
+                    <span class="ci-label">General Inquiries</span>
+                    <a href="mailto:hello@dreamalchemy.com">hello@dreamalchemy.com</a>
                 </div>
                 <div class="contact-info-item">
-                    <i class="bx bx-map"></i>
-                    <p>Auckland, New Zealand</p>
+                    <span class="ci-label">Member Inquiries</span>
+                    <a href="https://dreamalchemy.com/support" target="_blank">dreamalchemy.com/support</a>
                 </div>
                 <div class="contact-info-item">
-                    <i class="bx bx-time"></i>
-                    <p>Mon – Fri, 9am – 5pm NZST<br>We typically reply within 24 hours.</p>
+                    <span class="ci-label">Partner Inquiries</span>
+                    <a href="mailto:sales@dreamalchemy.com">sales@dreamalchemy.com</a>
                 </div>
                 <div class="contact-info-item">
-                    <i class="bx bx-info-circle"></i>
-                    <p>For urgent mental health support, please contact your local crisis line or a qualified healthcare professional. DreamAlchemy is not a crisis service.</p>
+                    <span class="ci-label">Press Inquiries</span>
+                    <a href="mailto:press@dreamalchemy.com">press@dreamalchemy.com</a>
                 </div>
             </div>
             <form class="contact-form" onsubmit="return false;">
-                <input type="text" placeholder="Your Name" required>
-                <input type="email" placeholder="Your Email" required>
-                <input type="text" placeholder="Subject">
-                <textarea placeholder="Your Message"></textarea>
+                <div class="form-row">
+                    <div class="form-field">
+                        <label>First Name <span class="req">*</span></label>
+                        <input type="text" placeholder="First Name" required>
+                    </div>
+                    <div class="form-field">
+                        <label>Last Name <span class="req">*</span></label>
+                        <input type="text" placeholder="Last Name" required>
+                    </div>
+                </div>
+                <div class="form-field">
+                    <label>Email Address <span class="req">*</span></label>
+                    <input type="email" placeholder="Email Address" required>
+                </div>
+                <div class="form-field">
+                    <label>How can we help?</label>
+                    <div class="select-wrapper">
+                        <select>
+                            <option value="" disabled selected>Please Select</option>
+                            <option>I'd like to talk to sales / request a demo</option>
+                            <option>I am a provider and am interested in joining dreamalchemy network</option>
+                            <option>I'm trying to access my company's dreamalchemy benefit</option>
+                            <option>I have a press inquiry</option>
+                        </select>
+                    </div>
+                </div>
+                <p class="recaptcha-note">
+                    This site is protected by reCAPTCHA and the Google
+                    <a href="https://policies.google.com/privacy" target="_blank">Privacy Policy</a> and
+                    <a href="https://policies.google.com/terms" target="_blank">Terms of Service</a> apply.
+                </p>
                 <div class="btn-box">
-                    <button type="submit" class="btn" style="border:none; cursor:pointer; width:15rem;">Send Message</button>
+                    <button type="submit" class="btn" style="width:15rem;">Submit</button>
                 </div>
             </form>
         </div>
@@ -193,6 +298,8 @@
             <a href="#"><i class='bx bxs-hand-up'></i></a>
         </div>
     </footer>
+    <script src="js/blur-text.js"></script>
+    <script src="js/reveal-items.js"></script>
     <script src="js/script.js"></script>
 </body>
 </html>

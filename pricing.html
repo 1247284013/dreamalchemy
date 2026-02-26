@@ -47,6 +47,8 @@
             max-width: 1000px;
         }
         .pricing-card {
+            display: flex;
+            flex-direction: column;
             background: rgba(255,255,255,0.08);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
@@ -133,10 +135,34 @@
         .pricing-card ul li.disabled i {
             color: var(--text-color);
         }
-        .btn-box {
+        .pricing-card ul li.special {
+            color: var(--text-color);
+            opacity: 0.8;
+            font-size: 1.5rem;
+        }
+        .pricing-card ul li.special i {
+            color: var(--main-color);
+        }
+        .pricing-card ul li.special > span > span:first-child,
+        .pricing-card ul li.special > span {
+            color: var(--text-color);
+        }
+        .pricing-card ul li.special .li-sub {
+            display: block;
+            font-size: 1.15rem;
+            color: var(--main-color);
+            opacity: 0.8;
+            margin-top: .1rem;
+        }
+        .pricing-card .period s {
+            opacity: 0.4;
+        }
+        .pricing-card .btn-box {
             justify-content: center;
             width: 100%;
             height: 5rem;
+            margin-top: auto;
+            padding-top: 1.5rem;
         }
         .pricing-intro {
             max-width: 800px;
@@ -226,17 +252,18 @@
             <div class="pricing-card">
                 <span class="tier-label">For Individuals</span>
                 <h3>Free Basic</h3>
-                <div class="price free-price">$0<span>/mo</span></div>
+                <div class="price free-price">£ 0<span>/mo</span></div>
                 <div class="period">Forever free · No credit card needed</div>
                 <p class="desc">Limited dream logs, basic game templates, and simple tracking — the perfect starting point for self-exploration.</p>
                 <ul>
                     <li><i class="bx bx-check"></i> Dream logs (up to 10 / month)</li>
                     <li><i class="bx bx-check"></i> Basic dream-to-game templates</li>
-                    <li><i class="bx bx-check"></i> Simple mood & progress tracking</li>
+                    <li><i class="bx bx-check"></i> Simple mood &amp; progress tracking</li>
                     <li><i class="bx bx-check"></i> Core AI insights</li>
                     <li class="disabled"><i class="bx bx-x"></i> Unlimited conversions</li>
-                    <li class="disabled"><i class="bx bx-x"></i> Deep analytics & content packs</li>
-                    <li class="disabled"><i class="bx bx-x"></i> Enterprise dashboard</li>
+                    <li class="disabled"><i class="bx bx-x"></i> Deep analytics &amp; content packs</li>
+                    <li class="disabled"><i class="bx bx-x"></i> Custom Tactile Controller</li>
+                    <li class="disabled"><i class="bx bx-x"></i> Haptic-enabled immersive</li>
                 </ul>
                 <div class="btn-box">
                     <a href="contact.html" class="btn">Get Started</a>
@@ -245,19 +272,22 @@
 
             <!-- Subscription / Value-Based -->
             <div class="pricing-card popular">
-                <span class="tier-label">Most Popular</span>
+                <span class="tier-label">For Individuals</span>
                 <h3>Subscription</h3>
-                <div class="price">$12<span>/mo</span></div>
-                <div class="period">Value-based · Billed monthly or annually</div>
-                <p class="desc">Pay for the value you receive — unlimited dream-to-game conversions, deeper analytics, and specialised content packs.</p>
+                <div class="price">£ 12<span>/mo</span></div>
+                <div class="period">Value-based · Billed monthly <s>or annually</s></div>
+                <p class="desc">Unlimited dream-to-game conversions, deeper analytics, specialised content packs, a Complimentary Custom Tactile Hardware, and haptic-enabled immersive interaction.</p>
                 <ul>
                     <li><i class="bx bx-check"></i> Unlimited dream-to-game conversions</li>
-                    <li><i class="bx bx-check"></i> Deep analytics & outcome reporting</li>
+                    <li><i class="bx bx-check"></i> Deep analytics &amp; outcome reporting</li>
                     <li><i class="bx bx-check"></i> Specialised content packs</li>
                     <li><i class="bx bx-check"></i> Full AI-powered insights</li>
-                    <li><i class="bx bx-check"></i> Progress & feedback tracking</li>
+                    <li><i class="bx bx-check"></i> Progress &amp; feedback tracking</li>
                     <li><i class="bx bx-check"></i> Priority in-app support</li>
-                    <li class="disabled"><i class="bx bx-x"></i> Professional dashboard</li>
+                    <li class="special"><i class="bx bx-check"></i>
+                        <span>Complimentary Custom Tactile Controller<span class="li-sub">(Gifted upon initial subscription)</span></span>
+                    </li>
+                    <li><i class="bx bx-check"></i> Haptic-enabled immersive interaction</li>
                 </ul>
                 <div class="btn-box">
                     <a href="contact.html" class="btn">Get Started</a>
@@ -268,20 +298,21 @@
             <div class="pricing-card">
                 <span class="tier-label">For Organisations</span>
                 <h3>Enterprise</h3>
-                <div class="price contact-price">Custom</div>
+                <div class="price contact-price">£ 15<span>/mo</span></div>
                 <div class="period">Per-seat · Per-employee · Volume pricing</div>
                 <p class="desc">Professional dashboard, per-seat or per-employee pricing for employers, and custom integration support including online therapist communication.</p>
                 <ul>
                     <li><i class="bx bx-check"></i> Professional admin dashboard</li>
                     <li><i class="bx bx-check"></i> Per-seat or per-employee pricing</li>
                     <li><i class="bx bx-check"></i> Online therapist communication</li>
-                    <li><i class="bx bx-check"></i> Custom API & system integration</li>
                     <li><i class="bx bx-check"></i> Corporate wellness reporting</li>
-                    <li><i class="bx bx-check"></i> Dedicated account manager</li>
-                    <li><i class="bx bx-check"></i> SLA & compliance support</li>
+                    <li class="special"><i class="bx bx-check"></i>
+                        <span>Complimentary Custom Tactile Controller<span class="li-sub">(Gifted upon initial subscription for each employee)</span></span>
+                    </li>
+                    <li class="disabled"><i class="bx bx-x"></i> Haptic-enabled immersive interaction</li>
                 </ul>
                 <div class="btn-box">
-                    <a href="contact.html" class="btn">Contact Us</a>
+                    <a href="contact.html" class="btn">Get Started</a>
                 </div>
             </div>
 
@@ -299,6 +330,38 @@
             <a href="#"><i class='bx bxs-hand-up'></i></a>
         </div>
     </footer>
+    <script src="js/blur-text.js"></script>
+    <script src="js/reveal-items.js"></script>
     <script src="js/script.js"></script>
+    <script>
+    (function() {
+      var el = document.querySelector('.pricing-intro');
+      if (!el || el.classList.contains('blur-text-wrapper')) return;
+      var text = (el.textContent || '').trim();
+      if (!text) return;
+      var words = text.split(/\s+/);
+      el.classList.add('blur-text-wrapper');
+      el.style.display = 'flex';
+      el.style.flexWrap = 'wrap';
+      el.style.justifyContent = 'center';
+      el.innerHTML = '';
+      words.forEach(function(w, i) {
+        var span = document.createElement('span');
+        span.className = 'blur-word';
+        span.style.animationDelay = (i * 0.2) + 's';
+        span.textContent = w;
+        el.appendChild(span);
+        if (i < words.length - 1) el.appendChild(document.createTextNode('\u00A0'));
+      });
+      var obs = new IntersectionObserver(function(entries) {
+        if (entries[0].isIntersecting) {
+          el.classList.add('blur-text-visible');
+          obs.disconnect();
+        }
+      }, { threshold: 0.1 });
+      obs.observe(el);
+      if (el.getBoundingClientRect().top < window.innerHeight + 80) el.classList.add('blur-text-visible');
+    })();
+    </script>
 </body>
 </html>

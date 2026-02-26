@@ -1,4 +1,9 @@
+var lastGlowTime = 0;
+var glowThrottle = 120;
 document.addEventListener("mousemove", function (event) {
+    var now = Date.now();
+    if (now - lastGlowTime < glowThrottle) return;
+    lastGlowTime = now;
     var glow = document.createElement("div");
     glow.className = "glow";
     var glowInner = document.createElement("div");
@@ -9,7 +14,7 @@ document.addEventListener("mousemove", function (event) {
     glow.style.top = event.clientY + "px";
     setTimeout(function () {
         glow.remove();
-    }, 2000);
+    }, 900);
 });
 
 
@@ -34,35 +39,19 @@ window.onscroll =()=>{
         let id = sec.getAttribute('id');
 
         if(top >= offset && top < offset + height) {
-            // Active navbar links
             navLinks.forEach(link => {
                 link.classList.remove('active');
-                document.querySelector('header nav a[href*=' + id + ']').classList.add('active');
+                const target = document.querySelector('header nav a[href*=' + id + ']');
+                if (target) target.classList.add('active');
             });
-            // active sections for animation on scroll
             sec.classList.add('show-animate');
-        }
-        // if want to use animation that repeats on scroll use this
-        else{
+        } else {
             sec.classList.remove('show-animate');
         }
-
-    
     });
 
-    //sticky header
-    let header=document.querySelector('header');
-
-    header.classList.toggle('sticky',window.scrollY > 100);
-
-
+    let header = document.querySelector('header');
+    header.classList.toggle('sticky', window.scrollY > 100);
     menuIcon.classList.remove('bx-x');
     navbar.classList.remove('active');
-
-}
-
-
-
-
-
-
+};

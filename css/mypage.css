@@ -386,6 +386,75 @@ span{
     color:var(--main-color);
 
 }
+/* Blur-text animation - word-by-word blur-in for all content */
+.blur-text-wrapper {
+    justify-content: flex-start;
+}
+.blur-text-wrapper.heading,
+.blur-text-wrapper.sub-heading {
+    justify-content: center;
+}
+.blur-text-wrapper .blur-word {
+    display: inline-block;
+    will-change: transform, filter, opacity;
+    filter: blur(10px);
+    opacity: 0;
+    transform: translateY(-50px);
+    animation: none;
+}
+.blur-text-wrapper.blur-text-visible .blur-word {
+    animation: blur-text-in 0.7s ease-out forwards;
+}
+.blur-text-wrapper .blur-word-accent {
+    color: var(--main-color);
+}
+@keyframes blur-text-in {
+    0% {
+        filter: blur(10px);
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    50% {
+        filter: blur(5px);
+        opacity: 0.5;
+        transform: translateY(5px);
+    }
+    100% {
+        filter: blur(0);
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Block-level reveal animation - each div appears from top with blur */
+.reveal-item {
+    opacity: 0;
+    filter: blur(10px);
+    transform: translateY(-50px);
+    animation: none;
+    will-change: transform, filter, opacity;
+}
+.reveal-item.reveal-visible {
+    animation: reveal-block-in 1.1s ease-out forwards;
+    animation-delay: var(--reveal-delay, 0s);
+}
+@keyframes reveal-block-in {
+    0% {
+        filter: blur(10px);
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    50% {
+        filter: blur(5px);
+        opacity: 0.5;
+        transform: translateY(5px);
+    }
+    100% {
+        filter: blur(0);
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 
 .about-img{
     position: relative;
@@ -1154,7 +1223,7 @@ span{
     left: -50%;
     width: 200%;
     height: 200%;
-    background: radial-gradient(circle, rgba(124, 130, 255, 0.8) 0%, rgba(255, 255, 255, 0) 70%);
+    background: radial-gradient(circle, rgba(124, 130, 255, 0.7) 0%, rgba(124, 130, 255, 0.2) 35%, rgba(255, 255, 255, 0) 55%);
     animation: glow-animation 1s linear infinite;
 }
 
