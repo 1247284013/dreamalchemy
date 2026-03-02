@@ -1150,8 +1150,8 @@ span{
         padding: 0.4rem 0;
         margin: 0 !important;
     }
-    .navbar:not(.active) .nav-dropdown{
-        display: none;
+    .nav-dropdown{
+        display: none !important;
     }
 
     .home-imgHover{
