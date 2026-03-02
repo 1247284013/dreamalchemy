@@ -20,7 +20,13 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            background: url('src/back2.png') no-repeat center center;
+            position: relative;
+            background: linear-gradient(
+                to bottom,
+                transparent 70%,
+                rgba(12,3,32,0.85) 88%,
+                rgba(12,3,32,1) 100%
+            ), url('src/back2.png') no-repeat center center;
             background-size: cover;
             transform: translateZ(0);
             backface-visibility: hidden;

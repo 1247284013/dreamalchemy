@@ -58,17 +58,13 @@ header{
 }
 .navbar{
     position: relative;
-    transform: translateX(-5%);
     display: flex;
     align-items: center;
     flex-wrap: wrap;
+    gap: 2rem;
 }
 .nav-item{
     position: relative;
-    margin-left: 3.5rem;
-}
-.nav-item:first-child{
-    margin-left: 0;
 }
 .navbar .nav-item > a{
     font-size: 1.7rem;
