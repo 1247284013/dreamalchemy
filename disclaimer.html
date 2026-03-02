@@ -3,9 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" type="image/png" href="src/icon1.png">
+    <meta http-equiv="refresh" content="0;url=contact.html#contact-disclaimer">
+    <link rel="shortcut icon" type="image/png" href="src/h.png">
     <title>DreamAlchemy - Disclaimer</title>
     <link rel="stylesheet" href="css/mypage.css">
+    <link rel="stylesheet" href="css/spotlight-card.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <style>
         header.header {
@@ -50,6 +52,9 @@
             border-radius: 1.2rem;
             padding: 2.8rem 3rem;
         }
+        .disclaimer-item.card-spotlight {
+            position: relative;
+        }
         .disclaimer-item h3 {
             font-size: 1.9rem;
             color: var(--main-color);
@@ -86,13 +91,45 @@
         </a>
         <div class="bx bx-menu" id="menu-icon"><span class="animate" style="--i:2;"></span></div>
         <nav class="navbar">
-            <a href="index.html">Hero</a>
-            <a href="features.html">Features</a>
-            <a href="why-us.html">Why Us</a>
-            <a href="demo.html">Demo</a>
-            <a href="pricing.html">Pricing</a>
-            <a href="contact.html">Contact</a>
-            <a href="disclaimer.html" class="active">Disclaimer</a>
+            <div class="nav-item">
+                <a href="index.html" class="active">Home</a>
+                <div class="nav-dropdown">
+                    <a href="index.html#home">Hero</a>
+                </div>
+            </div>
+            <div class="nav-item nav-item-has-dropdown">
+                <a href="features.html">Features</a>
+                <div class="nav-dropdown">
+                    <a href="features.html#features-what-we-do">What We Do</a>
+                </div>
+            </div>
+            <div class="nav-item">
+                <a href="why-us.html">Why Us</a>
+                <div class="nav-dropdown">
+                    <a href="why-us.html#why-trust">Why Trust Us</a>
+                    <a href="why-us.html#live-dashboard">Community Dashboard</a>
+                    <a href="why-us.html#faq">FAQ</a>
+                </div>
+            </div>
+            <div class="nav-item nav-item-has-dropdown">
+                <a href="demo.html">Demo</a>
+                <div class="nav-dropdown">
+                    <a href="demo.html#demo-action">See It In Action</a>
+                </div>
+            </div>
+            <div class="nav-item">
+                <a href="pricing.html">Pricing</a>
+                <div class="nav-dropdown">
+                    <a href="pricing.html#pricing">Flexible Pricing</a>
+                </div>
+            </div>
+            <div class="nav-item nav-item-has-dropdown">
+                <a href="contact.html">Contact</a>
+                <div class="nav-dropdown">
+                    <a href="contact.html#contact">Get In Touch</a>
+                    <a href="contact.html#contact-disclaimer">Disclaimer</a>
+                </div>
+            </div>
 
             <span class="active-nav"></span>
             <span class="animate" style="--i:2;"></span>
@@ -104,28 +141,28 @@
             <span class="animate" style="--i:3;"></span>
         </div></header>
 
-    <section class="page-section">
+    <section class="page-section" id="disclaimer">
         <h2 class="heading">Dis<span>claimer</span></h2>
         <p class="sub-heading">Please read this carefully before using DreamAlchemy</p>
 
         <div class="disclaimer-box">
-            <div class="disclaimer-item">
+            <div class="disclaimer-item card-spotlight">
                 <h3><i class="bx bx-error-circle"></i> Not a Medical Product</h3>
                 <p>DreamAlchemy is a personal wellness and self-reflection tool. It is not a medical device, clinical treatment, or diagnostic service. Nothing on this platform constitutes medical advice, and it should not be used as a substitute for professional medical or psychiatric care.</p>
             </div>
-            <div class="disclaimer-item">
+            <div class="disclaimer-item card-spotlight">
                 <h3><i class="bx bx-brain"></i> Not a Therapy Service</h3>
                 <p>Use of DreamAlchemy does not establish a therapeutic relationship between the user and any healthcare provider. Our AI-generated insights are for personal reflection purposes only and are not a replacement for licensed psychological or mental health therapy.</p>
             </div>
-            <div class="disclaimer-item">
+            <div class="disclaimer-item card-spotlight">
                 <h3><i class="bx bx-shield-x"></i> No Liability for Outcomes</h3>
                 <p>DreamAlchemy and its developers accept no responsibility or liability for any decisions made or actions taken by users based on content or insights provided within the platform. Individual experiences may vary significantly.</p>
             </div>
-            <div class="disclaimer-item">
+            <div class="disclaimer-item card-spotlight">
                 <h3><i class="bx bx-phone-call"></i> Crisis Situations</h3>
                 <p>DreamAlchemy is not a crisis service. If you are experiencing a mental health emergency, suicidal thoughts, or are in immediate danger, please contact your local emergency services or a crisis helpline immediately. Do not rely on this platform in emergency situations.</p>
             </div>
-            <div class="disclaimer-item">
+            <div class="disclaimer-item card-spotlight">
                 <h3><i class="bx bx-lock"></i> Privacy & Data</h3>
                 <p>While we take all reasonable measures to protect your data, DreamAlchemy cannot guarantee absolute security of information transmitted over the internet. By using this platform you acknowledge and accept this inherent risk.</p>
             </div>
@@ -148,6 +185,7 @@
     </footer>
     <script src="js/blur-text.js"></script>
     <script src="js/reveal-items.js"></script>
+    <script src="js/spotlight-card.js"></script>
     <script src="js/script.js"></script>
 </body>
 </html>

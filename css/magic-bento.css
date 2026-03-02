@@ -1,0 +1,38 @@
+/* MagicBento-style effects for feature cards */
+.features-grid.magic-bento-grid {
+  position: relative;
+}
+.features-grid .feature-card.magic-bento-card {
+  --glow-x: 50%;
+  --glow-y: 50%;
+  --glow-intensity: 0;
+  --glow-radius: 280px;
+  --glow-color: 124, 130, 255;
+  position: relative;
+  overflow: hidden;
+  will-change: transform;
+  transform-style: preserve-3d;
+}
+.features-grid .feature-card.magic-bento-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  padding: 1px;
+  border-radius: inherit;
+  background: radial-gradient(
+    var(--glow-radius) circle at var(--glow-x) var(--glow-y),
+    rgba(var(--glow-color), calc(var(--glow-intensity) * 0.5)) 0%,
+    rgba(var(--glow-color), calc(var(--glow-intensity) * 0.2)) 35%,
+    transparent 60%
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+@media (max-width: 768px) {
+  .features-grid .feature-card.magic-bento-card {
+    --glow-intensity: 0;
+  }
+}

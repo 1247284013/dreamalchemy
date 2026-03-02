@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" type="image/png" href="src/icon1.png">
+    <link rel="shortcut icon" type="image/png" href="src/h.png">
+    <link rel="preload" href="src/back2.png" as="image">
     <title>DreamAlchemy - Why Us</title>
     <link rel="stylesheet" href="css/mypage.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
@@ -19,8 +20,10 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            background: url('../src/back2.png') no-repeat center center;
+            background: url('src/back2.png') no-repeat center center;
             background-size: cover;
+            transform: translateZ(0);
+            backface-visibility: hidden;
         }
         .page-section .heading {
             font-size: 4rem;
@@ -47,9 +50,7 @@
             max-width: 1000px;
         }
         .trust-card {
-            background: rgba(255,255,255,0.08);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
+            background: rgba(30, 25, 60, 0.85);
             border-left: .4rem solid var(--main-color);
             border-radius: 1rem;
             padding: 3rem 2.5rem;
@@ -57,7 +58,7 @@
             box-shadow: 0 8px 32px rgba(0,0,0,0.18);
         }
         .trust-card:hover {
-            background: rgba(255,255,255,0.14);
+            background: rgba(40, 35, 75, 0.9);
             border-left-color: rgba(124,130,255,0.9);
             transform: translateX(6px);
             box-shadow: 0 12px 40px rgba(124,130,255,0.2);
@@ -79,6 +80,176 @@
             opacity: 0.7;
             line-height: 1.7;
         }
+
+        /* ── Community Dashboard ── */
+        .live-dashboard {
+            padding: 6rem 9% 7rem;
+            background: transparent;
+            position: relative;
+        }
+        .live-dashboard .dash-title {
+            font-size: 4rem;
+            font-weight: 700;
+            color: var(--text-color);
+            text-align: center;
+            margin-bottom: 0.6rem;
+        }
+        .live-dashboard .dash-title span { color: var(--main-color); }
+        .live-dashboard .dash-subtitle {
+            font-size: 1.5rem;
+            color: rgba(255,255,255,0.55);
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        .dash-body {
+            display: grid;
+            grid-template-columns: 170px 1fr 170px;
+            gap: 2.8rem;
+            max-width: 1100px;
+            margin: 0 auto;
+            align-items: start;
+        }
+        .dash-panel { display: flex; flex-direction: column; gap: 1.4rem; align-self: start; }
+        .dash-stat-card {
+            background: rgba(255,255,255,0.05);
+            border: .1rem solid rgba(255,255,255,0.1);
+            border-radius: 1.2rem;
+            padding: 1.4rem 1.2rem;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        .dash-stat-card:hover {
+            border-color: rgba(110,117,253,0.4);
+            box-shadow: 0 4px 20px rgba(110,117,253,0.1);
+        }
+        .dash-stat-card .dsc-icon { font-size: 1.8rem; color: var(--main-color); margin-bottom: 0.6rem; display: block; }
+        .dash-stat-card .dsc-num { font-size: 2.2rem; font-weight: 800; color: var(--text-color); line-height: 1; margin-bottom: 0.4rem; }
+        .dash-stat-card .dsc-label { font-size: 1.2rem; color: rgba(255,255,255,0.55); }
+        .dash-globe-wrap {
+            position: relative;
+            border: none; border-radius: 0;
+            overflow: visible; background: transparent; box-shadow: none;
+            display: flex; align-items: center; justify-content: center;
+            margin-top: -4rem;
+        }
+        #globeCanvas { width: 100%; display: block; border-radius: 50%; }
+        .globe-tooltip {
+            position: absolute; display: none;
+            background: rgba(18,8,45,0.96);
+            border: .1rem solid rgba(110,117,253,0.5);
+            border-radius: 0.8rem; padding: 1rem 1.4rem;
+            pointer-events: none; z-index: 10; min-width: 160px;
+            backdrop-filter: blur(8px);
+        }
+        .gt-city { font-size: 1.5rem; font-weight: 700; color: #fff; margin-bottom: 0.2rem; }
+        .gt-country { font-size: 1.2rem; color: var(--main-color); margin-bottom: 0.6rem; }
+        .gt-stat { font-size: 1.2rem; color: rgba(255,255,255,0.75); display: flex; align-items: center; gap: 0.5rem; }
+        .gt-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--main-color); box-shadow: 0 0 6px var(--main-color); flex-shrink: 0; }
+        .dash-feed-card {
+            background: rgba(255,255,255,0.04);
+            border: .1rem solid rgba(255,255,255,0.08);
+            border-radius: 1.2rem; padding: 1.6rem;
+            display: flex; flex-direction: column;
+            height: auto; box-sizing: border-box;
+        }
+        .dash-feed-header {
+            font-size: 1.3rem; font-weight: 700; color: var(--main-color);
+            margin-bottom: 1.2rem; display: flex; align-items: center; gap: 0.5rem; flex-shrink: 0;
+        }
+        .dash-feed-header i { font-size: 1.4rem; }
+        .feed-list {
+            display: flex; flex-direction: column; overflow-y: auto; flex: 1;
+            scrollbar-width: thin; scrollbar-color: rgba(110,117,253,0.3) transparent;
+        }
+        .feed-list::-webkit-scrollbar { width: 4px; }
+        .feed-list::-webkit-scrollbar-track { background: transparent; }
+        .feed-list::-webkit-scrollbar-thumb { background: rgba(110,117,253,0.3); border-radius: 2px; }
+        .feed-item {
+            display: flex; align-items: flex-start; gap: 0.9rem;
+            padding: 0.9rem 0; border-bottom: .05rem solid rgba(255,255,255,0.07);
+            animation: feedSlideIn 0.35s ease forwards;
+        }
+        .feed-item:last-child { border-bottom: none; }
+        @keyframes feedSlideIn {
+            from { opacity: 0; transform: translateY(-6px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        .feed-avatar {
+            width: 28px; height: 28px; border-radius: 50%;
+            background: linear-gradient(135deg, var(--main-color), #9b9fff);
+            flex-shrink: 0; display: flex; align-items: center; justify-content: center;
+            font-size: 1.1rem; font-weight: 700; color: #fff;
+        }
+        .feed-content { flex: 1; min-width: 0; }
+        .feed-user { font-size: 1.3rem; font-weight: 600; color: #fff; }
+        .feed-action { font-size: 1.3rem; color: rgba(255,255,255,0.65); }
+        .feed-city { font-size: 1.1rem; color: var(--main-color); margin-top: 0.15rem; }
+        .feed-time { font-size: 1.1rem; color: rgba(255,255,255,0.3); white-space: nowrap; padding-top: 0.2rem; }
+        @media (max-width: 1000px) {
+            .dash-body { grid-template-columns: 1fr; }
+            .dash-panel { flex-direction: row; flex-wrap: wrap; }
+            .dash-stat-card { flex: 1 1 calc(50% - 0.7rem); }
+        }
+        @media (max-width: 500px) { .dash-stat-card { flex: 1 1 100%; } }
+
+        /* ── FAQ Section ── */
+        .faq-section {
+            padding: 8rem 9% 6rem;
+            background: linear-gradient(180deg, transparent 0%, rgba(29,17,55,0.4) 50%, transparent 100%);
+        }
+        .faq-section .faq-title {
+            font-size: 3.6rem; font-weight: 700;
+            color: var(--text-color); text-align: center; margin-bottom: 1rem;
+        }
+        .faq-section .faq-title span { color: var(--main-color); }
+        .faq-section .faq-subtitle {
+            font-size: 1.5rem; color: var(--text-color);
+            opacity: 0.7; text-align: center; margin-bottom: 3rem;
+        }
+        .faq-filters {
+            display: flex; flex-wrap: wrap; justify-content: center;
+            gap: .8rem; margin-bottom: 4rem;
+        }
+        .faq-filter-btn {
+            padding: .8rem 1.6rem; font-size: 1.35rem; font-weight: 600;
+            color: var(--text-color); background: rgba(255,255,255,0.06);
+            border: .1rem solid rgba(255,255,255,0.15); border-radius: 2rem;
+            cursor: pointer; transition: all 0.3s;
+        }
+        .faq-filter-btn:hover { background: rgba(124,130,255,0.15); border-color: rgba(124,130,255,0.4); color: var(--main-color); }
+        .faq-filter-btn.active { background: var(--main-color); border-color: var(--main-color); color: var(--bg-color); }
+        .faq-category { max-width: 800px; margin: 0 auto 4rem; }
+        .faq-category.hidden { display: none; }
+        .faq-category:last-of-type { margin-bottom: 0; }
+        .faq-category-title {
+            font-size: 1.4rem; font-weight: 700; letter-spacing: .1rem;
+            color: var(--main-color); margin-bottom: 1.5rem;
+            padding-bottom: .6rem; border-bottom: .1rem solid rgba(124,130,255,0.3);
+        }
+        .faq-item {
+            background: rgba(255,255,255,0.04); border: .1rem solid rgba(255,255,255,0.1);
+            border-radius: 1rem; margin-bottom: 1.2rem; overflow: hidden;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        .faq-item:hover { border-color: rgba(124,130,255,0.25); }
+        .faq-item.open { border-color: rgba(124,130,255,0.35); box-shadow: 0 4px 24px rgba(124,130,255,0.1); }
+        .faq-question {
+            padding: 1.8rem 2.2rem; font-size: 1.55rem; font-weight: 600;
+            color: var(--text-color); cursor: pointer;
+            display: flex; justify-content: space-between; align-items: center;
+            gap: 1rem; transition: background 0.3s;
+        }
+        .faq-question:hover { background: rgba(124,130,255,0.06); }
+        .faq-question i { font-size: 2rem; color: var(--main-color); flex-shrink: 0; transition: transform 0.3s; }
+        .faq-item.open .faq-question i { transform: rotate(180deg); }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
+        .faq-answer-inner { padding: 0 2.2rem 2rem; font-size: 1.45rem; color: var(--text-color); opacity: 0.85; line-height: 1.8; }
+        .faq-answer-inner p { margin-bottom: 1rem; color: inherit; }
+        .faq-answer-inner p:last-child { margin-bottom: 0; }
+        .faq-answer-inner strong { color: var(--main-color); }
+        @media (max-width: 600px) {
+            .faq-filters { gap: .5rem; }
+            .faq-filter-btn { padding: .6rem 1.2rem; font-size: 1.2rem; }
+        }
     </style>
     <script src="https://unpkg.com/scrollreveal"></script>
 </head>
@@ -90,13 +261,45 @@
         </a>
         <div class="bx bx-menu" id="menu-icon"><span class="animate" style="--i:2;"></span></div>
         <nav class="navbar">
-            <a href="index.html">Hero</a>
-            <a href="features.html">Features</a>
-            <a href="why-us.html" class="active">Why Us</a>
-            <a href="demo.html">Demo</a>
-            <a href="pricing.html">Pricing</a>
-            <a href="contact.html">Contact</a>
-            <a href="disclaimer.html">Disclaimer</a>
+            <div class="nav-item">
+                <a href="index.html">Home</a>
+                <div class="nav-dropdown">
+                    <a href="index.html#home">Hero</a>
+                </div>
+            </div>
+            <div class="nav-item nav-item-has-dropdown">
+                <a href="features.html">Features</a>
+                <div class="nav-dropdown">
+                    <a href="features.html#features-what-we-do">What We Do</a>
+                </div>
+            </div>
+            <div class="nav-item">
+                <a href="why-us.html" class="active">Why Us</a>
+                <div class="nav-dropdown">
+                    <a href="why-us.html#why-trust">Why Trust Us</a>
+                    <a href="why-us.html#live-dashboard">Community Dashboard</a>
+                    <a href="why-us.html#faq">FAQ</a>
+                </div>
+            </div>
+            <div class="nav-item nav-item-has-dropdown">
+                <a href="demo.html">Demo</a>
+                <div class="nav-dropdown">
+                    <a href="demo.html#demo-action">See It In Action</a>
+                </div>
+            </div>
+            <div class="nav-item">
+                <a href="pricing.html">Pricing</a>
+                <div class="nav-dropdown">
+                    <a href="pricing.html#pricing">Flexible Pricing</a>
+                </div>
+            </div>
+            <div class="nav-item nav-item-has-dropdown">
+                <a href="contact.html">Contact</a>
+                <div class="nav-dropdown">
+                    <a href="contact.html#contact">Get In Touch</a>
+                    <a href="contact.html#contact-disclaimer">Disclaimer</a>
+                </div>
+            </div>
 
             <span class="active-nav"></span>
             <span class="animate" style="--i:2;"></span>
@@ -108,7 +311,7 @@
             <span class="animate" style="--i:3;"></span>
         </div></header>
 
-    <section class="page-section">
+    <section class="page-section" id="why-trust">
         <h2 class="heading">Why <span>Trust Us</span></h2>
         <p class="sub-heading">Three pillars that make DreamAlchemy the reliable choice for your wellbeing</p>
         <div class="trust-grid">
@@ -130,6 +333,215 @@
         </div>
     </section>
 
+    <!-- Community Dashboard -->
+    <section class="live-dashboard" id="live-dashboard">
+        <h2 class="dash-title">Community <span>Dashboard</span></h2>
+        <p class="dash-subtitle">Dreamers active right now, across the globe</p>
+        <div class="dash-body">
+            <div class="dash-panel">
+                <div class="dash-stat-card">
+                    <i class="bx bx-globe dsc-icon"></i>
+                    <div class="dsc-num" data-target="12847">0</div>
+                    <div class="dsc-label">Total Dreamers</div>
+                </div>
+                <div class="dash-stat-card">
+                    <i class="bx bx-user-plus dsc-icon"></i>
+                    <div class="dsc-num" data-target="247">0</div>
+                    <div class="dsc-label">New Today</div>
+                </div>
+                <div class="dash-stat-card">
+                    <i class="bx bx-brain dsc-icon"></i>
+                    <div class="dsc-num" data-target="89" data-unit="k+">0</div>
+                    <div class="dsc-label">Dreams Processed</div>
+                </div>
+                <div class="dash-stat-card">
+                    <i class="bx bx-map-alt dsc-icon"></i>
+                    <div class="dsc-num" data-target="68">0</div>
+                    <div class="dsc-label">Countries Reached</div>
+                </div>
+            </div>
+            <div class="dash-globe-wrap">
+                <canvas id="globeCanvas"></canvas>
+                <div class="globe-tooltip" id="globeTooltip"></div>
+            </div>
+            <div class="dash-panel">
+                <div class="dash-feed-card">
+                    <div class="dash-feed-header">
+                        <i class="bx bx-radio-circle-marked"></i> Live Activity
+                    </div>
+                    <div class="feed-list" id="feedList">
+                        <div class="feed-item">
+                            <div class="feed-avatar">L</div>
+                            <div class="feed-content">
+                                <span class="feed-user">Luna_M</span><span class="feed-action"> destroyed a nightmare</span>
+                                <div class="feed-city">📍 London</div>
+                            </div>
+                            <span class="feed-time">just now</span>
+                        </div>
+                        <div class="feed-item">
+                            <div class="feed-avatar">D</div>
+                            <div class="feed-content">
+                                <span class="feed-user">DreamWalker</span><span class="feed-action"> shared a dream</span>
+                                <div class="feed-city">📍 Tokyo</div>
+                            </div>
+                            <span class="feed-time">1m ago</span>
+                        </div>
+                        <div class="feed-item">
+                            <div class="feed-avatar">S</div>
+                            <div class="feed-content">
+                                <span class="feed-user">StarryMind</span><span class="feed-action"> just subscribed</span>
+                                <div class="feed-city">📍 New York</div>
+                            </div>
+                            <span class="feed-time">2m ago</span>
+                        </div>
+                        <div class="feed-item">
+                            <div class="feed-avatar">N</div>
+                            <div class="feed-content">
+                                <span class="feed-user">NightOwl_23</span><span class="feed-action"> completed a session</span>
+                                <div class="feed-city">📍 Sydney</div>
+                            </div>
+                            <span class="feed-time">3m ago</span>
+                        </div>
+                        <div class="feed-item">
+                            <div class="feed-avatar">C</div>
+                            <div class="feed-content">
+                                <span class="feed-user">CloudNine</span><span class="feed-action"> soothed a memory</span>
+                                <div class="feed-city">📍 Singapore</div>
+                            </div>
+                            <span class="feed-time">4m ago</span>
+                        </div>
+                        <div class="feed-item">
+                            <div class="feed-avatar">M</div>
+                            <div class="feed-content">
+                                <span class="feed-user">MoonChaser</span><span class="feed-action"> just subscribed</span>
+                                <div class="feed-city">📍 Paris</div>
+                            </div>
+                            <span class="feed-time">5m ago</span>
+                        </div>
+                        <div class="feed-item">
+                            <div class="feed-avatar">R</div>
+                            <div class="feed-content">
+                                <span class="feed-user">RiverDream</span><span class="feed-action"> blew away the fog</span>
+                                <div class="feed-city">📍 Mumbai</div>
+                            </div>
+                            <span class="feed-time">6m ago</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section" id="faq">
+        <h2 class="faq-title">FAQ</h2>
+        <p class="faq-subtitle">Find answers to the most common questions about DreamAlchemy</p>
+        <div class="faq-filters">
+            <button class="faq-filter-btn active" data-filter="all">All</button>
+            <button class="faq-filter-btn" data-filter="concept">Concept</button>
+            <button class="faq-filter-btn" data-filter="lunara">Lunara</button>
+            <button class="faq-filter-btn" data-filter="science">Science</button>
+            <button class="faq-filter-btn" data-filter="privacy">Privacy</button>
+            <button class="faq-filter-btn" data-filter="orders">Orders</button>
+        </div>
+        <div class="faq-category" data-category="concept">
+            <h3 class="faq-category-title">Concept</h3>
+            <div class="faq-item">
+                <div class="faq-question">What exactly is DreamAlchemy? Is it a game or a meditation app?<i class="bx bx-chevron-down"></i></div>
+                <div class="faq-answer"><div class="faq-answer-inner">
+                    <p>It's a new category of wellness: <strong>Active Somatic Gaming</strong>. Unlike meditation apps where you passively listen, DreamAlchemy uses AI to turn your dream narratives into an interactive game. You use our physical companion, Lunara, to physically interact with the story—squeezing to crush fears or shaking to transform nightmares into positive outcomes. It's about doing, not just thinking.</p>
+                </div></div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">How does the "Dream-to-Game" process work?<i class="bx bx-chevron-down"></i></div>
+                <div class="faq-answer"><div class="faq-answer-inner">
+                    <p>It takes less than a minute.</p>
+                    <p><strong>Log:</strong> When you wake up, briefly speak or type your dream into the app.</p>
+                    <p><strong>Generate:</strong> Our secure AI instantly analyzes the emotions and generates a personalized 3D visual level.</p>
+                    <p><strong>Play:</strong> You use the Lunara device to interact with the dream elements. Your physical actions (grip intensity, movement) determine how the dream is rewritten, helping you achieve emotional closure before you start your day.</p>
+                </div></div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Do I need to use it every day?<i class="bx bx-chevron-down"></i></div>
+                <div class="faq-answer"><div class="faq-answer-inner">
+                    <p>We recommend using it whenever you wake up with "emotional hangover"—feeling drained, anxious, or unsettled by a dream. Many users find that a quick 3-minute session in the morning sets a positive tone for the entire day.</p>
+                </div></div>
+            </div>
+        </div>
+        <div class="faq-category" data-category="lunara">
+            <h3 class="faq-category-title">Lunara Device</h3>
+            <div class="faq-item">
+                <div class="faq-question">Can I use the app without the Lunara device?<i class="bx bx-chevron-down"></i></div>
+                <div class="faq-answer"><div class="faq-answer-inner">
+                    <p>While the app allows for basic dream logging, the core therapeutic experience requires Lunara. The science behind DreamAlchemy is based on <strong>Somatic (Body-Based) Processing</strong>. The haptic feedback and pressure sensors in Lunara allow your body to physically release tension. Without the hardware, you are missing the most critical part of the emotional release.</p>
+                </div></div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">What does Lunara feel like?<i class="bx bx-chevron-down"></i></div>
+                <div class="faq-answer"><div class="faq-answer-inner">
+                    <p>Lunara is designed for comfort and grounding. It features a soft-touch, medical-grade silicone skin that feels organic, not like plastic electronics. It fits naturally in the palm of your hand and provides subtle vibration feedback that mimics a soothing heartbeat or a satisfying "crunch" when you defeat a nightmare monster.</p>
+                </div></div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">How does Lunara connect to my phone?<i class="bx bx-chevron-down"></i></div>
+                <div class="faq-answer"><div class="faq-answer-inner">
+                    <p>It connects seamlessly via low-energy Bluetooth. Just wake up, squeeze Lunara to turn it on, and the app recognizes it instantly.</p>
+                </div></div>
+            </div>
+        </div>
+        <div class="faq-category" data-category="science">
+            <h3 class="faq-category-title">Science</h3>
+            <div class="faq-item">
+                <div class="faq-question">Is this a replacement for therapy?<i class="bx bx-chevron-down"></i></div>
+                <div class="faq-answer"><div class="faq-answer-inner">
+                    <p>No. DreamAlchemy is a wellness tool for self-care, not a medical device or a substitute for professional clinical therapy. However, it is built on evidence-based psychological principles, including <strong>Imagery Rehearsal Therapy (IRT)</strong> and <strong>Gestalt Therapy</strong> techniques. If you suffer from PTSD or severe trauma, please consult a healthcare professional.</p>
+                </div></div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Why do you focus on "crushing" or changing the dream?<i class="bx bx-chevron-down"></i></div>
+                <div class="faq-answer"><div class="faq-answer-inner">
+                    <p>This is based on the concept of <strong>Agency Restoration</strong>. Nightmares often make us feel helpless. By actively rewriting the ending of a dream and physically manipulating the outcome using your hands, you signal to your brain that you are in control. This helps reduce the emotional intensity of the memory.</p>
+                </div></div>
+            </div>
+        </div>
+        <div class="faq-category" data-category="privacy">
+            <h3 class="faq-category-title">Privacy</h3>
+            <div class="faq-item">
+                <div class="faq-question">Are my dreams private? Who can see them?<i class="bx bx-chevron-down"></i></div>
+                <div class="faq-answer"><div class="faq-answer-inner">
+                    <p>Your privacy is our absolute priority. Unlike many apps that upload data to the cloud, DreamAlchemy uses <strong>Edge AI technology</strong>. This means your dream text is processed locally on your device or within a secure encrypted enclave. We do not sell your personal dream data to advertisers, and no human at DreamAlchemy reads your dreams.</p>
+                </div></div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Do you record audio when I sleep?<i class="bx bx-chevron-down"></i></div>
+                <div class="faq-answer"><div class="faq-answer-inner">
+                    <p>Absolutely not. DreamAlchemy is an active intervention tool that you use after you wake up. We do not use microphones or cameras to monitor your sleep.</p>
+                </div></div>
+            </div>
+        </div>
+        <div class="faq-category" data-category="orders">
+            <h3 class="faq-category-title">Orders</h3>
+            <div class="faq-item">
+                <div class="faq-question">How much does it cost?<i class="bx bx-chevron-down"></i></div>
+                <div class="faq-answer"><div class="faq-answer-inner">
+                    <p>We offer a simple model: The <strong>Lunara Starter Bundle</strong> is £59.99, which includes the hardware device and 2 months of our Premium Membership for free. After that, the membership renews at £12.99/month, granting you unlimited AI generation and advanced emotional analytics.</p>
+                </div></div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Where do you ship?<i class="bx bx-chevron-down"></i></div>
+                <div class="faq-answer"><div class="faq-answer-inner">
+                    <p>We are currently shipping to the United Kingdom. We plan to expand to the US and Europe later this year. Join our waitlist to be notified when we launch in your region!</p>
+                </div></div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">What is the return policy?<i class="bx bx-chevron-down"></i></div>
+                <div class="faq-answer"><div class="faq-answer-inner">
+                    <p>We offer a 30-day "Better Mornings" guarantee. If you don't feel more emotionally balanced after using Lunara for a month, you can return the hardware for a full refund.</p>
+                </div></div>
+            </div>
+        </div>
+    </section>
+
     <footer class="footer">
         <div class="footer-text">
             <p>Copyright &copy;2023 by DreamAlchemy | All Rights Reserved.</p>
@@ -141,5 +553,27 @@
     <script src="js/blur-text.js"></script>
     <script src="js/reveal-items.js"></script>
     <script src="js/script.js"></script>
+    <script src="js/globe-dashboard.js"></script>
+    <script>
+        document.querySelectorAll('.faq-question').forEach(function(q){
+            q.addEventListener('click',function(){
+                var item=this.closest('.faq-item');
+                var wasOpen=item.classList.contains('open');
+                document.querySelectorAll('.faq-item').forEach(function(i){i.classList.remove('open');i.querySelector('.faq-answer').style.maxHeight=null;});
+                if(!wasOpen){item.classList.add('open');item.querySelector('.faq-answer').style.maxHeight=item.querySelector('.faq-answer-inner').scrollHeight+'px';}
+            });
+        });
+        document.querySelectorAll('.faq-filter-btn').forEach(function(btn){
+            btn.addEventListener('click',function(){
+                var filter=this.getAttribute('data-filter');
+                document.querySelectorAll('.faq-filter-btn').forEach(function(b){b.classList.remove('active');});
+                this.classList.add('active');
+                document.querySelectorAll('.faq-category').forEach(function(cat){
+                    if(filter==='all'||cat.getAttribute('data-category')===filter){cat.classList.remove('hidden');}
+                    else{cat.classList.add('hidden');}
+                });
+            });
+        });
+    </script>
 </body>
 </html>

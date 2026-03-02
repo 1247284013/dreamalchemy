@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" type="image/png" href="src/icon1.png">
+    <link rel="shortcut icon" type="image/png" href="src/h.png">
     <title>DreamAlchemy - Explore Your Inner World</title>
     <link rel="stylesheet" href="css/mypage.css">
     <link rel="stylesheet" href="css/project-section.css">
@@ -14,6 +14,19 @@
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
         }
+        /* Home section bottom fade — starts well below the buttons */
+        .home::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 28rem;
+            background: linear-gradient(to bottom, transparent 0%, rgba(12,3,32,0.7) 60%, rgba(12,3,32,1) 100%);
+            pointer-events: none;
+            z-index: 0;
+        }
+        .home-sci { z-index: 2; }
 
         .glow {
             position: fixed;
@@ -40,7 +53,190 @@
             100%{ transform: scale(2);   opacity: 0; }
         }
 
-        /* Moon container */
+        /* ── Narrative Section ── */
+        .narrative-section {
+            min-height: 120vh;
+            padding: 10rem 9% 8rem;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            position: relative;
+            background: linear-gradient(
+                to bottom,
+                transparent 0%,
+                rgba(30,12,68,0.92) 12%,
+                rgba(20,10,50,0.98) 40%,
+                rgba(20,10,50,0.98) 60%,
+                rgba(30,12,68,0.92) 88%,
+                transparent 100%
+            );
+            overflow: hidden;
+        }
+        .narrative-section .narrative-bg-img {
+            position: absolute;
+            top: 0; right: 0;
+            width: 50%; height: 100%;
+            background: url('src/cloud (1).png') no-repeat right center;
+            background-size: contain;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        .narrative-inner {
+            max-width: 520px;
+            text-align: left;
+            position: relative;
+            z-index: 1;
+        }
+        .narrative-inner .hook {
+            font-size: 3.6rem;
+            font-weight: 900;
+            color: var(--text-color);
+            line-height: 1.25;
+            margin-bottom: 3rem;
+            letter-spacing: -.02em;
+            white-space: nowrap;
+        }
+        .narrative-inner .hook span { color: var(--main-color); }
+        .narrative-inner p {
+            font-size: 1.65rem;
+            color: var(--text-color);
+            opacity: 0.75;
+            line-height: 1.9;
+            margin-bottom: 1.4rem;
+        }
+        .narrative-inner .cta-line {
+            display: inline-block;
+            margin-top: 2.5rem;
+            font-size: 1.9rem;
+            font-weight: 700;
+            font-style: italic;
+            color: var(--main-color);
+            border-top: .1rem solid rgba(124,130,255,0.3);
+            padding-top: 2rem;
+            width: 100%;
+        }
+        .narrative-section .narrative-inner .hook,
+        .narrative-section .narrative-inner p,
+        .narrative-section .narrative-inner .cta-line { opacity: 0; }
+
+        /* ── Steps Section ── */
+        .steps-section {
+            min-height: 140vh;
+            padding: 10rem 9% 8rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .steps-section .section-label {
+            font-size: 1.2rem;
+            font-weight: 700;
+            letter-spacing: .18rem;
+            text-transform: uppercase;
+            color: var(--main-color);
+            text-align: center;
+            margin-bottom: .8rem;
+        }
+        .steps-section .steps-title {
+            font-size: 3.4rem;
+            font-weight: 700;
+            color: var(--text-color);
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+        .steps-section .steps-title span { color: var(--main-color); }
+        .steps-timeline-wrap {
+            position: relative;
+            width: 100%;
+            max-width: 900px;
+            margin-top: 2rem;
+        }
+        .steps-svg {
+            position: absolute;
+            top: 0; left: 50%;
+            transform: translateX(-50%);
+            width: 100%; height: 100%;
+            pointer-events: none;
+        }
+        .steps-s-path {
+            fill: none;
+            stroke: rgba(160,165,255,0.55);
+            stroke-width: 7;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            transition: stroke-dashoffset 0.1s ease-out;
+        }
+        .steps-glow-dot { pointer-events: none; transition: opacity 0.15s; }
+        .steps-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 6rem;
+            width: 100%;
+            position: relative;
+            z-index: 1;
+        }
+        .step-row {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+            min-height: 280px;
+            opacity: 0.5;
+            transition: opacity 0.5s ease;
+            max-width: 85%;
+        }
+        .step-row.step-lit { opacity: 1; }
+        .step-row:nth-child(odd)  { flex-direction: row;         margin-left:  auto; }
+        .step-row:nth-child(even) { flex-direction: row-reverse; margin-right: auto; }
+        .step-img { flex: 0 0 78%; max-width: 560px; aspect-ratio: 4/3; }
+        .step-img-1,.step-img-2,.step-img-3,.step-img-4 {
+            flex: 1 1 auto !important;
+            min-width: 400px;
+            max-width: 680px !important;
+        }
+        .step-row:nth-child(1),
+        .step-row:nth-child(2),
+        .step-row:nth-child(3),
+        .step-row:nth-child(4) { max-width: 100%; }
+        .step-row:nth-child(1) .step-content,
+        .step-row:nth-child(2) .step-content,
+        .step-row:nth-child(3) .step-content,
+        .step-row:nth-child(4) .step-content {
+            flex: 1 1 auto;
+            min-width: 280px;
+            max-width: 420px;
+        }
+        .step-img img { width: 100%; height: 100%; object-fit: contain; border-radius: .8rem; }
+        .step-content { flex: 1; min-width: 0; }
+        .step-content .step-num {
+            font-size: 5rem;
+            font-weight: 900;
+            color: var(--main-color);
+            opacity: 0.2;
+            line-height: 1;
+            margin-bottom: .4rem;
+            letter-spacing: -.04em;
+            transition: color 0.5s, opacity 0.5s;
+        }
+        .step-row.step-lit .step-num { color: var(--main-color); opacity: 1; }
+        .step-content h4 {
+            font-size: 1.9rem;
+            font-weight: 700;
+            color: var(--text-color);
+            margin-bottom: 1rem;
+        }
+        .step-content p {
+            font-size: 1.45rem;
+            color: var(--text-color);
+            opacity: 0.75;
+            line-height: 1.7;
+        }
+        @media (max-width: 768px) {
+            .step-row { flex-direction: column !important; gap: 2rem; min-height: auto; }
+            .step-img  { flex: none; width: 100%; max-width: 100%; }
+            .steps-svg { opacity: 0.7; }
+            .narrative-inner .hook { font-size: 2.6rem; white-space: normal; }
+        }
     </style>
     <script src="https://unpkg.com/scrollreveal"></script>
 </head>
@@ -52,13 +248,47 @@
         </a>
         <div class="bx bx-menu" id="menu-icon"><span class="animate" style="--i:2;"></span></div>
         <nav class="navbar">
-            <a href="index.html" class="active">Hero</a>
-            <a href="features.html">Features</a>
-            <a href="why-us.html">Why Us</a>
-            <a href="demo.html">Demo</a>
-            <a href="pricing.html">Pricing</a>
-            <a href="contact.html">Contact</a>
-            <a href="disclaimer.html">Disclaimer</a>
+            <div class="nav-item">
+                <a href="index.html" class="active">Home</a>
+                <div class="nav-dropdown">
+                    <a href="index.html#home">Hero</a>
+                    <a href="index.html#home-narrative">Your Stress Has a Shape</a>
+                    <a href="index.html#home-steps">Four Steps</a>
+                </div>
+            </div>
+            <div class="nav-item nav-item-has-dropdown">
+                <a href="features.html">Features</a>
+                <div class="nav-dropdown">
+                    <a href="features.html#features-what-we-do">What We Do</a>
+                </div>
+            </div>
+            <div class="nav-item">
+                <a href="why-us.html">Why Us</a>
+                <div class="nav-dropdown">
+                    <a href="why-us.html#why-trust">Why Trust Us</a>
+                    <a href="why-us.html#live-dashboard">Community Dashboard</a>
+                    <a href="why-us.html#faq">FAQ</a>
+                </div>
+            </div>
+            <div class="nav-item nav-item-has-dropdown">
+                <a href="demo.html">Demo</a>
+                <div class="nav-dropdown">
+                    <a href="demo.html#demo-action">See It In Action</a>
+                </div>
+            </div>
+            <div class="nav-item">
+                <a href="pricing.html">Pricing</a>
+                <div class="nav-dropdown">
+                    <a href="pricing.html#pricing">Flexible Pricing</a>
+                </div>
+            </div>
+            <div class="nav-item nav-item-has-dropdown">
+                <a href="contact.html">Contact</a>
+                <div class="nav-dropdown">
+                    <a href="contact.html#contact">Get In Touch</a>
+                    <a href="contact.html#contact-disclaimer">Disclaimer</a>
+                </div>
+            </div>
 
             <span class="active-nav"></span>
             <span class="animate" style="--i:2;"></span>
@@ -74,7 +304,7 @@
     <!-- home section -->
     <section class="home show-animate" id="home">
         <div class="home-content">
-            <h1 class="dreamalchemy-title" style="--i:1;">DreamAlchemy</h1>
+            <h1 style="--i:1;">DreamAlchemy</h1>
             <div class="text-animate" style="--i:2;">
                 <h3>Speak Your Dreams. Destroy Your Nightmares.</h3>
             </div>
@@ -94,6 +324,80 @@
 
     </section>
 
+    <!-- Narrative Section -->
+    <section class="narrative-section" id="home-narrative">
+        <div class="narrative-bg-img" aria-hidden="true"></div>
+        <div class="narrative-inner">
+            <h2 class="hook">Your Stress Has a Shape.<br><span>You Just Haven't Seen It Yet.</span></h2>
+            <p>Nightmares replay your fears. Recurring dreams echo unresolved trauma. But right now, all you can do is wake up and endure them.</p>
+            <p>What if you could step back into that dream — and fight back?</p>
+            <p>Not by talking about it. Not by filling out a questionnaire. By physically destroying the monster, soothing the crying child, shaking apart the locked room, blowing away the fog.</p>
+            <span class="cta-line">Your hands become the therapy.</span>
+        </div>
+    </section>
+
+    <!-- Steps Section -->
+    <section class="steps-section" id="home-steps">
+        <p class="section-label">How It Works</p>
+        <h2 class="steps-title">Four Steps to <span>Reclaim Your Dreams</span></h2>
+        <div class="steps-timeline-wrap">
+            <svg class="steps-svg" viewBox="0 0 400 2000" preserveAspectRatio="xMidYMid meet">
+                <defs>
+                    <radialGradient id="steps-glow-home">
+                        <stop offset="0%"   stop-color="rgba(255,255,255,0.98)" />
+                        <stop offset="25%"  stop-color="rgba(180,185,255,0.9)" />
+                        <stop offset="50%"  stop-color="rgba(124,130,255,0.6)" />
+                        <stop offset="75%"  stop-color="rgba(124,130,255,0.25)" />
+                        <stop offset="100%" stop-color="transparent" />
+                    </radialGradient>
+                    <filter id="steps-glow-blur-home">
+                        <feGaussianBlur stdDeviation="4" result="blur" />
+                        <feMerge>
+                            <feMergeNode in="blur" />
+                            <feMergeNode in="SourceGraphic" />
+                        </feMerge>
+                    </filter>
+                </defs>
+                <path class="steps-s-path" d="M 80 40 C 80 520, 320 520, 320 1040 C 320 1560, 80 1560, 80 2000" />
+                <circle class="steps-glow-dot" r="20" cx="80" cy="40" fill="url(#steps-glow-home)" filter="url(#steps-glow-blur-home)" />
+            </svg>
+            <div class="steps-grid">
+                <div class="step-row">
+                    <div class="step-img step-img-1"><img src="src/step1.png" alt=""></div>
+                    <div class="step-content">
+                        <div class="step-num">STEP 1</div>
+                        <h4>Share Your Dream</h4>
+                        <p>Tell us what you dreamed — type it or speak it. A nightmare about drowning. A recurring dream about being chased. A strange scene you can't shake.</p>
+                    </div>
+                </div>
+                <div class="step-row">
+                    <div class="step-img step-img-2"><img src="src/step2.png" alt=""></div>
+                    <div class="step-content">
+                        <div class="step-num">STEP 2</div>
+                        <h4>AI Builds Your World</h4>
+                        <p>Our AI transforms your dream content into a personalized interactive game environment. The monster you described? It's there. The dark room? You're in it. Every session is uniquely yours.</p>
+                    </div>
+                </div>
+                <div class="step-row">
+                    <div class="step-img step-img-3"><img src="src/step3.png" alt=""></div>
+                    <div class="step-content">
+                        <div class="step-num">STEP 3</div>
+                        <h4>Take Physical Action</h4>
+                        <p>Using our companion toy, you interact with your dream world through real physical gestures — crush, soothe, shake, or blow. Your body leads the healing.</p>
+                    </div>
+                </div>
+                <div class="step-row">
+                    <div class="step-img step-img-4"><img src="src/step4.png" alt=""></div>
+                    <div class="step-content">
+                        <div class="step-num">STEP 4</div>
+                        <h4>Feel the Shift</h4>
+                        <p>Watch the nightmare crumble under your grip. See the dark scene dissolve with your breath. Your physical actions directly reshape your dream world — turning fear into mastery, helplessness into agency.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <div id="back"></div>
 
     <footer class="footer">
@@ -106,8 +410,9 @@
     </footer>
 
     <script src="js/script.js"></script>
-
-
+    <script src="js/reveal-items.js"></script>
+    <script src="js/narrative-bg.js"></script>
+    <script src="js/steps-s-curve.js"></script>
     <script>
         ScrollReveal({
             reset: true,

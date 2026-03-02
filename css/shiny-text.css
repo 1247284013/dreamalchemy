@@ -1,0 +1,36 @@
+/* ShinyText - DreamAlchemy title 白色闪动效果 */
+.home-content h1.dreamalchemy-title {
+  color: transparent;
+  text-shadow: none;
+  background: linear-gradient(
+    120deg,
+    rgba(180, 180, 255, 0.907) 0%,
+    rgba(180, 180, 255, 0.907) 35%,
+    #ffffff 50%,
+    rgba(180, 180, 255, 0.907) 65%,
+    rgba(180, 180, 255, 0.907) 100%
+  );
+  background-size: 200% auto;
+  background-position: 150% center;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: fadeInUp 0.8s ease forwards, shiny-sweep 2s linear infinite;
+  animation-delay: calc(.2s * var(--i, 1)), 1s;
+  transition: transform 0.3s ease;
+}
+.home.show-animate .home-content h1.dreamalchemy-title {
+  opacity: 0;
+}
+.home-content h1.dreamalchemy-title:hover {
+  animation-play-state: paused, paused;
+  transform: scale(1.05);
+}
+@keyframes shiny-sweep {
+  0% {
+    background-position: 150% center;
+  }
+  100% {
+    background-position: -50% center;
+  }
+}

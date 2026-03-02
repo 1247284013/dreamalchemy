@@ -59,17 +59,79 @@ header{
 .navbar{
     position: relative;
     transform: translateX(-5%);
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
 }
-.navbar a{
+.nav-item{
+    position: relative;
+    margin-left: 3.5rem;
+}
+.nav-item:first-child{
+    margin-left: 0;
+}
+.navbar .nav-item > a{
     font-size: 1.7rem;
     color:var(--text-color);
     font-weight: 500;
-    margin-left: 3.5rem;
     transition: .3s;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
 }
-.navbar a:hover,
-.navbar a.active{
+.navbar .nav-item > a::after{
+    content: '';
+    display: none;
+}
+.nav-item-has-dropdown > a::after{
+    display: inline-block;
+    content: '\25BC';
+    font-size: 0.7rem;
+    margin-left: 0.2rem;
+    transition: transform .25s;
+}
+.nav-item-has-dropdown:hover > a::after,
+.nav-item-has-dropdown.open > a::after{
+    transform: rotate(180deg);
+}
+.navbar .nav-item > a:hover,
+.navbar .nav-item > a.active{
     color:var(--main-color);
+}
+.nav-dropdown{
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(6px);
+    min-width: 18rem;
+    padding: 0.6rem 0;
+    background: rgba(23, 11, 56, 0.98);
+    backdrop-filter: blur(20px);
+    border-radius: 0.8rem;
+    border: 0.1rem solid rgba(124, 130, 255, 0.2);
+    box-shadow: 0 0.8rem 2rem rgba(0,0,0,0.3);
+    opacity: 0;
+    visibility: hidden;
+    z-index: 1001;
+    transition: opacity .2s, visibility .2s, transform .2s;
+}
+.nav-item:hover .nav-dropdown,
+.nav-item.open .nav-dropdown{
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(4px);
+}
+.nav-dropdown a{
+    display: block;
+    padding: 0.6rem 1.4rem;
+    font-size: 1.4rem;
+    color: var(--text-color);
+    margin: 0 !important;
+    transition: .2s;
+}
+.nav-dropdown a:hover{
+    color: var(--main-color);
+    background: rgba(124, 130, 255, 0.1);
 }
 #menu-icon{
     position: relative;
@@ -197,17 +259,18 @@ h3{
     font-size: 6rem;
     font-weight:700;
     line-height: 1.3;
-    color: #ffffff;
     letter-spacing: 5px;
+    transition: all 0.5s ease;
+    cursor: pointer;
+}
+.home-content h1:not(.dreamalchemy-title) {
+    color: #ffffff;
     text-shadow: 0 0 10px rgba(255, 255, 255, 0.8),
                  0 0 20px rgba(255, 255, 255, 0.6),
                  0 0 30px rgba(255, 255, 255, 0.4),
                  0 0 40px rgba(255, 255, 255, 0.2);
-    transition: all 0.5s ease;
-    cursor: pointer;
 }
-
-.home-content h1:hover{
+.home-content h1:not(.dreamalchemy-title):hover{
     transform: scale(1.1);
     text-shadow: 0 0 20px rgba(255, 255, 255, 1),
                  0 0 40px rgba(255, 255, 255, 0.8),
@@ -248,7 +311,6 @@ h3{
     -webkit-background-clip: text;
     background-position: -41rem 0;
     animation: homeBgText 6s linear infinite;
-    animation-delay: 2s;
 }
 
 .home-content .text-animate h3::before{
@@ -261,8 +323,6 @@ h3{
     border-right:2px solid var(--main-color);
     z-index: -1;
     animation: homeCursorText 6s linear infinite;
-    animation-delay: 2s;
-
 }
 
 .home-content p{
@@ -396,63 +456,52 @@ span{
 }
 .blur-text-wrapper .blur-word {
     display: inline-block;
-    will-change: transform, filter, opacity;
-    filter: blur(10px);
+    will-change: transform, opacity;
     opacity: 0;
-    transform: translateY(-50px);
+    transform: translateY(-24px);
     animation: none;
 }
 .blur-text-wrapper.blur-text-visible .blur-word {
-    animation: blur-text-in 0.7s ease-out forwards;
+    animation: blur-text-in 0.6s ease-out forwards;
 }
 .blur-text-wrapper .blur-word-accent {
     color: var(--main-color);
 }
 @keyframes blur-text-in {
     0% {
-        filter: blur(10px);
         opacity: 0;
-        transform: translateY(-50px);
-    }
-    50% {
-        filter: blur(5px);
-        opacity: 0.5;
-        transform: translateY(5px);
+        transform: translateY(-24px);
     }
     100% {
-        filter: blur(0);
         opacity: 1;
         transform: translateY(0);
     }
 }
 
-/* Block-level reveal animation - each div appears from top with blur */
+/* Block-level reveal animation - fade + slide, no blur for performance */
 .reveal-item {
     opacity: 0;
-    filter: blur(10px);
-    transform: translateY(-50px);
+    transform: translateY(-28px) translateZ(0);
     animation: none;
-    will-change: transform, filter, opacity;
+    will-change: transform, opacity;
+    backface-visibility: hidden;
 }
 .reveal-item.reveal-visible {
-    animation: reveal-block-in 1.1s ease-out forwards;
+    animation: reveal-block-in 0.5s ease-out forwards;
     animation-delay: var(--reveal-delay, 0s);
+}
+.reveal-item.reveal-fast.reveal-visible {
+    animation-duration: 0.12s;
+    animation-delay: var(--reveal-fast-delay, 0s);
 }
 @keyframes reveal-block-in {
     0% {
-        filter: blur(10px);
         opacity: 0;
-        transform: translateY(-50px);
-    }
-    50% {
-        filter: blur(5px);
-        opacity: 0.5;
-        transform: translateY(5px);
+        transform: translateY(-28px) translateZ(0);
     }
     100% {
-        filter: blur(0);
         opacity: 1;
-        transform: translateY(0);
+        transform: translateY(0) translateZ(0);
     }
 }
 
@@ -964,7 +1013,7 @@ span{
     background: transparent;
     animation: none;
 }
-.home.show-animate .home-content h1,
+.home.show-animate .home-content h1:not(.dreamalchemy-title),
 .home.show-animate .home-content .text-animate,
 .home.show-animate .home-content p,
 .home.show-animate .home-content .btn-box,
@@ -1083,6 +1132,30 @@ span{
     .navbar.active a{
         transform: translateX(0);
         transition-delay:.25s;
+    }
+    .navbar .nav-item{
+        margin-left: 0;
+        margin-bottom: 0;
+    }
+    .navbar .nav-dropdown{
+        position: static;
+        transform: none;
+        opacity: 1;
+        visibility: visible;
+        min-width: auto;
+        padding: 0 0 0 2rem;
+        margin: 0.5rem 0 1rem;
+        background: transparent;
+        border: none;
+        box-shadow: none;
+    }
+    .navbar .nav-dropdown a{
+        font-size: 1.6rem;
+        padding: 0.4rem 0;
+        margin: 0 !important;
+    }
+    .navbar:not(.active) .nav-dropdown{
+        display: none;
     }
 
     .home-imgHover{

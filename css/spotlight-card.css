@@ -1,0 +1,24 @@
+/* SpotlightCard - mouse-following radial gradient effect */
+.card-spotlight {
+  --mouse-x: 50%;
+  --mouse-y: 50%;
+  --spotlight-color: rgba(255, 255, 255, 0.25);
+  position: relative;
+  overflow: hidden;
+}
+.card-spotlight::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    500px circle at var(--mouse-x) var(--mouse-y),
+    var(--spotlight-color),
+    transparent 45%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.card-spotlight:hover::before {
+  opacity: 1;
+}
