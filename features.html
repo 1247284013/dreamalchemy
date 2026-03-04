@@ -15,11 +15,19 @@
             -webkit-backdrop-filter: blur(20px);
         }
         .page-section {
-            min-height: 90vh;
+            min-height: auto;
             padding: 12rem 9% 1rem;
             display: flex;
             flex-direction: column;
             align-items: center;
+            background:
+                linear-gradient(to bottom,
+                    transparent 0%,
+                    transparent 60%,
+                    rgba(12,3,32,0.82) 88%,
+                    rgba(12,3,32,1) 100%),
+                url('src/back5.png') no-repeat center center;
+            background-size: cover;
         }
         .page-section .heading {
             font-size: 4rem;
