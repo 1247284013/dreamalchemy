@@ -236,10 +236,16 @@
             align-items: stretch;
             padding-top: 1.8rem;
         }
-        /* Free Basic: offset to align top with inner bundle cards */
-        .pricing-layout > .pricing-card {
+        /* Transparent wrapper around Free Basic — mirrors bundle-group padding */
+        .pricing-single-wrap {
             flex: 1;
-            margin-top: 2rem;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+        }
+        .pricing-single-wrap > .pricing-card {
+            flex: 1;
+            height: 100%;
             display: flex;
             flex-direction: column;
         }
@@ -282,7 +288,7 @@
         }
         @media (max-width: 960px) {
             .pricing-layout { flex-direction: column; padding-top: 0; align-items: stretch; }
-            .pricing-layout > .pricing-card { margin-top: 0; width: 100%; }
+            .pricing-single-wrap { padding: 0; }
             .pricing-bundle-group { width: 100%; }
             .pricing-bundle-inner { grid-template-columns: 1fr; }
         }
@@ -631,24 +637,26 @@
         <div class="pricing-layout">
 
             <!-- Free Basic Tier (standalone) -->
-            <div class="pricing-card">
-                <span class="tier-label">For Individuals</span>
-                <h3>Free Basic Tier</h3>
-                <div class="price free-price">£0<span>/month</span></div>
-                <div class="period">Forever free · No credit card needed</div>
-                <p class="desc">Targets "early explorers" by providing limited dream logging and basic emotional tracking.</p>
-                <ul>
-                    <li><i class="bx bx-check"></i> Dream logs (up to 10 / month)</li>
-                    <li><i class="bx bx-check"></i> Basic dream-to-game templates</li>
-                    <li><i class="bx bx-check"></i> Simple mood &amp; progress tracking</li>
-                    <li><i class="bx bx-check"></i> Core AI insights</li>
-                    <li class="disabled"><i class="bx bx-x"></i> Unlimited conversions</li>
-                    <li class="disabled"><i class="bx bx-x"></i> Deep analytics &amp; content packs</li>
-                    <li class="disabled"><i class="bx bx-x"></i> Custom Tactile Controller</li>
-                    <li class="disabled"><i class="bx bx-x"></i> Haptic-enabled immersive</li>
-                </ul>
-                <div class="btn-box">
-                    <a href="contact.html" class="btn">Get Started</a>
+            <div class="pricing-single-wrap">
+                <div class="pricing-card">
+                    <span class="tier-label">For Individuals</span>
+                    <h3>Free Basic Tier</h3>
+                    <div class="price free-price">£0<span>/month</span></div>
+                    <div class="period">Forever free · No credit card needed</div>
+                    <p class="desc">Targets "early explorers" by providing limited dream logging and basic emotional tracking.</p>
+                    <ul>
+                        <li><i class="bx bx-check"></i> Dream logs (up to 10 / month)</li>
+                        <li><i class="bx bx-check"></i> Basic dream-to-game templates</li>
+                        <li><i class="bx bx-check"></i> Simple mood &amp; progress tracking</li>
+                        <li><i class="bx bx-check"></i> Core AI insights</li>
+                        <li class="disabled"><i class="bx bx-x"></i> Unlimited conversions</li>
+                        <li class="disabled"><i class="bx bx-x"></i> Deep analytics &amp; content packs</li>
+                        <li class="disabled"><i class="bx bx-x"></i> Custom Tactile Controller</li>
+                        <li class="disabled"><i class="bx bx-x"></i> Haptic-enabled immersive</li>
+                    </ul>
+                    <div class="btn-box">
+                        <a href="contact.html" class="btn">Get Started</a>
+                    </div>
                 </div>
             </div>
 
