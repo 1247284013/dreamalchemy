@@ -256,6 +256,43 @@
             .faq-filters { gap: .5rem; }
             .faq-filter-btn { padding: .6rem 1.2rem; font-size: 1.2rem; }
         }
+        /* ── Team Section ── */
+        .team-section {
+            min-height: auto;
+            padding: 8rem 9% 8rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(to bottom, transparent 0%, rgba(20,10,50,0.95) 12%, rgba(20,10,50,0.95) 88%, transparent 100%);
+        }
+        .team-label {
+            font-size: 1.2rem;
+            font-weight: 700;
+            letter-spacing: .18rem;
+            text-transform: uppercase;
+            color: var(--main-color);
+            margin-bottom: .8rem;
+        }
+        .team-title {
+            font-size: 3.8rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 4rem;
+        }
+        .team-title span { color: var(--main-color); }
+        .team-img-wrap {
+            width: 100%;
+            max-width: 1100px;
+            border-radius: 2rem;
+            overflow: hidden;
+            border: .15rem solid rgba(124,130,255,0.25);
+            box-shadow: 0 0 60px rgba(124,130,255,0.12), 0 20px 60px rgba(0,0,0,0.35);
+        }
+        .team-img-wrap img {
+            width: 100%;
+            display: block;
+        }
     </style>
     <script src="https://unpkg.com/scrollreveal"></script>
 </head>
@@ -279,6 +316,7 @@
                     <a href="why-us.html#why-trust">Why Trust Us</a>
                     <a href="why-us.html#live-dashboard">Community Dashboard</a>
                     <a href="why-us.html#faq">FAQ</a>
+                    <a href="why-us.html#team">Team</a>
                 </div>
             </div>
             <div class="nav-item">
@@ -537,6 +575,15 @@
                     <p>We offer a 30-day "Better Mornings" guarantee. If you don't feel more emotionally balanced after using Lunara for a month, you can return the hardware for a full refund.</p>
                 </div></div>
             </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section" id="team">
+        <p class="team-label">The People Behind It</p>
+        <h2 class="team-title">Meet the <span>Team</span></h2>
+        <div class="team-img-wrap">
+            <img src="src/Group.png" alt="DreamAlchemy Team">
         </div>
     </section>
 
