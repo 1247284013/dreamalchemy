@@ -421,6 +421,148 @@
             opacity: 0.65;
             line-height: 1.75;
         }
+        /* B2B Pricing Cards */
+        .b2b-pricing-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            max-width: 1100px;
+            margin: 0 auto 5rem;
+            align-items: start;
+        }
+        .b2b-pricing-card {
+            background: rgba(30, 25, 60, 0.85);
+            border: .15rem solid rgba(255,255,255,0.14);
+            border-radius: 2rem;
+            padding: 3.5rem 2.8rem;
+            position: relative;
+            transition: .3s;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+        }
+        .b2b-pricing-card.enterprise {
+            border-color: rgba(124,130,255,0.5);
+            background: rgba(50, 45, 90, 0.88);
+            box-shadow: 0 8px 40px rgba(124,130,255,0.2);
+        }
+        .b2b-pricing-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 14px 44px rgba(124,130,255,0.22);
+            border-color: rgba(124,130,255,0.6);
+        }
+        .b2b-pricing-card .tier-label {
+            display: inline-block;
+            font-size: 1.1rem;
+            font-weight: 700;
+            letter-spacing: .12rem;
+            text-transform: uppercase;
+            color: var(--main-color);
+            opacity: 0.85;
+            margin-bottom: .8rem;
+        }
+        .b2b-pricing-card h3 {
+            font-size: 2.4rem;
+            color: var(--text-color);
+            margin-bottom: 1rem;
+        }
+        .b2b-pricing-card .b2b-price {
+            font-size: 4.2rem;
+            font-weight: 700;
+            color: var(--main-color);
+            line-height: 1;
+            margin-bottom: .4rem;
+        }
+        .b2b-pricing-card .b2b-price span {
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: var(--text-color);
+            opacity: 0.6;
+        }
+        .b2b-pricing-card .b2b-period {
+            font-size: 1.35rem;
+            color: var(--text-color);
+            opacity: 0.5;
+            margin-bottom: 2.5rem;
+        }
+        .b2b-highlights {
+            display: flex;
+            flex-wrap: wrap;
+            gap: .8rem;
+            margin-bottom: 2.5rem;
+        }
+        .b2b-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: .5rem;
+            background: rgba(124,130,255,0.12);
+            border: .1rem solid rgba(124,130,255,0.25);
+            border-radius: 2rem;
+            padding: .5rem 1.2rem;
+            font-size: 1.3rem;
+            color: var(--text-color);
+            opacity: 0.85;
+        }
+        .b2b-chip i { font-size: 1.5rem; color: var(--main-color); }
+        .b2b-pricing-card ul {
+            list-style: none;
+            margin-bottom: 2.5rem;
+        }
+        .b2b-pricing-card ul li {
+            font-size: 1.5rem;
+            color: var(--text-color);
+            opacity: 0.8;
+            padding: .6rem 0;
+            display: flex;
+            align-items: center;
+            gap: .8rem;
+            border-bottom: .05rem solid rgba(255,255,255,0.06);
+        }
+        .b2b-pricing-card ul li:last-child { border-bottom: none; }
+        .b2b-pricing-card ul li i { color: var(--main-color); font-size: 1.6rem; flex-shrink: 0; }
+        .b2b-pricing-card .b2b-cta {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 4.8rem;
+            background: var(--main-color);
+            border: .2rem solid var(--main-color);
+            border-radius: .8rem;
+            font-size: 1.7rem;
+            font-weight: 600;
+            color: var(--bg-color);
+            text-decoration: none;
+            transition: .3s;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        .b2b-pricing-card .b2b-cta::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 0; height: 100%;
+            background: var(--bg-color);
+            z-index: -1;
+            transition: .4s;
+        }
+        .b2b-pricing-card .b2b-cta:hover { color: var(--main-color); }
+        .b2b-pricing-card .b2b-cta:hover::before { width: 100%; }
+        .b2b-gift-badge {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.2rem;
+            background: rgba(110,117,253,0.1);
+            border: .1rem solid rgba(110,117,253,0.3);
+            border-radius: 1rem;
+            padding: 1.6rem;
+            margin-bottom: 2.5rem;
+        }
+        .b2b-gift-badge i { font-size: 2.4rem; color: var(--main-color); flex-shrink: 0; margin-top: .1rem; }
+        .b2b-gift-badge p { font-size: 1.4rem; color: var(--text-color); opacity: 0.8; line-height: 1.65; margin: 0; }
+        .b2b-gift-badge strong { color: var(--main-color); }
+        @media (max-width: 820px) {
+            .b2b-pricing-layout { grid-template-columns: 1fr; }
+        }
     </style>
     <script src="https://unpkg.com/scrollreveal"></script>
 </head>
@@ -563,16 +705,60 @@
     <section class="b2b-section" id="pricing-b2b">
         <p class="b2b-section-label">For Organisations</p>
         <h2 class="heading">Enterprise <span>B2B</span> Pricing</h2>
-
         <p class="b2b-intro">
-            To tap into the professional market, we offer an Enterprise Tier starting at <strong>£15/month</strong>, utilising a per-employee billing model. We provide organisations with a fully anonymous, private environment for their members. This tier includes add-on services, such as direct pathways to professional counselling for employees or patients.
+            A per-employee model designed for organisations that take workforce wellbeing seriously — with full anonymity, professional escalation, and flexible hardware deployment.
         </p>
 
-        <div class="b2b-hardware-note">
-            <i class="bx bx-gift"></i>
-            <strong>Hardware Bundle Policy:</strong> Our hardware bundle revenue policy for B2B clients mirrors our B2C strategy. First-time subscribers who purchase the hardware bundle for <strong>£69.99</strong> will receive their first two months of the Value Based Tier for <strong>free</strong>.
-        </div>
+        <div class="b2b-pricing-layout">
 
+            <!-- Enterprise Subscription -->
+            <div class="b2b-pricing-card enterprise">
+                <span class="tier-label">Enterprise Subscription</span>
+                <h3>Per-Employee Plan</h3>
+                <div class="b2b-price">£15<span> / employee / mo</span></div>
+                <div class="b2b-period">Volume pricing available · Billed monthly</div>
+
+                <div class="b2b-highlights">
+                    <span class="b2b-chip"><i class="bx bx-lock-alt"></i> Fully Anonymous</span>
+                    <span class="b2b-chip"><i class="bx bx-shield-quarter"></i> GDPR Compliant</span>
+                    <span class="b2b-chip"><i class="bx bx-group"></i> Team Dashboard</span>
+                    <span class="b2b-chip"><i class="bx bx-link-external"></i> Clinical Escalation</span>
+                </div>
+
+                <ul>
+                    <li><i class="bx bx-check"></i> Fully anonymous private environment for all members</li>
+                    <li><i class="bx bx-check"></i> Aggregated organisational analytics dashboard</li>
+                    <li><i class="bx bx-check"></i> Customisable escalation triggers to clinical counsellors</li>
+                    <li><i class="bx bx-check"></i> Direct pathways to professional support resources</li>
+                    <li><i class="bx bx-check"></i> Co-branded "Dream Challenge" wellness campaigns</li>
+                    <li><i class="bx bx-check"></i> Dedicated onboarding &amp; account management</li>
+                </ul>
+                <a href="contact.html" class="b2b-cta">Contact Sales</a>
+            </div>
+
+            <!-- B2B Hardware Bundle -->
+            <div class="b2b-pricing-card">
+                <span class="tier-label">Hardware Deployment</span>
+                <h3>B2B Hardware Bundle</h3>
+                <div class="b2b-price">£69.99<span> / unit</span></div>
+                <div class="b2b-period">Bulk pricing available for teams of 10+</div>
+
+                <div class="b2b-gift-badge">
+                    <i class="bx bx-gift"></i>
+                    <p><strong>Mirrors B2C Policy:</strong> First-time subscribers who purchase the hardware bundle receive their first <strong>2 months of the Value-Based Tier for free</strong> — for every employee.</p>
+                </div>
+
+                <ul>
+                    <li><i class="bx bx-check"></i> Biometric haptic companion device per employee</li>
+                    <li><i class="bx bx-check"></i> Bulk fulfilment with dedicated onboarding support</li>
+                    <li><i class="bx bx-check"></i> Discounted unit pricing for cohorts of 10+</li>
+                    <li><i class="bx bx-check"></i> Full Value-Based Tier features included</li>
+                    <li><i class="bx bx-check"></i> Deeply immersive dream-to-game experience</li>
+                </ul>
+                <a href="contact.html" class="b2b-cta">Request a Quote</a>
+            </div>
+
+        </div>
     </section>
 
     <footer class="footer">
