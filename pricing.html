@@ -233,22 +233,26 @@
             gap: 2.5rem;
             width: 100%;
             max-width: 1100px;
-            align-items: flex-start;
-            padding-top: 1.8rem; /* room for the floating label above */
+            align-items: stretch;
+            padding-top: 1.8rem;
         }
-        /* Free Basic: align its top with the inner bundle cards */
+        /* Free Basic: offset to align top with inner bundle cards */
         .pricing-layout > .pricing-card {
             flex: 1;
-            margin-top: 1.5rem;
+            margin-top: 2rem;
+            display: flex;
+            flex-direction: column;
         }
         .pricing-bundle-group {
             flex: 2;
             position: relative;
             border: .2rem solid rgba(124,130,255,0.45);
             border-radius: 2.4rem;
-            padding: 1.5rem;
+            padding: 2rem;
             background: rgba(110,117,253,0.04);
             box-shadow: 0 0 40px rgba(110,117,253,0.07);
+            display: flex;
+            flex-direction: column;
         }
         .bundle-group-label {
             position: absolute;
@@ -267,10 +271,17 @@
         .pricing-bundle-inner {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
+            gap: 2rem;
+            flex: 1;
+            align-items: stretch;
+        }
+        .pricing-bundle-inner .pricing-card {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
         }
         @media (max-width: 960px) {
-            .pricing-layout { flex-direction: column; padding-top: 0; }
+            .pricing-layout { flex-direction: column; padding-top: 0; align-items: stretch; }
             .pricing-layout > .pricing-card { margin-top: 0; width: 100%; }
             .pricing-bundle-group { width: 100%; }
             .pricing-bundle-inner { grid-template-columns: 1fr; }
