@@ -70,7 +70,7 @@ const CharacterSelectScreen = ({
       <div
         className="absolute inset-0"
         style={{
-          backgroundImage: 'url(/assets/ui/splash/CharacterSelect.JPG)',
+          backgroundImage: 'url(./assets/ui/splash/CharacterSelect.JPG)',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat'
@@ -277,7 +277,7 @@ const SplashScreen = ({
         <div 
           className="absolute inset-0"
           style={{
-            backgroundImage: 'url(/assets/ui/splash/Enter-background.jpeg)',
+            backgroundImage: 'url(./assets/ui/splash/Enter-background.jpeg)',
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             backgroundRepeat: 'no-repeat'
@@ -599,7 +599,7 @@ const MenuScreenLayout = ({
       <div
         className="absolute inset-0"
         style={{
-          backgroundImage: 'url(/assets/ui/splash/Enter-background.jpeg)',
+          backgroundImage: 'url(./assets/ui/splash/Enter-background.jpeg)',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat'
@@ -780,7 +780,7 @@ const InputScreen = ({ onAnalyze, onBack }: { onAnalyze: (text: string) => void;
           className="absolute inset-0 w-full h-full transition-opacity duration-1000 ease-out"
           style={{
             opacity: isVisible ? 1 : 0,
-            backgroundImage: 'url(/assets/ui/splash/build-ask.png)',
+            backgroundImage: 'url(./assets/ui/splash/build-ask.png)',
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             backgroundRepeat: 'no-repeat'
@@ -789,7 +789,7 @@ const InputScreen = ({ onAnalyze, onBack }: { onAnalyze: (text: string) => void;
 
         {/* Moon (x=40%, y=25%) */}
         <img
-          src="/assets/ui/splash/moon.png"
+          src="./assets/ui/splash/moon.png"
           alt=""
           className="absolute pointer-events-none select-none transition-opacity duration-1000 ease-out"
           style={{
@@ -1851,8 +1851,8 @@ const ResultScreen = ({
     // Otherwise, fall back to the legacy home stage4 (keeps page stable even if other folders are missing).
     const resultBgUrl =
       gameSummary?.sceneMode === 'workspace'
-        ? '/assets/backgrounds/workspace/workspace-%20outdoor.jpg'
-        : '/assets/backgrounds/home/stage4.png';
+        ? './assets/backgrounds/workspace/workspace-%20outdoor.jpg'
+        : './assets/backgrounds/home/stage4.png';
 
     return (
         <div className="w-full h-screen relative overflow-hidden animate-fade-in font-lato flex items-center justify-center">
@@ -2053,7 +2053,7 @@ export default function App() {
   const startBackgroundMusic = () => {
     if (!musicStartedRef.current && !bgMusicRef.current) {
       // Create audio element
-      const audio = new Audio('/assets/sounds/enter+analysis.mp3');
+      const audio = new Audio('./assets/sounds/enter+analysis.mp3');
       audio.loop = true;
       audio.volume = musicVolume;
       bgMusicRef.current = audio;
