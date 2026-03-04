@@ -209,6 +209,101 @@
             opacity: 0.45;
             line-height: 1.6;
         }
+
+        /* ── B2B Section ── */
+        .b2b-section {
+            padding: 8rem 9% 8rem;
+            background: linear-gradient(to bottom, transparent 0%, rgba(20,10,50,0.95) 15%, rgba(20,10,50,0.95) 85%, transparent 100%);
+        }
+        .b2b-section-label {
+            font-size: 1.2rem;
+            font-weight: 700;
+            letter-spacing: .18rem;
+            text-transform: uppercase;
+            color: var(--main-color);
+            text-align: center;
+            margin-bottom: .8rem;
+        }
+        .b2b-section .heading {
+            font-size: 3.8rem;
+            font-weight: 700;
+            color: var(--text-color);
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        .b2b-section .heading span { color: var(--main-color); }
+        .b2b-intro {
+            max-width: 820px;
+            margin: 0 auto 2.5rem;
+            font-size: 1.6rem;
+            color: var(--text-color);
+            opacity: 0.75;
+            line-height: 1.85;
+            text-align: center;
+        }
+        .b2b-hardware-note {
+            max-width: 820px;
+            margin: 0 auto 5rem;
+            background: rgba(110,117,253,0.08);
+            border: .1rem solid rgba(110,117,253,0.25);
+            border-radius: 1.2rem;
+            padding: 2rem 2.5rem;
+            font-size: 1.5rem;
+            color: var(--text-color);
+            opacity: 0.8;
+            line-height: 1.75;
+            text-align: center;
+        }
+        .b2b-hardware-note i {
+            color: var(--main-color);
+            margin-right: .5rem;
+        }
+        .b2b-sub-title {
+            font-size: 2.6rem;
+            font-weight: 700;
+            color: var(--text-color);
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        .b2b-sub-title span { color: var(--main-color); }
+        .b2b-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(28rem, 1fr));
+            gap: 2.4rem;
+            max-width: 1100px;
+            margin: 0 auto 6rem;
+        }
+        .b2b-card {
+            background: rgba(30, 25, 60, 0.7);
+            border: .1rem solid rgba(255,255,255,0.1);
+            border-radius: 1.4rem;
+            padding: 2.8rem 2.4rem;
+            transition: .3s;
+        }
+        .b2b-card:hover {
+            border-color: rgba(110,117,253,0.4);
+            background: rgba(40, 35, 80, 0.85);
+            transform: translateY(-5px);
+            box-shadow: 0 12px 36px rgba(110,117,253,0.12);
+        }
+        .b2b-card i {
+            font-size: 3rem;
+            color: var(--main-color);
+            margin-bottom: 1.4rem;
+            display: block;
+        }
+        .b2b-card h4 {
+            font-size: 1.9rem;
+            font-weight: 700;
+            color: var(--text-color);
+            margin-bottom: .8rem;
+        }
+        .b2b-card p {
+            font-size: 1.45rem;
+            color: var(--text-color);
+            opacity: 0.65;
+            line-height: 1.75;
+        }
     </style>
     <script src="https://unpkg.com/scrollreveal"></script>
 </head>
@@ -339,6 +434,66 @@
         <p class="disclaimer-note">
             * DreamAlchemy is a self-reflection and wellness tool, not a medical product. Subscription plans do not include clinical therapy or medical advice. Enterprise integrations do not constitute clinical service delivery. Please consult a qualified professional for medical or psychiatric concerns.
         </p>
+    </section>
+
+    <!-- B2B Section -->
+    <section class="b2b-section" id="pricing-b2b">
+        <p class="b2b-section-label">For Organisations</p>
+        <h2 class="heading">Enterprise <span>B2B</span> Pricing</h2>
+
+        <p class="b2b-intro">
+            To tap into the professional market, we offer an Enterprise Tier starting at <strong>£15/month</strong>, utilising a per-employee billing model. We provide organisations with a fully anonymous, private environment for their members. This tier includes add-on services, such as direct pathways to professional counselling for employees or patients.
+        </p>
+
+        <div class="b2b-hardware-note">
+            <i class="bx bx-gift"></i>
+            <strong>Hardware Bundle Policy:</strong> Our hardware bundle revenue policy for B2B clients mirrors our B2C strategy. First-time subscribers who purchase the hardware bundle for <strong>£69.99</strong> will receive their first two months of the Value Based Tier for <strong>free</strong>.
+        </div>
+
+        <!-- Target Clients -->
+        <h3 class="b2b-sub-title">Our Target <span>B2B Clients</span></h3>
+        <div class="b2b-grid">
+            <div class="b2b-card">
+                <i class="bx bx-building-house"></i>
+                <h4>High-Stress Corporate Departments</h4>
+                <p>Investment banks, tech companies, and law firms where employee burnout and "daytime impairment" directly impact productivity and bottom-line revenue.</p>
+            </div>
+            <div class="b2b-card">
+                <i class="bx bx-brain"></i>
+                <h4>Psychological Clinics & Therapists</h4>
+                <p>Mental health professionals looking for an engaging, hardware-enabled "homework" tool for patients practising Cognitive-Behavioral Dream Work or Imagery Rehearsal Therapy (IRT) between sessions.</p>
+            </div>
+            <div class="b2b-card">
+                <i class="bx bx-heart-circle"></i>
+                <h4>Sleep Centers & Wellness Retreats</h4>
+                <p>Institutional partners seeking to provide tangible, innovative interventions for clients suffering from chronic nightmares and sleep anxiety.</p>
+            </div>
+        </div>
+
+        <!-- Service Offerings -->
+        <h3 class="b2b-sub-title">The Complete <span>B2B Service</span> Offering</h3>
+        <div class="b2b-grid">
+            <div class="b2b-card">
+                <i class="bx bx-shield-quarter"></i>
+                <h4>Fully Anonymous Organisational Analytics</h4>
+                <p>HR teams and clinic administrators receive an aggregated, privacy-compliant dashboard showing macro-level stress trends and overall workforce emotional health — without compromising individual employee data.</p>
+            </div>
+            <div class="b2b-card">
+                <i class="bx bx-link-external"></i>
+                <h4>Direct Professional Pathways</h4>
+                <p>The B2B app interface includes customisable "escalation triggers." If an employee or patient exhibits consistently severe stress patterns, the app seamlessly routes them to the organisation's designated clinical counsellors or HR support resources.</p>
+            </div>
+            <div class="b2b-card">
+                <i class="bx bx-package"></i>
+                <h4>Bulk Hardware Deployment</h4>
+                <p>Dedicated onboarding support and discounted bulk fulfilment of the biometric companion toy for corporate teams and clinical cohorts.</p>
+            </div>
+            <div class="b2b-card">
+                <i class="bx bx-bulb"></i>
+                <h4>Customised Wellness Campaigns</h4>
+                <p>Co-branded, targeted "Dream Challenges" to drive company-wide engagement in mental health initiatives.</p>
+            </div>
+        </div>
     </section>
 
     <footer class="footer">
