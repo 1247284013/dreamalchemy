@@ -209,6 +209,82 @@
             opacity: 0.45;
             line-height: 1.6;
         }
+        .b2c-label {
+            font-size: 1.2rem;
+            font-weight: 700;
+            letter-spacing: .18rem;
+            text-transform: uppercase;
+            color: var(--main-color);
+            text-align: center;
+            margin-bottom: .8rem;
+        }
+        .price-hardware {
+            font-size: 3.4rem;
+            font-weight: 700;
+            color: var(--main-color);
+            margin-bottom: .5rem;
+        }
+        .price-hardware s {
+            font-size: 2rem;
+            font-weight: 400;
+            color: var(--text-color);
+            opacity: 0.4;
+            margin-right: .6rem;
+        }
+        .price-hardware span {
+            font-size: 1.6rem;
+            font-weight: 400;
+            color: var(--text-color);
+            opacity: 0.6;
+        }
+        .pricing-card .special-offer {
+            margin-top: 1.2rem;
+            font-size: 1.35rem;
+            color: var(--main-color);
+            opacity: 0.9;
+            line-height: 1.55;
+        }
+        .pricing-card .special-offer strong {
+            display: block;
+            margin-bottom: .2rem;
+        }
+        .pricing-desc-table {
+            width: 100%;
+            max-width: 1100px;
+            margin-top: 5rem;
+            border-top: .1rem solid rgba(255,255,255,0.1);
+        }
+        .pricing-desc-row {
+            display: grid;
+            grid-template-columns: 22rem 1fr;
+            gap: 3rem;
+            padding: 2.8rem 0;
+            border-bottom: .1rem solid rgba(255,255,255,0.08);
+            align-items: start;
+        }
+        .pricing-desc-row .pdr-label {
+            font-size: 1.7rem;
+            font-weight: 600;
+            color: var(--text-color);
+            opacity: 0.9;
+        }
+        .pricing-desc-row .pdr-label span {
+            display: block;
+            font-size: 1.35rem;
+            font-weight: 400;
+            color: var(--main-color);
+            opacity: 0.8;
+            margin-top: .3rem;
+        }
+        .pricing-desc-row .pdr-text {
+            font-size: 1.5rem;
+            color: var(--text-color);
+            opacity: 0.65;
+            line-height: 1.8;
+        }
+        @media (max-width: 600px) {
+            .pricing-desc-row { grid-template-columns: 1fr; gap: 1rem; }
+        }
 
         /* ── B2B Section ── */
         .b2b-section {
@@ -354,10 +430,11 @@
         </div></header>
 
     <section class="page-section" id="pricing">
-        <h2 class="heading">Flexible <span>Pricing</span></h2>
+        <p class="b2c-label">Consumer Plans</p>
+        <h2 class="heading">B2C: Tiered Subscription &amp; <span>Hardware Integration</span></h2>
         <p class="sub-heading">Designed to support everyone on their journey</p>
         <p class="pricing-intro">
-            DreamAlchemy's pricing is designed to support everyone — from individuals seeking self-exploration to clinical therapists and large corporate wellness programs. We offer a Free Basic Tier with limited dream logs, flexible Premium subscriptions for deep analytics, and Enterprise Licensing for mission-critical mental wellness deployments.
+            In the B2C segment, we employ a flexible subscription model designed to meet varying user needs, primarily consisting of a Free Basic Tier, a Value-Based Tier, and an integrated Hardware Bundle.
         </p>
 
         <div class="pricing-grid">
@@ -365,10 +442,10 @@
             <!-- Free Basic Tier -->
             <div class="pricing-card">
                 <span class="tier-label">For Individuals</span>
-                <h3>Free Basic</h3>
-                <div class="price free-price">£ 0<span>/mo</span></div>
+                <h3>Free Basic Tier</h3>
+                <div class="price free-price">£0<span>/month</span></div>
                 <div class="period">Forever free · No credit card needed</div>
-                <p class="desc">Limited dream logs, basic game templates, and simple tracking — the perfect starting point for self-exploration.</p>
+                <p class="desc">Targets "early explorers" by providing limited dream logging and basic emotional tracking.</p>
                 <ul>
                     <li><i class="bx bx-check"></i> Dream logs (up to 10 / month)</li>
                     <li><i class="bx bx-check"></i> Basic dream-to-game templates</li>
@@ -384,13 +461,13 @@
                 </div>
             </div>
 
-            <!-- Subscription / Value-Based -->
+            <!-- Value-Based Tier -->
             <div class="pricing-card popular">
                 <span class="tier-label">For Individuals</span>
-                <h3>Subscription</h3>
-                <div class="price">£ 12<span>/mo</span></div>
-                <div class="period">Value-based · Billed monthly <s>or annually</s></div>
-                <p class="desc">Unlimited dream-to-game conversions, deeper analytics, specialised content packs, a Complimentary Custom Tactile Hardware, and haptic-enabled immersive interaction.</p>
+                <h3>Value-Based Tier</h3>
+                <div class="price">£12.99<span>/month</span></div>
+                <div class="period">Billed monthly</div>
+                <p class="desc">Offers a comprehensive experience, unlocking unlimited "Dream-to-Game" conversions and advanced emotional analytics.</p>
                 <ul>
                     <li><i class="bx bx-check"></i> Unlimited dream-to-game conversions</li>
                     <li><i class="bx bx-check"></i> Deep analytics &amp; outcome reporting</li>
@@ -398,9 +475,6 @@
                     <li><i class="bx bx-check"></i> Full AI-powered insights</li>
                     <li><i class="bx bx-check"></i> Progress &amp; feedback tracking</li>
                     <li><i class="bx bx-check"></i> Priority in-app support</li>
-                    <li class="special"><i class="bx bx-check"></i>
-                        <span>Complimentary Custom Tactile Controller<span class="li-sub">(Gifted upon initial subscription)</span></span>
-                    </li>
                     <li><i class="bx bx-check"></i> Haptic-enabled immersive interaction</li>
                 </ul>
                 <div class="btn-box">
@@ -408,31 +482,47 @@
                 </div>
             </div>
 
-            <!-- Enterprise -->
+            <!-- Hardware Bundle -->
             <div class="pricing-card">
-                <span class="tier-label">For Organisations</span>
-                <h3>Enterprise</h3>
-                <div class="price contact-price">£ 15<span>/mo</span></div>
-                <div class="period">Per-seat · Per-employee · Volume pricing</div>
-                <p class="desc">Professional dashboard, per-seat or per-employee pricing for employers, and custom integration support including online therapist communication.</p>
+                <span class="tier-label">Physical Extension</span>
+                <h3>Hardware Bundle</h3>
+                <div class="price-hardware"><s>£75.97</s> £59.99<span> one-off</span></div>
+                <div class="period">Includes device + 2 months Value-Based free</div>
+                <p class="desc">An essential physical extension for premium subscribers, utilising haptic feedback technology to transform the "dream-to-game" pipeline into a deeply immersive experience.</p>
                 <ul>
-                    <li><i class="bx bx-check"></i> Professional admin dashboard</li>
-                    <li><i class="bx bx-check"></i> Per-seat or per-employee pricing</li>
-                    <li><i class="bx bx-check"></i> Online therapist communication</li>
-                    <li><i class="bx bx-check"></i> Corporate wellness reporting</li>
-                    <li class="special"><i class="bx bx-check"></i>
-                        <span>Complimentary Custom Tactile Controller<span class="li-sub">(Gifted upon initial subscription for each employee)</span></span>
-                    </li>
-                    <li class="disabled"><i class="bx bx-x"></i> Haptic-enabled immersive interaction</li>
+                    <li><i class="bx bx-check"></i> Includes all Value-Based features</li>
+                    <li><i class="bx bx-check"></i> Utilises physical haptic feedback device</li>
+                    <li><i class="bx bx-check"></i> Deeply immersive dream experience</li>
                 </ul>
+                <div class="special-offer">
+                    <strong>Special Offer:</strong>
+                    First 2 months of Value-Based Tier free for new subscribers
+                </div>
                 <div class="btn-box">
                     <a href="contact.html" class="btn">Get Started</a>
                 </div>
             </div>
 
         </div>
+
+        <!-- Tier Description Table -->
+        <div class="pricing-desc-table">
+            <div class="pricing-desc-row">
+                <div class="pdr-label">Free Basic Tier <span>£0 / month</span></div>
+                <div class="pdr-text">Targets "early explorers" by providing limited dream logging and basic emotional tracking.</div>
+            </div>
+            <div class="pricing-desc-row">
+                <div class="pdr-label">Value-Based Tier <span>£12.99 / month</span></div>
+                <div class="pdr-text">Offers a comprehensive experience, unlocking unlimited "Dream-to-Game" conversions and advanced emotional analytics.</div>
+            </div>
+            <div class="pricing-desc-row">
+                <div class="pdr-label">Hardware Bundle <span>£59.99 one-off</span></div>
+                <div class="pdr-text">It serves as an essential physical extension for premium subscribers, utilizing haptic feedback technology to transform the "dream-to-game" pipeline into a deeply immersive experience. First-time subscribers who purchase the hardware receive their first two months of the Value-Based Tier for free.</div>
+            </div>
+        </div>
+
         <p class="disclaimer-note">
-            * DreamAlchemy is a self-reflection and wellness tool, not a medical product. Subscription plans do not include clinical therapy or medical advice. Enterprise integrations do not constitute clinical service delivery. Please consult a qualified professional for medical or psychiatric concerns.
+            * DreamAlchemy is a self-reflection and wellness tool, not a medical product. Subscription plans do not include clinical therapy or medical advice. Please consult a qualified professional for medical or psychiatric concerns.
         </p>
     </section>
 
