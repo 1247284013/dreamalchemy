@@ -377,7 +377,7 @@
 
         /* ── Our Services (B2C left / B2B right) ── */
         .services-section {
-            min-height:80vh;
+            min-height: auto;
             padding: 8rem 9% 8rem;
         }
         .services-section .section-label {
@@ -410,65 +410,113 @@
         .services-split {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 3.6rem;
+            gap: 3rem;
             max-width: 1200px;
             margin: 0 auto;
         }
+        /* Card */
         .services-col {
-            background: rgba(30,25,60,0.6);
-            border: .15rem solid rgba(255,255,255,0.1);
-            border-radius: 2rem;
-            padding: 3.5rem 3rem;
+            border-radius: 2.4rem;
+            overflow: hidden;
+            border: .15rem solid rgba(255,255,255,0.08);
+            background: rgba(18,12,42,0.7);
+            display: flex;
+            flex-direction: column;
+            transition: border-color .3s, box-shadow .3s;
         }
-        .services-col.col-b2c { border-color: rgba(110,200,255,0.2); }
-        .services-col.col-b2b { border-color: rgba(124,130,255,0.25); }
-        .services-col .col-badge {
+        .services-col.col-b2c { border-color: rgba(110,200,255,0.18); }
+        .services-col.col-b2c:hover { border-color: rgba(110,200,255,0.5); box-shadow: 0 0 50px rgba(110,200,255,0.08); }
+        .services-col.col-b2b { border-color: rgba(124,130,255,0.2); }
+        .services-col.col-b2b:hover { border-color: rgba(124,130,255,0.5); box-shadow: 0 0 50px rgba(124,130,255,0.1); }
+        /* Image hero area */
+        .col-img {
+            position: relative;
+            height: 24rem;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+        .col-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+            display: block;
+            transition: transform .7s cubic-bezier(.25,.46,.45,.94);
+        }
+        .services-col:hover .col-img img { transform: scale(1.05); }
+        /* gradient fade from image into card */
+        .col-img::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom,
+                rgba(18,12,42,0) 0%,
+                rgba(18,12,42,0) 45%,
+                rgba(18,12,42,0.7) 75%,
+                rgba(18,12,42,1) 100%);
+        }
+        /* floating badge over image */
+        .col-img .col-badge {
+            position: absolute;
+            bottom: 1.8rem;
+            left: 2.4rem;
+            z-index: 2;
             display: inline-block;
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             font-weight: 700;
             letter-spacing: .12rem;
             text-transform: uppercase;
-            padding: .3rem 1.2rem;
+            padding: .35rem 1.2rem;
             border-radius: 2rem;
-            margin-bottom: 1.6rem;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
         }
-        .col-b2c .col-badge { color: #7ecfff; background: rgba(110,200,255,0.12); border: .1rem solid rgba(110,200,255,0.3); }
-        .col-b2b .col-badge { color: var(--main-color); background: rgba(124,130,255,0.12); border: .1rem solid rgba(124,130,255,0.3); }
+        .col-b2c .col-badge { color: #7ecfff; background: rgba(110,200,255,0.15); border: .1rem solid rgba(110,200,255,0.4); }
+        .col-b2b .col-badge { color: var(--main-color); background: rgba(124,130,255,0.15); border: .1rem solid rgba(124,130,255,0.45); }
+        /* Body below image */
+        .col-body {
+            padding: 2.4rem 3rem 3.2rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
         .services-col h3 {
-            font-size: 2.4rem;
+            font-size: 2.2rem;
             font-weight: 700;
             color: var(--text-color);
-            margin-bottom: 2.8rem;
+            margin-bottom: 2.4rem;
+            margin-top: 0;
         }
         .service-item {
             display: flex;
             align-items: flex-start;
-            gap: 1.6rem;
-            padding: 1.8rem 0;
-            border-bottom: .05rem solid rgba(255,255,255,0.07);
+            gap: 1.4rem;
+            padding: 1.4rem 0;
+            border-bottom: .05rem solid rgba(255,255,255,0.06);
         }
         .service-item:last-child { border-bottom: none; }
         .service-item i {
-            font-size: 2.4rem;
+            font-size: 2.2rem;
             color: var(--main-color);
             flex-shrink: 0;
             margin-top: .2rem;
         }
         .col-b2c .service-item i { color: #7ecfff; }
         .service-item h4 {
-            font-size: 1.7rem;
+            font-size: 1.6rem;
             font-weight: 700;
             color: var(--text-color);
-            margin-bottom: .5rem;
+            margin-bottom: .4rem;
         }
         .service-item p {
-            font-size: 1.4rem;
+            font-size: 1.35rem;
             color: var(--text-color);
-            opacity: 0.6;
+            opacity: 0.58;
             line-height: 1.7;
         }
         @media (max-width: 900px) {
             .services-split { grid-template-columns: 1fr; }
+            .col-img { height: 20rem; }
         }
     </style>
     <script src="https://unpkg.com/scrollreveal"></script>
@@ -642,7 +690,11 @@
         <div class="services-split">
             <!-- B2C Column -->
             <div class="services-col col-b2c">
-                <span class="col-badge">B2C · Consumer</span>
+                <div class="col-img">
+                    <img src="src/individual.jpg" alt="Personal Wellness">
+                    <span class="col-badge">B2C · Consumer</span>
+                </div>
+                <div class="col-body">
                 <h3>Personal Wellness</h3>
                 <div class="service-item">
                     <i class="bx bx-moon"></i>
@@ -679,11 +731,16 @@
                         <p>A safe, moderated community of users on shared journeys of self-discovery and mental wellness.</p>
                     </div>
                 </div>
+                </div><!-- end col-body -->
             </div>
 
             <!-- B2B Column -->
             <div class="services-col col-b2b">
-                <span class="col-badge">B2B · Enterprise</span>
+                <div class="col-img">
+                    <img src="src/en.png" alt="Organisational Wellness">
+                    <span class="col-badge">B2B · Enterprise</span>
+                </div>
+                <div class="col-body">
                 <h3>Organisational Wellness</h3>
                 <div class="service-item">
                     <i class="bx bx-shield-quarter"></i>
@@ -720,6 +777,7 @@
                         <p>Ongoing enterprise support, onboarding assistance, and tailored rollout plans for every organisation.</p>
                     </div>
                 </div>
+                </div><!-- end col-body -->
             </div>
         </div>
     </section>
