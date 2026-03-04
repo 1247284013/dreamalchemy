@@ -20,7 +20,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            background: url('src/back3.png') no-repeat center center;
+            background: linear-gradient(to bottom, transparent 60%, rgba(12,3,32,0.85) 88%, rgba(12,3,32,1) 100%), url('src/back3.png') no-repeat center center;
             background-size: cover;
             transform: translateZ(0);
             backface-visibility: hidden;
@@ -63,7 +63,7 @@
         }
         .pricing-card.popular {
             border-color: rgba(124,130,255,0.6);
-            background: rgba(50, 45, 90, 0.9);
+            background: rgba(30, 25, 60, 0.85);
             box-shadow: 0 8px 40px rgba(124,130,255,0.25);
         }
         .pricing-card.popular::before {
@@ -194,18 +194,9 @@
             max-width: 800px;
             text-align: center;
             font-size: 1.3rem;
-            color: var(--text-color);
-            opacity: 0.45;
-            line-height: 1.6;
-        }
-        .section-subtitle-heading {
-            font-size: 2.4rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            color: var(--text-color);
-        }
-        .section-subtitle-heading span {
             color: var(--main-color);
+            opacity: 0.75;
+            line-height: 1.6;
         }
         .b2c-label {
             font-size: 1.2rem;
@@ -216,6 +207,16 @@
             text-align: center;
             margin-bottom: .8rem;
         }
+        .b2c-heading {
+            font-size: 3.8rem;
+            font-weight: 700;
+            color: #fff;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        .b2c-heading .blur-word { color: #fff !important; }
+        .b2c-heading .blur-word.blur-word-accent { color: var(--main-color) !important; }
+        .page-section .b2b-intro { color: rgba(255,255,255,0.75) !important; opacity: 1 !important; }
         .price-hardware {
             font-size: 3.4rem;
             font-weight: 700;
@@ -371,7 +372,8 @@
             text-align: center;
             margin-bottom: 1rem;
         }
-        .b2b-section .heading span { color: var(--main-color); }
+        .b2b-section .heading .blur-word { color: #fff !important; }
+        .b2b-section .heading .blur-word.blur-word-accent { color: var(--main-color) !important; }
         .b2b-intro {
             max-width: 820px;
             margin: 0 auto 2.5rem;
@@ -471,9 +473,9 @@
             box-shadow: 0 8px 32px rgba(0,0,0,0.18);
         }
         .b2b-pricing-card.enterprise {
-            border-color: rgba(124,130,255,0.5);
-            background: rgba(50, 45, 90, 0.88);
-            box-shadow: 0 8px 40px rgba(124,130,255,0.2);
+            border-color: rgba(255,255,255,0.14);
+            background: rgba(30, 25, 60, 0.85);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.18);
         }
         .b2b-pricing-card:hover {
             transform: translateY(-6px);
@@ -538,7 +540,7 @@
             margin-bottom: 2.5rem;
         }
         .b2b-pricing-card ul li {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             color: var(--text-color);
             opacity: 0.8;
             padding: .6rem 0;
@@ -622,8 +624,12 @@
             <div class="nav-item">
                 <a href="demo.html">Demo</a>
             </div>
-            <div class="nav-item">
+            <div class="nav-item nav-item-has-dropdown">
                 <a href="pricing.html" class="active">Pricing</a>
+                <div class="nav-dropdown">
+                    <a href="pricing.html#pricing">Consumer B2C</a>
+                    <a href="pricing.html#pricing-b2b">Enterprise B2B</a>
+                </div>
             </div>
             <div class="nav-item nav-item-has-dropdown">
                 <a href="contact.html">Contact</a>
@@ -645,9 +651,8 @@
 
     <section class="page-section" id="pricing">
         <p class="b2c-label">Consumer Plans</p>
-        <h3 class="section-subtitle-heading">B2C: Tiered Subscription &amp; <span>Hardware Integration</span></h3>
-        <p class="sub-heading">Designed to support everyone on their journey</p>
-        <p class="pricing-intro">
+        <h2 class="heading b2c-heading">Consumer <span>B2C</span> Pricing</h2>
+        <p class="b2b-intro">
             In the B2C segment, we employ a flexible subscription model designed to meet varying user needs, primarily consisting of a Free Basic Tier, a Value-Based Tier, and an integrated Hardware Bundle.
         </p>
 

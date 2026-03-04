@@ -15,8 +15,8 @@
             -webkit-backdrop-filter: blur(20px);
         }
         .page-section {
-            min-height: 100vh;
-            padding: 12rem 9% 4rem;
+            min-height: 90vh;
+            padding: 12rem 9% 1rem;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -287,12 +287,100 @@
             .metric-item .metric-num { font-size: 4.5rem; }
         }
 
-        /* ── Clients & Services Section ── */
-        .clients-section {
-            padding: 8rem 9%;
+        /* ── Who We Serve (Bubble Cloud) ── */
+        .serve-section {
+            min-height: 80vh;
+            padding: 15rem 9% 4rem;
             background: linear-gradient(to bottom, transparent 0%, rgba(20,10,50,0.92) 15%, rgba(20,10,50,0.92) 85%, transparent 100%);
+            text-align: center;
         }
-        .clients-section .section-label {
+        .serve-section .section-label {
+            font-size: 1.2rem;
+            font-weight: 700;
+            letter-spacing: .18rem;
+            text-transform: uppercase;
+            color: var(--main-color);
+            margin-bottom: .8rem;
+        }
+        .serve-section .section-title {
+            font-size: 3.6rem;
+            font-weight: 700;
+            color: var(--text-color);
+            margin-bottom: 1rem;
+        }
+        .serve-section .section-title span { color: var(--main-color); }
+        .serve-section .section-subtitle {
+            font-size: 1.55rem;
+            color: var(--text-color);
+            opacity: 0.6;
+            margin-bottom: 2.5rem;
+            max-width: 680px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .bubble-cloud {
+            width: 100%;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            gap: 2.4rem;
+            mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+        }
+        .bubble-row {
+            display: flex;
+            width: max-content;
+            gap: 2rem;
+        }
+        .bubble-row.row-left  { animation: scroll-left  28s linear infinite; }
+        .bubble-row.row-right { animation: scroll-right 32s linear infinite; }
+        .bubble-row:hover { animation-play-state: paused; }
+        @keyframes scroll-left  { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+        @keyframes scroll-right { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+        .bubble {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: .5rem;
+            background: rgba(255,255,255,0.05);
+            border: .18rem solid rgba(255,255,255,0.12);
+            border-radius: 1.8rem;
+            padding: 1.8rem 3.2rem;
+            transition: .3s;
+            cursor: default;
+            text-align: center;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+        .bubble:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 32px rgba(110,117,253,0.2);
+        }
+        .bubble .btype {
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: .08rem;
+            text-transform: uppercase;
+            padding: .2rem .9rem;
+            border-radius: 2rem;
+        }
+        .bubble.b2c { border-color: rgba(110,200,255,0.25); }
+        .bubble.b2c:hover { border-color: rgba(110,200,255,0.6); background: rgba(110,200,255,0.08); }
+        .bubble.b2c .btype { color: #7ecfff; background: rgba(110,200,255,0.12); }
+        .bubble.b2b { border-color: rgba(124,130,255,0.25); }
+        .bubble.b2b:hover { border-color: rgba(124,130,255,0.6); background: rgba(124,130,255,0.1); }
+        .bubble.b2b .btype { color: var(--main-color); background: rgba(124,130,255,0.12); }
+        .bubble .bname { color: var(--text-color); font-size: 1.7rem; font-weight: 600; line-height: 1.2; }
+        .bubble.lg .bname { font-size: 2rem; }
+        .bubble.sm .bname { font-size: 1.45rem; }
+
+        /* ── Our Services (B2C left / B2B right) ── */
+        .services-section {
+            min-height:80vh;
+            padding: 8rem 9% 8rem;
+        }
+        .services-section .section-label {
             font-size: 1.2rem;
             font-weight: 700;
             letter-spacing: .18rem;
@@ -301,88 +389,86 @@
             text-align: center;
             margin-bottom: .8rem;
         }
-        .clients-section .section-title {
+        .services-section .section-title {
             font-size: 3.6rem;
             font-weight: 700;
             color: var(--text-color);
             text-align: center;
             margin-bottom: 1rem;
         }
-        .clients-section .section-title span { color: var(--main-color); }
-        .clients-section .section-subtitle {
+        .services-section .section-title span { color: var(--main-color); }
+        .services-section .section-subtitle {
             font-size: 1.55rem;
             color: var(--text-color);
-            opacity: 0.65;
+            opacity: 0.6;
             text-align: center;
-            margin-bottom: 4.5rem;
-            max-width: 700px;
+            margin-bottom: 5rem;
+            max-width: 680px;
             margin-left: auto;
             margin-right: auto;
         }
-        .clients-section .subsection-title {
-            font-size: 2.6rem;
-            font-weight: 700;
-            color: var(--text-color);
-            text-align: center;
-            margin: 5rem 0 3rem;
-        }
-        .clients-section .subsection-title span { color: var(--main-color); }
-        .clients-grid {
+        .services-split {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(28rem, 1fr));
-            gap: 2.4rem;
-            max-width: 1100px;
+            grid-template-columns: 1fr 1fr;
+            gap: 3.6rem;
+            max-width: 1200px;
             margin: 0 auto;
         }
-        .client-card {
-            background: rgba(30, 25, 60, 0.7);
-            border: .1rem solid rgba(255,255,255,0.1);
-            border-radius: 1.4rem;
-            padding: 2.8rem 2.4rem;
-            transition: .3s;
+        .services-col {
+            background: rgba(30,25,60,0.6);
+            border: .15rem solid rgba(255,255,255,0.1);
+            border-radius: 2rem;
+            padding: 3.5rem 3rem;
         }
-        .client-card:hover {
-            border-color: rgba(110,117,253,0.4);
-            background: rgba(40, 35, 80, 0.85);
-            transform: translateY(-5px);
-            box-shadow: 0 12px 36px rgba(110,117,253,0.12);
-        }
-        .client-card i {
-            font-size: 3rem;
-            color: var(--main-color);
-            margin-bottom: 1.4rem;
-            display: block;
-        }
-        .client-card h4 {
-            font-size: 1.9rem;
-            font-weight: 700;
-            color: var(--text-color);
-            margin-bottom: .8rem;
-        }
-        .client-card .card-tag {
+        .services-col.col-b2c { border-color: rgba(110,200,255,0.2); }
+        .services-col.col-b2b { border-color: rgba(124,130,255,0.25); }
+        .services-col .col-badge {
             display: inline-block;
             font-size: 1.1rem;
             font-weight: 700;
-            letter-spacing: .08rem;
+            letter-spacing: .12rem;
             text-transform: uppercase;
-            background: rgba(124,130,255,0.12);
-            color: var(--main-color);
-            padding: .25rem .9rem;
+            padding: .3rem 1.2rem;
             border-radius: 2rem;
-            margin-bottom: 1rem;
+            margin-bottom: 1.6rem;
         }
-        .client-card p {
-            font-size: 1.45rem;
+        .col-b2c .col-badge { color: #7ecfff; background: rgba(110,200,255,0.12); border: .1rem solid rgba(110,200,255,0.3); }
+        .col-b2b .col-badge { color: var(--main-color); background: rgba(124,130,255,0.12); border: .1rem solid rgba(124,130,255,0.3); }
+        .services-col h3 {
+            font-size: 2.4rem;
+            font-weight: 700;
             color: var(--text-color);
-            opacity: 0.65;
-            line-height: 1.75;
+            margin-bottom: 2.8rem;
         }
-        .section-divider {
-            width: 100%;
-            max-width: 1100px;
-            margin: 0 auto;
-            border: none;
-            border-top: .1rem solid rgba(124,130,255,0.18);
+        .service-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.6rem;
+            padding: 1.8rem 0;
+            border-bottom: .05rem solid rgba(255,255,255,0.07);
+        }
+        .service-item:last-child { border-bottom: none; }
+        .service-item i {
+            font-size: 2.4rem;
+            color: var(--main-color);
+            flex-shrink: 0;
+            margin-top: .2rem;
+        }
+        .col-b2c .service-item i { color: #7ecfff; }
+        .service-item h4 {
+            font-size: 1.7rem;
+            font-weight: 700;
+            color: var(--text-color);
+            margin-bottom: .5rem;
+        }
+        .service-item p {
+            font-size: 1.4rem;
+            color: var(--text-color);
+            opacity: 0.6;
+            line-height: 1.7;
+        }
+        @media (max-width: 900px) {
+            .services-split { grid-template-columns: 1fr; }
         }
     </style>
     <script src="https://unpkg.com/scrollreveal"></script>
@@ -412,8 +498,12 @@
             <div class="nav-item">
                 <a href="demo.html">Demo</a>
             </div>
-            <div class="nav-item">
+            <div class="nav-item nav-item-has-dropdown">
                 <a href="pricing.html">Pricing</a>
+                <div class="nav-dropdown">
+                    <a href="pricing.html#pricing">Consumer B2C</a>
+                    <a href="pricing.html#pricing-b2b">Enterprise B2B</a>
+                </div>
             </div>
             <div class="nav-item nav-item-has-dropdown">
                 <a href="contact.html">Contact</a>
@@ -483,79 +573,143 @@
 
     </section>
 
-    <!-- B2C: Who We Serve -->
-    <section class="clients-section" id="features-b2c-clients">
-        <p class="section-label">B2C</p>
+    <!-- Who We Serve — Bubble Cloud -->
+    <section class="serve-section" id="features-who-we-serve">
+        <p class="section-label">Our Audience</p>
         <h2 class="section-title">Who We <span>Serve</span></h2>
-        <p class="section-subtitle">Three tiers designed to meet users wherever they are on their wellbeing journey.</p>
-        <div class="clients-grid">
-            <div class="client-card">
-                <span class="card-tag">Free Tier</span>
-                <i class="bx bx-search-alt"></i>
-                <h4>Free Basic Tier — £0/month</h4>
-                <p>Targets "early explorers" by providing limited dream logging and basic emotional tracking. The perfect zero-risk entry point for users curious about the DreamAlchemy experience.</p>
+        <p class="section-subtitle">From curious individuals to enterprise wellness teams — DreamAlchemy meets every user where they are.</p>
+
+        <div class="bubble-cloud">
+            <!-- Row 1: Individual (B2C) — scrolls LEFT -->
+            <div class="bubble-row row-left">
+                <div class="bubble b2c lg"><span class="btype">Individual</span><span class="bname">Dream Explorers</span></div>
+                <div class="bubble b2c"><span class="btype">Individual</span><span class="bname">Sleep Anxiety Sufferers</span></div>
+                <div class="bubble b2c sm"><span class="btype">Individual</span><span class="bname">Wellness Enthusiasts</span></div>
+                <div class="bubble b2c lg"><span class="btype">Individual</span><span class="bname">Mental Health Journeyers</span></div>
+                <div class="bubble b2c sm"><span class="btype">Individual</span><span class="bname">Students &amp; Young Adults</span></div>
+                <div class="bubble b2c"><span class="btype">Individual</span><span class="bname">Self-Reflection Seekers</span></div>
+                <div class="bubble b2c lg"><span class="btype">Individual</span><span class="bname">Nightmare Relief Seekers</span></div>
+                <div class="bubble b2c sm"><span class="btype">Individual</span><span class="bname">Curious Beginners</span></div>
+                <!-- duplicate for seamless loop -->
+                <div class="bubble b2c lg"><span class="btype">Individual</span><span class="bname">Dream Explorers</span></div>
+                <div class="bubble b2c"><span class="btype">Individual</span><span class="bname">Sleep Anxiety Sufferers</span></div>
+                <div class="bubble b2c sm"><span class="btype">Individual</span><span class="bname">Wellness Enthusiasts</span></div>
+                <div class="bubble b2c lg"><span class="btype">Individual</span><span class="bname">Mental Health Journeyers</span></div>
+                <div class="bubble b2c sm"><span class="btype">Individual</span><span class="bname">Students &amp; Young Adults</span></div>
+                <div class="bubble b2c"><span class="btype">Individual</span><span class="bname">Self-Reflection Seekers</span></div>
+                <div class="bubble b2c lg"><span class="btype">Individual</span><span class="bname">Nightmare Relief Seekers</span></div>
+                <div class="bubble b2c sm"><span class="btype">Individual</span><span class="bname">Curious Beginners</span></div>
             </div>
-            <div class="client-card">
-                <i class="bx bx-trending-up"></i>
-                <span class="card-tag">Most Popular</span>
-                <h4>Value-Based Tier — £12.99/month</h4>
-                <p>Offers a comprehensive experience, unlocking unlimited "Dream-to-Game" conversions and advanced emotional analytics for users committed to their wellbeing journey.</p>
-            </div>
-            <div class="client-card">
-                <span class="card-tag">Physical</span>
-                <i class="bx bx-cube-alt"></i>
-                <h4>Hardware Bundle — £59.99 one-off</h4>
-                <p>An essential physical extension for premium subscribers, utilizing haptic feedback technology to transform the "dream-to-game" pipeline into a deeply immersive experience. First-time subscribers receive their first two months of the Value-Based Tier for free.</p>
+            <!-- Row 2: Enterprise (B2B) — scrolls RIGHT -->
+            <div class="bubble-row row-right">
+                <div class="bubble b2b lg"><span class="btype">Enterprise</span><span class="bname">Corporate HR Teams</span></div>
+                <div class="bubble b2b"><span class="btype">Enterprise</span><span class="bname">Psychology Clinics</span></div>
+                <div class="bubble b2b sm"><span class="btype">Enterprise</span><span class="bname">Law &amp; Finance Firms</span></div>
+                <div class="bubble b2b lg"><span class="btype">Enterprise</span><span class="bname">Therapists &amp; Counsellors</span></div>
+                <div class="bubble b2b sm"><span class="btype">Enterprise</span><span class="bname">Tech Companies</span></div>
+                <div class="bubble b2b"><span class="btype">Enterprise</span><span class="bname">Sleep Centers</span></div>
+                <div class="bubble b2b lg"><span class="btype">Enterprise</span><span class="bname">Wellness Retreats</span></div>
+                <div class="bubble b2b sm"><span class="btype">Enterprise</span><span class="bname">Investment Banks</span></div>
+                <!-- duplicate for seamless loop -->
+                <div class="bubble b2b lg"><span class="btype">Enterprise</span><span class="bname">Corporate HR Teams</span></div>
+                <div class="bubble b2b"><span class="btype">Enterprise</span><span class="bname">Psychology Clinics</span></div>
+                <div class="bubble b2b sm"><span class="btype">Enterprise</span><span class="bname">Law &amp; Finance Firms</span></div>
+                <div class="bubble b2b lg"><span class="btype">Enterprise</span><span class="bname">Therapists &amp; Counsellors</span></div>
+                <div class="bubble b2b sm"><span class="btype">Enterprise</span><span class="bname">Tech Companies</span></div>
+                <div class="bubble b2b"><span class="btype">Enterprise</span><span class="bname">Sleep Centers</span></div>
+                <div class="bubble b2b lg"><span class="btype">Enterprise</span><span class="bname">Wellness Retreats</span></div>
+                <div class="bubble b2b sm"><span class="btype">Enterprise</span><span class="bname">Investment Banks</span></div>
             </div>
         </div>
     </section>
 
-    <!-- B2B: Target Clients & Service Offerings -->
-    <section class="clients-section" id="features-b2b-clients">
-        <p class="section-label">B2B</p>
-        <h2 class="section-title">Our Target <span>B2B Clients</span></h2>
-        <p class="section-subtitle">Enterprise solutions for organisations that take employee and patient wellbeing seriously.</p>
-        <div class="clients-grid">
-            <div class="client-card">
-                <i class="bx bx-building-house"></i>
-                <h4>High-Stress Corporate Departments</h4>
-                <p>Investment banks, tech companies, and law firms where employee burnout and "daytime impairment" directly impact productivity and bottom-line revenue.</p>
-            </div>
-            <div class="client-card">
-                <i class="bx bx-brain"></i>
-                <h4>Psychological Clinics &amp; Therapists</h4>
-                <p>Mental health professionals looking for an engaging, hardware-enabled "homework" tool for patients practising Cognitive-Behavioral Dream Work or Imagery Rehearsal Therapy (IRT) between sessions.</p>
-            </div>
-            <div class="client-card">
-                <i class="bx bx-heart-circle"></i>
-                <h4>Sleep Centers &amp; Wellness Retreats</h4>
-                <p>Institutional partners seeking to provide tangible, innovative interventions for clients suffering from chronic nightmares and sleep anxiety.</p>
-            </div>
-        </div>
+    <!-- Our Services — B2C left / B2B right -->
+    <section class="services-section" id="features-services">
+        <p class="section-label">What We Offer</p>
+        <h2 class="section-title">Our <span>Services</span></h2>
+        <p class="section-subtitle">Tailored offerings for individual consumers and enterprise organisations.</p>
 
-        <hr class="section-divider">
+        <div class="services-split">
+            <!-- B2C Column -->
+            <div class="services-col col-b2c">
+                <span class="col-badge">B2C · Consumer</span>
+                <h3>Personal Wellness</h3>
+                <div class="service-item">
+                    <i class="bx bx-moon"></i>
+                    <div>
+                        <h4>Dream Journaling &amp; AI Insights</h4>
+                        <p>Log dreams and receive clinically-informed emotional insights powered by our custom NLP pipeline.</p>
+                    </div>
+                </div>
+                <div class="service-item">
+                    <i class="bx bx-joystick"></i>
+                    <div>
+                        <h4>Dream-to-Game Conversion</h4>
+                        <p>Transform dream narratives into interactive game worlds — unlimited in the Value-Based Tier.</p>
+                    </div>
+                </div>
+                <div class="service-item">
+                    <i class="bx bx-cube-alt"></i>
+                    <div>
+                        <h4>Biometric Hardware Bundle</h4>
+                        <p>Haptic companion device that bridges physical sensation and the digital dream world for deep immersion.</p>
+                    </div>
+                </div>
+                <div class="service-item">
+                    <i class="bx bx-line-chart"></i>
+                    <div>
+                        <h4>Progress &amp; Wellbeing Tracking</h4>
+                        <p>Visual emotional metrics and longitudinal data to track your wellbeing journey over time.</p>
+                    </div>
+                </div>
+                <div class="service-item">
+                    <i class="bx bx-group"></i>
+                    <div>
+                        <h4>Community Support</h4>
+                        <p>A safe, moderated community of users on shared journeys of self-discovery and mental wellness.</p>
+                    </div>
+                </div>
+            </div>
 
-        <h3 class="subsection-title">The Complete <span>B2B Service</span> Offering</h3>
-        <div class="clients-grid">
-            <div class="client-card">
-                <i class="bx bx-shield-quarter"></i>
-                <h4>Fully Anonymous Organisational Analytics</h4>
-                <p>HR teams and clinic administrators receive an aggregated, privacy-compliant dashboard showing macro-level stress trends and overall workforce emotional health — without compromising individual employee data.</p>
-            </div>
-            <div class="client-card">
-                <i class="bx bx-link-external"></i>
-                <h4>Direct Professional Pathways</h4>
-                <p>The B2B app interface includes customisable "escalation triggers." If an employee or patient exhibits consistently severe stress patterns, the app seamlessly routes them to the organisation's designated clinical counsellors or HR support resources.</p>
-            </div>
-            <div class="client-card">
-                <i class="bx bx-package"></i>
-                <h4>Bulk Hardware Deployment</h4>
-                <p>Dedicated onboarding support and discounted bulk fulfilment of the biometric companion toy for corporate teams and clinical cohorts.</p>
-            </div>
-            <div class="client-card">
-                <i class="bx bx-bulb"></i>
-                <h4>Customised Wellness Campaigns</h4>
-                <p>Co-branded, targeted "Dream Challenges" to drive company-wide engagement in mental health initiatives.</p>
+            <!-- B2B Column -->
+            <div class="services-col col-b2b">
+                <span class="col-badge">B2B · Enterprise</span>
+                <h3>Organisational Wellness</h3>
+                <div class="service-item">
+                    <i class="bx bx-shield-quarter"></i>
+                    <div>
+                        <h4>Anonymous Analytics Dashboard</h4>
+                        <p>Aggregated, GDPR-compliant workforce stress and emotional health data — zero individual exposure.</p>
+                    </div>
+                </div>
+                <div class="service-item">
+                    <i class="bx bx-link-external"></i>
+                    <div>
+                        <h4>Clinical Escalation Pathways</h4>
+                        <p>Customisable triggers that route at-risk employees or patients directly to designated counsellors.</p>
+                    </div>
+                </div>
+                <div class="service-item">
+                    <i class="bx bx-package"></i>
+                    <div>
+                        <h4>Bulk Hardware Deployment</h4>
+                        <p>Discounted bulk fulfilment of biometric devices for corporate teams and clinical cohorts with dedicated onboarding.</p>
+                    </div>
+                </div>
+                <div class="service-item">
+                    <i class="bx bx-bulb"></i>
+                    <div>
+                        <h4>Co-branded Wellness Campaigns</h4>
+                        <p>Targeted "Dream Challenges" to drive company-wide mental health engagement and workplace wellbeing culture.</p>
+                    </div>
+                </div>
+                <div class="service-item">
+                    <i class="bx bx-user-check"></i>
+                    <div>
+                        <h4>Dedicated Account Management</h4>
+                        <p>Ongoing enterprise support, onboarding assistance, and tailored rollout plans for every organisation.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>

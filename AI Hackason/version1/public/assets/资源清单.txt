@@ -1,0 +1,152 @@
+🎨 UI资源完整清单
+================================
+
+📁 目录结构：
+/Users/yaoyao/Desktop/dream-journey-game/public/assets/
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🔴 高优先级（必须替换）
+━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+ui/splash/
+  ✓ splash-background.png        (800×600) 启动页背景
+  ✓ logo.png                     (200×200) 游戏Logo
+
+ui/input/
+  ✓ input-background.png         (800×600) 输入页背景
+
+ui/loading/
+  ✓ loading-background.png       (800×600) 加载页背景
+
+ui/result/
+  ✓ result-background.png        (800×600) 结果页背景
+
+characters/
+  ✓ player-idle.png              (64×96)   主角色
+
+ground/
+  ✓ ground-classroom.png         (宽度根据场景) 教室地面
+  ✓ ground-forest.png            (宽度根据场景) 森林地面
+  ✓ ground-abyss.png             (宽度根据场景) 深渊地面
+  ✓ ground-room.png              (宽度根据场景) 房间地面
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🟡 中优先级（强烈建议）
+━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+ui/splash/
+  □ button-start-normal.png      (300×80)  开始按钮
+  □ button-start-hover.png       (300×80)  开始按钮悬停
+
+ui/input/
+  □ card-classroom.png           (500×50)  教室卡片
+  □ card-forest.png              (500×50)  森林卡片
+  □ card-abyss.png               (500×50)  深渊卡片
+  □ card-room.png                (500×50)  房间卡片
+  □ button-ai-analyze-normal.png (200×45)  AI分析按钮
+  □ button-ai-analyze-hover.png  (200×45)  AI分析按钮悬停
+
+ui/result/
+  □ button-save-normal.png       (150×45)  保存按钮
+  □ button-save-hover.png        (150×45)  保存按钮悬停
+  □ button-replay-normal.png     (150×45)  重玩按钮
+  □ button-replay-hover.png      (150×45)  重玩按钮悬停
+
+ui/icons/
+  □ target-arrow.png             (32×24)   目标箭头
+  □ icon-microphone.png          (64×64)   麦克风图标
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🟢 低优先级（可选）
+━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+ui/loading/
+  □ progress-bar-background.png  (320×30)  进度条背景
+  □ progress-bar-fill.png        (320×30)  进度条填充
+  □ loading-icon.png             (100×100) 加载图标
+
+ui/icons/
+  □ brightness-orb-frame.png     (40×40)   亮度指示器
+  □ destroy-progress-bg.png      (100×12)  破坏进度背景
+  □ destroy-progress-fill.png    (100×12)  破坏进度填充
+
+characters/
+  □ player-walk-1.png            (64×96)   行走动画1
+  □ player-walk-2.png            (64×96)   行走动画2
+  □ player-walk-3.png            (64×96)   行走动画3
+  □ player-walk-4.png            (64×96)   行走动画4
+  □ player-jump.png              (64×96)   跳跃
+  □ player-fall.png              (64×96)   下落
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📦 物品资源（AI随机放置）
+━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+items/classroom/
+  □ desk.png                     课桌
+  □ chair.png                    椅子
+  □ blackboard.png               黑板
+  □ clock.png                    时钟
+  □ paper.png                    试卷
+  □ book.png                     书本
+
+items/forest/
+  □ tree.png                     树木
+  □ bush.png                     灌木
+  □ rock.png                     岩石
+  □ thorn.png                    荆棘
+  □ mushroom.png                 蘑菇
+
+items/abyss/
+  □ platform.png                 平台
+  □ pipe.png                     管道
+  □ debris.png                   碎片
+  □ cable.png                    电缆
+
+items/room/
+  □ furniture.png                家具
+  □ toy.png                      玩具
+  □ window.png                   窗户
+  □ door.png                     门
+  □ lamp.png                     灯
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📐 设计规范
+━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+格式：PNG（透明）或 JPG（背景）
+分辨率：2x（高清）
+颜色：RGB模式
+大小：< 500KB/文件
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⚡ 快速操作
+━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. 准备图片
+2. 按文件名命名
+3. 放到对应文件夹
+4. 刷新游戏
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📚 详细说明
+━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+查看：UI资源替换完整指南.md
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✅ 当前状态
+━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+□ 未添加资源 - 使用代码绘制
+✓ 添加资源后 - 显示图片
+
+开始添加你的资源吧！🎨
+

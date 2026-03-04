@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <title>DreamBreaker</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lato:wght@300;400&family=Press+Start+2P&display=swap');
+      
+      body { margin: 0; padding: 0; background-color: #000; overflow: hidden; touch-action: none; }
+      
+      .font-cinzel { font-family: 'Cinzel', serif; }
+      
+      .font-lato { font-family: 'Lato', sans-serif; }
+      
+      .font-pixel { font-family: 'Press Start 2P', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
+      
+      /* Custom scanline effect */
+      
+      .scanlines {
+        background: linear-gradient(
+          to bottom,
+          rgba(255,255,255,0),
+          rgba(255,255,255,0) 50%,
+          rgba(0,0,0,0.1) 50%,
+          rgba(0,0,0,0.1)
+        );
+        background-size: 100% 4px;
+        position: fixed;
+        top: 0; left: 0; right: 0; bottom: 0;
+        pointer-events: none;
+        z-index: 50;
+      }
+      
+      /* Landscape enforcement */
+      
+      #orientation-lock {
+        display: none;
+        position: fixed;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: #000;
+        z-index: 9999;
+        color: white;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 20px;
+      }
+      
+      /* Show lock screen only on Portrait devices */
+      
+      @media screen and (orientation: portrait) {
+        #orientation-lock { display: flex; }
+        #root { display: none; }
+      }
+    </style>
+
+<link rel="stylesheet" href="/index.css">
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.30.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.555.0",
+    "phaser": "https://aistudiocdn.com/phaser@^3.90.0"
+  }
+}
+</script>
+  <script type="module" crossorigin src="./assets/index-C4X1WTOm.js"></script>
+</head>
+  <body>
+    <div id="orientation-lock">
+      <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+      <h2 style="font-family: 'Cinzel', serif; margin-top: 20px; font-size: 1.5rem;">Please Rotate Your Device</h2>
+      <p style="font-family: 'Lato', sans-serif; opacity: 0.7; margin-top: 10px;">This dream is best experienced in landscape.</p>
+    </div>
+    <div id="root"></div>
+</body>
+</html>
