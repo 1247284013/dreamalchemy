@@ -230,12 +230,53 @@
             color: var(--text-color);
             opacity: 0.4;
             margin-right: .6rem;
+            text-decoration: line-through;
         }
         .price-hardware span {
             font-size: 1.6rem;
             font-weight: 400;
             color: var(--text-color);
             opacity: 0.6;
+        }
+        /* ── Bundle Group ── */
+        .pricing-layout {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+            width: 100%;
+            max-width: 1100px;
+            align-items: start;
+        }
+        .pricing-bundle-group {
+            position: relative;
+            border: .2rem solid rgba(124,130,255,0.45);
+            border-radius: 2.4rem;
+            padding: 2.8rem 2rem 2rem;
+            background: rgba(110,117,253,0.04);
+            box-shadow: 0 0 40px rgba(110,117,253,0.07);
+        }
+        .bundle-group-label {
+            position: absolute;
+            top: -1.4rem;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--main-color);
+            color: var(--bg-color);
+            font-size: 1.2rem;
+            font-weight: 700;
+            padding: .4rem 1.8rem;
+            border-radius: 2rem;
+            white-space: nowrap;
+            letter-spacing: .05rem;
+        }
+        .pricing-bundle-inner {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+        @media (max-width: 960px) {
+            .pricing-layout { grid-template-columns: 1fr; }
+            .pricing-bundle-inner { grid-template-columns: 1fr; }
         }
         .pricing-card .special-offer {
             margin-top: 1.2rem;
@@ -437,9 +478,9 @@
             In the B2C segment, we employ a flexible subscription model designed to meet varying user needs, primarily consisting of a Free Basic Tier, a Value-Based Tier, and an integrated Hardware Bundle.
         </p>
 
-        <div class="pricing-grid">
+        <div class="pricing-layout">
 
-            <!-- Free Basic Tier -->
+            <!-- Free Basic Tier (standalone) -->
             <div class="pricing-card">
                 <span class="tier-label">For Individuals</span>
                 <h3>Free Basic Tier</h3>
@@ -461,45 +502,53 @@
                 </div>
             </div>
 
-            <!-- Value-Based Tier -->
-            <div class="pricing-card popular">
-                <span class="tier-label">For Individuals</span>
-                <h3>Value-Based Tier</h3>
-                <div class="price">£12.99<span>/month</span></div>
-                <div class="period">Billed monthly</div>
-                <p class="desc">Offers a comprehensive experience, unlocking unlimited "Dream-to-Game" conversions and advanced emotional analytics.</p>
-                <ul>
-                    <li><i class="bx bx-check"></i> Unlimited dream-to-game conversions</li>
-                    <li><i class="bx bx-check"></i> Deep analytics &amp; outcome reporting</li>
-                    <li><i class="bx bx-check"></i> Specialised content packs</li>
-                    <li><i class="bx bx-check"></i> Full AI-powered insights</li>
-                    <li><i class="bx bx-check"></i> Progress &amp; feedback tracking</li>
-                    <li><i class="bx bx-check"></i> Priority in-app support</li>
-                    <li><i class="bx bx-check"></i> Haptic-enabled immersive interaction</li>
-                </ul>
-                <div class="btn-box">
-                    <a href="contact.html" class="btn">Get Started</a>
-                </div>
-            </div>
+            <!-- Value-Based + Hardware Bundle grouped -->
+            <div class="pricing-bundle-group">
+                <span class="bundle-group-label">Subscription + Hardware</span>
+                <div class="pricing-bundle-inner">
 
-            <!-- Hardware Bundle -->
-            <div class="pricing-card">
-                <span class="tier-label">Physical Extension</span>
-                <h3>Hardware Bundle</h3>
-                <div class="price-hardware"><s>£75.97</s> £59.99<span> one-off</span></div>
-                <div class="period">Includes device + 2 months Value-Based free</div>
-                <p class="desc">An essential physical extension for premium subscribers, utilising haptic feedback technology to transform the "dream-to-game" pipeline into a deeply immersive experience.</p>
-                <ul>
-                    <li><i class="bx bx-check"></i> Includes all Value-Based features</li>
-                    <li><i class="bx bx-check"></i> Utilises physical haptic feedback device</li>
-                    <li><i class="bx bx-check"></i> Deeply immersive dream experience</li>
-                </ul>
-                <div class="special-offer">
-                    <strong>Special Offer:</strong>
-                    First 2 months of Value-Based Tier free for new subscribers
-                </div>
-                <div class="btn-box">
-                    <a href="contact.html" class="btn">Get Started</a>
+                    <!-- Value-Based Tier -->
+                    <div class="pricing-card popular">
+                        <span class="tier-label">For Individuals</span>
+                        <h3>Value-Based Tier</h3>
+                        <div class="price">£12.99<span>/month</span></div>
+                        <div class="period">Billed monthly</div>
+                        <p class="desc">Offers a comprehensive experience, unlocking unlimited "Dream-to-Game" conversions and advanced emotional analytics.</p>
+                        <ul>
+                            <li><i class="bx bx-check"></i> Unlimited dream-to-game conversions</li>
+                            <li><i class="bx bx-check"></i> Deep analytics &amp; outcome reporting</li>
+                            <li><i class="bx bx-check"></i> Specialised content packs</li>
+                            <li><i class="bx bx-check"></i> Full AI-powered insights</li>
+                            <li><i class="bx bx-check"></i> Progress &amp; feedback tracking</li>
+                            <li><i class="bx bx-check"></i> Priority in-app support</li>
+                            <li><i class="bx bx-check"></i> Haptic-enabled immersive interaction</li>
+                        </ul>
+                        <div class="btn-box">
+                            <a href="contact.html" class="btn">Get Started</a>
+                        </div>
+                    </div>
+
+                    <!-- Hardware Bundle -->
+                    <div class="pricing-card">
+                        <span class="tier-label">Physical Extension</span>
+                        <h3>Hardware Bundle</h3>
+                        <div class="price-hardware"><s>£75.97</s> £59.99<span> one-off</span></div>
+                        <div class="period">Includes device + 2 months Value-Based free</div>
+                        <p class="desc">An essential physical extension for premium subscribers, utilising haptic feedback technology to transform the "dream-to-game" pipeline into a deeply immersive experience.</p>
+                        <ul>
+                            <li><i class="bx bx-check"></i> Includes all Value-Based features</li>
+                            <li><i class="bx bx-check"></i> Utilises physical haptic feedback device</li>
+                            <li><i class="bx bx-check"></i> Deeply immersive dream experience</li>
+                        </ul>
+                        <div class="special-offer">
+                            <strong>Special Offer:</strong>
+                            First 2 months of Value-Based Tier free for new subscribers
+                        </div>
+                        <div class="btn-box">
+                            <a href="contact.html" class="btn">Get Started</a>
+                        </div>
+                    </div>
+
                 </div>
             </div>
 
