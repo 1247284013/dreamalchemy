@@ -67,18 +67,7 @@
             box-shadow: 0 8px 40px rgba(124,130,255,0.25);
         }
         .pricing-card.popular::before {
-            content: 'Most Popular';
-            position: absolute;
-            top: -1.5rem;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--main-color);
-            color: var(--bg-color);
-            font-size: 1.2rem;
-            font-weight: 600;
-            padding: .4rem 1.4rem;
-            border-radius: 2rem;
-            white-space: nowrap;
+            display: none;
         }
         .pricing-card:hover {
             transform: translateY(-8px);
@@ -240,18 +229,24 @@
         }
         /* ── Bundle Group ── */
         .pricing-layout {
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 3rem;
+            display: flex;
+            gap: 2.5rem;
             width: 100%;
             max-width: 1100px;
-            align-items: start;
+            align-items: flex-start;
+            padding-top: 1.8rem; /* room for the floating label above */
+        }
+        /* Free Basic: align its top with the inner bundle cards */
+        .pricing-layout > .pricing-card {
+            flex: 1;
+            margin-top: 1.5rem;
         }
         .pricing-bundle-group {
+            flex: 2;
             position: relative;
             border: .2rem solid rgba(124,130,255,0.45);
             border-radius: 2.4rem;
-            padding: 2.8rem 2rem 2rem;
+            padding: 1.5rem;
             background: rgba(110,117,253,0.04);
             box-shadow: 0 0 40px rgba(110,117,253,0.07);
         }
@@ -272,10 +267,12 @@
         .pricing-bundle-inner {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 2rem;
+            gap: 1.5rem;
         }
         @media (max-width: 960px) {
-            .pricing-layout { grid-template-columns: 1fr; }
+            .pricing-layout { flex-direction: column; padding-top: 0; }
+            .pricing-layout > .pricing-card { margin-top: 0; width: 100%; }
+            .pricing-bundle-group { width: 100%; }
             .pricing-bundle-inner { grid-template-columns: 1fr; }
         }
         .pricing-card .special-offer {
