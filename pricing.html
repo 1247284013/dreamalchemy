@@ -153,7 +153,7 @@
             padding-top: 1.5rem;
         }
         .pricing-intro {
-            max-width: 800px;
+            max-width: clamp(800px, 58vw, 1100px);
             text-align: center;
             font-size: 1.6rem;
             color: var(--text-color);
@@ -162,7 +162,7 @@
             margin-bottom: 5rem;
         }
         .pricing-grid {
-            max-width: 1100px;
+            max-width: clamp(1100px, 80vw, 1600px);
         }
         .pricing-card .tier-label {
             display: inline-block;
@@ -242,7 +242,7 @@
             display: flex;
             gap: 2.5rem;
             width: 100%;
-            max-width: 1100px;
+            max-width: clamp(1100px, 80vw, 1600px);
             align-items: stretch;
             padding-top: 1.8rem;
         }
@@ -315,7 +315,7 @@
         }
         .pricing-desc-table {
             width: 100%;
-            max-width: 1100px;
+            max-width: clamp(1100px, 80vw, 1600px);
             margin-top: 5rem;
             border-top: .1rem solid rgba(255,255,255,0.1);
         }
@@ -412,7 +412,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(28rem, 1fr));
             gap: 2.4rem;
-            max-width: 1100px;
+            max-width: clamp(1100px, 80vw, 1600px);
             margin: 0 auto 6rem;
         }
         .b2b-card {
@@ -451,7 +451,7 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 3rem;
-            max-width: 1100px;
+            max-width: clamp(1100px, 80vw, 1600px);
             margin: 0 auto 5rem;
             align-items: stretch;
         }

@@ -70,7 +70,7 @@
             grid-template-columns: repeat(auto-fit, minmax(32rem, 1fr));
             gap: 2.4rem;
             width: 100%;
-            max-width: 1100px;
+            max-width: clamp(1100px, 80vw, 1600px);
         }
         .feature-card {
             display: flex;
@@ -108,7 +108,7 @@
         /* ── Tech Section ── */
         .tech-section {
             width: 100%;
-            max-width: 1100px;
+            max-width: clamp(1100px, 80vw, 1600px);
             margin-top: 8rem;
             padding-top: 6rem;
             border-top: .1rem solid rgba(124, 130, 255, 0.18);
@@ -341,7 +341,7 @@
             color: var(--text-color);
             opacity: 0.6;
             margin-bottom: 2.5rem;
-            max-width: 680px;
+            max-width: clamp(680px, 50vw, 900px);
             margin-left: auto;
             margin-right: auto;
         }
@@ -431,7 +431,7 @@
             opacity: 0.6;
             text-align: center;
             margin-bottom: 5rem;
-            max-width: 680px;
+            max-width: clamp(680px, 50vw, 900px);
             margin-left: auto;
             margin-right: auto;
         }
@@ -439,7 +439,7 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 3rem;
-            max-width: 1200px;
+            max-width: clamp(1200px, 82vw, 1800px);
             margin: 0 auto;
         }
         /* Card */

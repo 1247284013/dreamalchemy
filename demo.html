@@ -39,7 +39,7 @@
         }
         .video-wrapper {
             width: 100%;
-            max-width: 900px;
+            max-width: clamp(900px, 65vw, 1300px);
             border-radius: 1.5rem;
             overflow: hidden;
             border: .2rem solid rgba(124, 130, 255, 0.3);
@@ -51,7 +51,7 @@
         }
         .demo-desc {
             margin-top: 3rem;
-            max-width: 700px;
+            max-width: clamp(700px, 52vw, 1000px);
             text-align: center;
             font-size: 1.6rem;
             color: var(--text-color);
@@ -78,7 +78,7 @@
         .game-section .sub-heading { font-size: 1.6rem; color: var(--text-color); opacity: 0.7; text-align: center; margin-bottom: 2rem; max-width: 700px; }
         .game-frame-wrap {
             width: 100%;
-            max-width: 980px;
+            max-width: clamp(980px, 70vw, 1400px);
             aspect-ratio: 16 / 9;
             border-radius: 1.8rem;
             overflow: hidden;
