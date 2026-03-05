@@ -1795,14 +1795,15 @@ const GameplayScreen = ({ config, onGameOver, onScoreUpdate, transformationRecor
                                     disabled={!transformInput.trim() || isTransforming}
                                     className={`group flex items-center justify-center flex-1 font-bold hover:scale-[1.02] disabled:scale-100 transition-all shadow-lg disabled:cursor-not-allowed ${
                                         transformInput.trim() && !isTransforming
-                                            ? 'bg-blue-600 hover:bg-blue-700 text-white shadow-blue-900/50' 
+                                            ? 'text-white shadow-blue-900/50' 
                                             : 'bg-gray-700 opacity-50 text-gray-400'
                                     }`}
                                     style={{
                                         padding: 'clamp(10px, 1.5vh, 18px)',
                                         borderRadius: 'clamp(8px, 1vh, 12px)',
                                         fontSize: 'clamp(12px, 1.5vh, 18px)',
-                                        gap: 'clamp(6px, 0.8vw, 10px)'
+                                        gap: 'clamp(6px, 0.8vw, 10px)',
+                                        ...(transformInput.trim() && !isTransforming ? { backgroundColor: '#214890' } : {})
                                     }}
                                 >
                                     {isTransforming ? (
@@ -2022,7 +2023,8 @@ const ResultScreen = ({
                         </button>
                         <button 
                             onClick={onRetry}
-                            className="flex-[2] flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-500 text-white text-sm font-bold py-3 rounded-lg shadow-lg shadow-blue-900/40 transition-all hover:scale-[1.01]"
+                            className="flex-[2] flex items-center justify-center gap-2 text-white text-sm font-bold py-3 rounded-lg shadow-lg transition-all hover:scale-[1.01]"
+                            style={{ backgroundColor: '#214890' }}
                         >
                             <RefreshCw size={16} /> 
                             <span>Dream Again</span>
