@@ -1847,6 +1847,12 @@ const ResultScreen = ({
         D: "Lonely Room"
     };
 
+    const isWorkspace = gameSummary?.sceneMode === 'workspace';
+    const archetypeName = isWorkspace ? 'Workplace' : (analysis?.scenarioId ? scenarioNames[analysis.scenarioId] : 'Unknown');
+    const archetypeKeywords = isWorkspace
+      ? ['work', 'routine', 'pressure', 'transition', 'control']
+      : (analysis?.keywords ?? []);
+
     // Prefer the newest backgrounds: if the run was workspace, use workspace outdoor.
     // Otherwise, fall back to the legacy home stage4 (keeps page stable even if other folders are missing).
     const resultBgUrl =
@@ -1909,12 +1915,12 @@ const ResultScreen = ({
                                 <div className="h-[1px] bg-white/10 flex-1"></div>
                             </div>
                             <h3 className="font-bold text-white leading-tight mb-2" style={{ fontSize: 'clamp(18px, 3vh, 24px)' }}>
-                                {analysis?.scenarioId ? scenarioNames[analysis.scenarioId] : 'Unknown'}
+                                {archetypeName}
                             </h3>
                             
                             {/* Keywords */}
                             <div className="flex flex-wrap gap-1.5">
-                                {analysis?.keywords.map(k => (
+                                {archetypeKeywords.map(k => (
                                     <span 
                                         key={k} 
                                         className="bg-amber-500/10 text-amber-200 rounded-md border border-amber-500/20"

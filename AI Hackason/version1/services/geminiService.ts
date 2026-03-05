@@ -402,6 +402,7 @@ Transformation ${index + 1}:
   const game = context?.gameSummary;
 
   const scenarioName = (() => {
+    if (game?.sceneMode === 'workspace') return 'Workplace';
     switch (scenarioId) {
       case ScenarioId.A: return 'Abandoned Classroom';
       case ScenarioId.B: return 'Endless Forest';
@@ -439,7 +440,7 @@ ORIGINAL DREAM:
 "${originalDream}"
 
 ARCHETYPE (from dream analysis):
-${scenarioId ? `${scenarioId}: ${scenarioName}` : 'Unknown'}
+${game?.sceneMode === 'workspace' ? `Workplace: office environment, routine, pressure, deadlines, transitions` : (scenarioId ? `${scenarioId}: ${scenarioName}` : 'Unknown')}
 
 SELECTED FORM (what they embodied in the game):
 ${characterLine}
