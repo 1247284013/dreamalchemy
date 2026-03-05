@@ -34,12 +34,14 @@
             height: auto;
             display: block;
             opacity: 0.8;
+            mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
         }
         .page-section-bg::after {
             content: '';
             position: absolute;
             left: 0; right: 0; bottom: 0;
-            height: 18%;
+            height: 20%;
             background: linear-gradient(to bottom, transparent, rgba(12,3,32,1));
         }
         .page-section > *:not(.page-section-bg) {
@@ -316,7 +318,7 @@
         .serve-section {
             min-height: 80vh;
             padding: 22rem 9% 4rem;
-            background: linear-gradient(to bottom, transparent 0%, rgba(20,10,50,0.92) 15%, rgba(20,10,50,0.92) 85%, transparent 100%);
+            background: linear-gradient(to bottom, transparent 0%, rgba(8,3,22,0.97) 15%, rgba(8,3,22,0.97) 85%, transparent 100%);
             text-align: center;
         }
         .serve-section .section-label {
@@ -404,6 +406,7 @@
         .services-section {
             min-height: auto;
             padding: 8rem 9% 8rem;
+            background: linear-gradient(to bottom, transparent 0%, rgba(20,10,50,0.92) 15%, rgba(20,10,50,0.92) 85%, transparent 100%);
         }
         .services-section .section-label {
             font-size: 1.2rem;
