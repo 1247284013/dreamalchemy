@@ -8,9 +8,17 @@
   var ROOT_MARGIN = '80px';
 
   var SELECTORS = [
-    '.page-section .heading',
-    '.page-section .sub-heading',
-    '.page-section .pricing-intro'
+    'section .heading',
+    'section .sub-heading',
+    'section .pricing-intro',
+    'section .section-title',
+    'section .section-subtitle',
+    'section .faq-title',
+    'section .team-title',
+    'section .dash-title',
+    'section .tech-title',
+    'section .tech-subtitle',
+    'section .b2b-section-label'
   ];
 
   function extractSegments(el) {

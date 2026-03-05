@@ -67,7 +67,7 @@
         /* Game Demo Section */
         .game-section {
             min-height: auto;
-            padding: 8rem 9% 8rem;
+            padding: 16rem 9% 4rem;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -75,10 +75,10 @@
         }
         .game-section .heading { font-size: 4rem; font-weight: 700; color: #fff; text-align: center; margin-bottom: 1rem; }
         .game-section .heading span { color: var(--main-color); }
-        .game-section .sub-heading { font-size: 1.6rem; color: var(--text-color); opacity: 0.7; text-align: center; margin-bottom: 3.5rem; max-width: 700px; }
+        .game-section .sub-heading { font-size: 1.6rem; color: var(--text-color); opacity: 0.7; text-align: center; margin-bottom: 2rem; max-width: 700px; }
         .game-frame-wrap {
             width: 100%;
-            max-width: 1100px;
+            max-width: 980px;
             aspect-ratio: 16 / 9;
             border-radius: 1.8rem;
             overflow: hidden;
@@ -99,6 +99,157 @@
             color: var(--text-color);
             opacity: 0.5;
             text-align: center;
+        }
+        .download-btns {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.6rem;
+            justify-content: center;
+            margin-top: 1rem;
+            margin-bottom: 4rem;
+        }
+        .dl-btn {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.1rem 2.2rem;
+            border-radius: 1rem;
+            border: .12rem solid rgba(255,255,255,0.18);
+            background: rgba(255,255,255,0.07);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            color: var(--text-color);
+            text-decoration: none;
+            transition: border-color .3s, background .3s, transform .3s, box-shadow .3s;
+            cursor: pointer;
+        }
+        .dl-btn:hover {
+            border-color: rgba(124,130,255,0.6);
+            background: rgba(124,130,255,0.12);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 24px rgba(124,130,255,0.18);
+        }
+        .dl-btn i {
+            font-size: 2.2rem;
+            flex-shrink: 0;
+        }
+        .dl-btn.apple i  { color: #f0f0f0; }
+        .dl-btn.android i { color: #a4c639; }
+        .dl-btn.windows i { color: #00adef; }
+        .dl-btn .dl-text { text-align: left; line-height: 1.25; }
+        .dl-btn .dl-sub  { font-size: 1.1rem; opacity: 0.55; display: block; }
+        .dl-btn .dl-name { font-size: 1.55rem; font-weight: 700; display: block; }
+
+        /* ── Testimonials Loop ── */
+        .testimonials-section {
+            height: 80vh;
+            padding: 4rem 0;
+            background: linear-gradient(to bottom, transparent 0%, rgba(12,5,35,0.96) 12%, rgba(12,5,35,0.96) 88%, transparent 100%);
+            overflow: hidden;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .testimonials-section .section-label {
+            font-size: 1.2rem;
+            font-weight: 700;
+            letter-spacing: .18rem;
+            text-transform: uppercase;
+            color: var(--main-color);
+            margin-bottom: .8rem;
+        }
+        .testimonials-section .section-title {
+            font-size: 3.4rem;
+            font-weight: 700;
+            color: var(--text-color);
+            margin-bottom: .8rem;
+        }
+        .testimonials-section .section-title span { color: var(--main-color); }
+        .testimonials-section .section-subtitle {
+            font-size: 1.5rem;
+            color: var(--text-color);
+            opacity: 0.6;
+            margin-bottom: 4rem;
+        }
+        .testimonials-track-wrap {
+            overflow: hidden;
+            width: 100%;
+            mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+        }
+        .testimonials-track {
+            display: flex;
+            width: max-content;
+            gap: 2.4rem;
+            padding: 1rem 0 1.5rem;
+            animation: tloop 40s linear infinite;
+        }
+        .testimonials-track:hover { animation-play-state: paused; }
+        @keyframes tloop {
+            from { transform: translateX(0); }
+            to   { transform: translateX(-50%); }
+        }
+        .tcard {
+            flex-shrink: 0;
+            width: 32rem;
+            background: rgba(255,255,255,0.06);
+            border: .12rem solid rgba(124,130,255,0.2);
+            border-radius: 1.8rem;
+            padding: 2.6rem 2.4rem 2.4rem;
+            text-align: left;
+            transition: border-color .3s, box-shadow .3s, transform .3s;
+            cursor: default;
+        }
+        .tcard:hover {
+            border-color: rgba(124,130,255,0.55);
+            box-shadow: 0 8px 32px rgba(124,130,255,0.14);
+            transform: translateY(-4px);
+        }
+        .tcard-stars {
+            display: flex;
+            gap: .3rem;
+            margin-bottom: 1.4rem;
+        }
+        .tcard-stars i {
+            font-size: 1.7rem;
+            color: #f5c518;
+        }
+        .tcard-stars i.half { opacity: 0.45; }
+        .tcard-quote {
+            font-size: 1.45rem;
+            color: var(--text-color);
+            opacity: 0.82;
+            line-height: 1.75;
+            margin-bottom: 2rem;
+        }
+        .tcard-author {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+        }
+        .tcard-avatar {
+            width: 4rem;
+            height: 4rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #fff;
+            flex-shrink: 0;
+        }
+        .tcard-author-info .tcard-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-color);
+        }
+        .tcard-author-info .tcard-role {
+            font-size: 1.25rem;
+            color: var(--text-color);
+            opacity: 0.5;
+            margin-top: .2rem;
         }
     </style>
     <script src="https://unpkg.com/scrollreveal"></script>
@@ -175,15 +326,51 @@
         <p class="demo-desc">
             This demo showcases the core features of DreamAlchemy — from dream journaling and AI-powered analysis to progress tracking and creative expression tools.
         </p>
-        <div class="btn-box">
-            <a href="pricing.html" class="btn">Get Started</a>
-        </div>
     </section>
 
     <!-- DreamBreaker Game Demo -->
     <section class="game-section" id="demo-game">
         <h2 class="heading">Try <span>DreamBreaker</span></h2>
         <p class="sub-heading">We've set up a playable trial using one of our Workspace scenes. Describe your dream, watch it come to life — and experience firsthand how DreamAlchemy turns your inner world into an interactive game.</p>
+
+        <div class="download-btns">
+            <span class="dl-btn apple">
+                <i class="bx bxl-apple"></i>
+                <div class="dl-text">
+                    <span class="dl-sub">Download on the</span>
+                    <span class="dl-name">App Store</span>
+                </div>
+            </span>
+            <span class="dl-btn apple">
+                <i class="bx bxl-apple"></i>
+                <div class="dl-text">
+                    <span class="dl-sub">Download for</span>
+                    <span class="dl-name">macOS</span>
+                </div>
+            </span>
+            <span class="dl-btn apple">
+                <i class="bx bxl-apple"></i>
+                <div class="dl-text">
+                    <span class="dl-sub">Download for</span>
+                    <span class="dl-name">iPad</span>
+                </div>
+            </span>
+            <span class="dl-btn android">
+                <i class="bx bxl-android"></i>
+                <div class="dl-text">
+                    <span class="dl-sub">Get it on</span>
+                    <span class="dl-name">Google Play</span>
+                </div>
+            </span>
+            <span class="dl-btn windows">
+                <i class="bx bxl-windows"></i>
+                <div class="dl-text">
+                    <span class="dl-sub">Download for</span>
+                    <span class="dl-name">Windows</span>
+                </div>
+            </span>
+        </div>
+
         <div class="game-frame-wrap">
             <iframe
                 src="game/index.html"
@@ -193,6 +380,203 @@
             </iframe>
         </div>
         <p class="game-note">* Best experienced in landscape mode · Requires microphone / text input to generate your dream world</p>
+    </section>
+
+    <!-- Player Testimonials -->
+    <section class="testimonials-section">
+        <p class="section-label">Player Reviews</p>
+        <h2 class="section-title">What Players <span>Say</span></h2>
+        <p class="section-subtitle">Real feedback from dreamers who've played DreamBreaker</p>
+
+        <div class="testimonials-track-wrap">
+            <div class="testimonials-track">
+                <!-- Card set 1 -->
+                <div class="tcard">
+                    <div class="tcard-stars">
+                        <i class="bx bxs-star"></i><i class="bx bxs-star"></i><i class="bx bxs-star"></i><i class="bx bxs-star"></i><i class="bx bxs-star"></i>
+                    </div>
+                    <p class="tcard-quote">"I typed in a dream about flying over neon cities and within seconds I was actually playing inside it. Nothing has ever felt this surreal — in the best way."</p>
+                    <div class="tcard-author">
+                        <div class="tcard-avatar" style="background: linear-gradient(135deg,#7c82ff,#5b21b6);">A</div>
+                        <div class="tcard-author-info">
+                            <div class="tcard-name">Aiden R.</div>
+                            <div class="tcard-role">Game Designer · London</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tcard">
+                    <div class="tcard-stars">
+                        <i class="bx bxs-star"></i><i class="bx bxs-star"></i><i class="bx bxs-star"></i><i class="bx bxs-star"></i><i class="bx bxs-star"></i>
+                    </div>
+                    <p class="tcard-quote">"The physical toy interaction blew my mind. I squeezed it and my dream world literally shifted. It's the most immersive thing I've ever experienced."</p>
+                    <div class="tcard-author">
+                        <div class="tcard-avatar" style="background: linear-gradient(135deg,#06b6d4,#0e7490);">S</div>
+                        <div class="tcard-author-info">
+                            <div class="tcard-name">Sofia M.</div>
+                            <div class="tcard-role">Psychology Student · Barcelona</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tcard">
+                    <div class="tcard-stars">
+                        <i class="bx bxs-star"></i><i class="bx bxs-star"></i><i class="bx bxs-star"></i><i class="bx bxs-star"></i><i class="bx bx-star half"></i>
+                    </div>
+                    <p class="tcard-quote">"As someone who struggles with sleep anxiety, turning my nightmares into a playable game gave me a completely new perspective. Genuinely therapeutic."</p>
+                    <div class="tcard-author">
+                        <div class="tcard-avatar" style="background: linear-gradient(135deg,#f59e0b,#b45309);">J</div>
+                        <div class="tcard-author-info">
+                            <div class="tcard-name">James T.</div>
+                            <div class="tcard-role">Wellness Coach · New York</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tcard">
+                    <div class="tcard-stars">
+                        <i class="bx bxs-star"></i><i class="bx bxs-star"></i><i class="bx bxs-star"></i><i class="bx bxs-star"></i><i class="bx bxs-star"></i>
+                    </div>
+                    <p class="tcard-quote">"I spoke my dream aloud and the NLP picked up every weird detail — the talking cat, the upside-down library. The scene it built was incredibly accurate."</p>
+                    <div class="tcard-author">
+                        <div class="tcard-avatar" style="background: linear-gradient(135deg,#ec4899,#9d174d);">Y</div>
+                        <div class="tcard-author-info">
+                            <div class="tcard-name">Yuki H.</div>
+                            <div class="tcard-role">UX Researcher · Tokyo</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tcard">
+                    <div class="tcard-stars">
+                        <i class="bx bxs-star"></i><i class="bx bxs-star"></i><i class="bx bxs-star"></i><i class="bx bxs-star"></i><i class="bx bxs-star"></i>
+                    </div>
+                    <p class="tcard-quote">"Our team used it during a corporate wellness day. Half the office was still talking about their dream worlds a week later. 10/10 team-building activity."</p>
+                    <div class="tcard-author">
+                        <div class="tcard-avatar" style="background: linear-gradient(135deg,#10b981,#065f46);">L</div>
+                        <div class="tcard-author-info">
+                            <div class="tcard-name">Laura K.</div>
+                            <div class="tcard-role">HR Director · Sydney</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tcard">
+                    <div class="tcard-stars">
+                        <i class="bx bxs-star"></i><i class="bx bxs-star"></i><i class="bx bxs-star"></i><i class="bx bxs-star"></i><i class="bx bx-star half"></i>
+                    </div>
+                    <p class="tcard-quote">"The art style that gets generated perfectly matched the mood of my dream — dark, moody, cinematic. It felt like stepping into a Studio Ghibli nightmare."</p>
+                    <div class="tcard-author">
+                        <div class="tcard-avatar" style="background: linear-gradient(135deg,#8b5cf6,#4c1d95);">M</div>
+                        <div class="tcard-author-info">
+                            <div class="tcard-name">Marco V.</div>
+                            <div class="tcard-role">Illustrator · Milan</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tcard">
+                    <div class="tcard-stars">
+                        <i class="bx bxs-star"></i><i class="bx bxs-star"></i><i class="bx bxs-star"></i><i class="bx bxs-star"></i><i class="bx bxs-star"></i>
+                    </div>
+                    <p class="tcard-quote">"I've tried dozens of mindfulness apps. DreamBreaker is the first one that actually made me excited to go to sleep so I'd have a new dream to play tomorrow."</p>
+                    <div class="tcard-author">
+                        <div class="tcard-avatar" style="background: linear-gradient(135deg,#f97316,#9a3412);">P</div>
+                        <div class="tcard-author-info">
+                            <div class="tcard-name">Priya N.</div>
+                            <div class="tcard-role">Therapist · Singapore</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Duplicate set for seamless loop -->
+                <div class="tcard">
+                    <div class="tcard-stars">
+                        <i class="bx bxs-star"></i><i class="bx bxs-star"></i><i class="bx bxs-star"></i><i class="bx bxs-star"></i><i class="bx bxs-star"></i>
+                    </div>
+                    <p class="tcard-quote">"I typed in a dream about flying over neon cities and within seconds I was actually playing inside it. Nothing has ever felt this surreal — in the best way."</p>
+                    <div class="tcard-author">
+                        <div class="tcard-avatar" style="background: linear-gradient(135deg,#7c82ff,#5b21b6);">A</div>
+                        <div class="tcard-author-info">
+                            <div class="tcard-name">Aiden R.</div>
+                            <div class="tcard-role">Game Designer · London</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tcard">
+                    <div class="tcard-stars">
+                        <i class="bx bxs-star"></i><i class="bx bxs-star"></i><i class="bx bxs-star"></i><i class="bx bxs-star"></i><i class="bx bxs-star"></i>
+                    </div>
+                    <p class="tcard-quote">"The physical toy interaction blew my mind. I squeezed it and my dream world literally shifted. It's the most immersive thing I've ever experienced."</p>
+                    <div class="tcard-author">
+                        <div class="tcard-avatar" style="background: linear-gradient(135deg,#06b6d4,#0e7490);">S</div>
+                        <div class="tcard-author-info">
+                            <div class="tcard-name">Sofia M.</div>
+                            <div class="tcard-role">Psychology Student · Barcelona</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tcard">
+                    <div class="tcard-stars">
+                        <i class="bx bxs-star"></i><i class="bx bxs-star"></i><i class="bx bxs-star"></i><i class="bx bxs-star"></i><i class="bx bx-star half"></i>
+                    </div>
+                    <p class="tcard-quote">"As someone who struggles with sleep anxiety, turning my nightmares into a playable game gave me a completely new perspective. Genuinely therapeutic."</p>
+                    <div class="tcard-author">
+                        <div class="tcard-avatar" style="background: linear-gradient(135deg,#f59e0b,#b45309);">J</div>
+                        <div class="tcard-author-info">
+                            <div class="tcard-name">James T.</div>
+                            <div class="tcard-role">Wellness Coach · New York</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tcard">
+                    <div class="tcard-stars">
+                        <i class="bx bxs-star"></i><i class="bx bxs-star"></i><i class="bx bxs-star"></i><i class="bx bxs-star"></i><i class="bx bxs-star"></i>
+                    </div>
+                    <p class="tcard-quote">"I spoke my dream aloud and the NLP picked up every weird detail — the talking cat, the upside-down library. The scene it built was incredibly accurate."</p>
+                    <div class="tcard-author">
+                        <div class="tcard-avatar" style="background: linear-gradient(135deg,#ec4899,#9d174d);">Y</div>
+                        <div class="tcard-author-info">
+                            <div class="tcard-name">Yuki H.</div>
+                            <div class="tcard-role">UX Researcher · Tokyo</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tcard">
+                    <div class="tcard-stars">
+                        <i class="bx bxs-star"></i><i class="bx bxs-star"></i><i class="bx bxs-star"></i><i class="bx bxs-star"></i><i class="bx bxs-star"></i>
+                    </div>
+                    <p class="tcard-quote">"Our team used it during a corporate wellness day. Half the office was still talking about their dream worlds a week later. 10/10 team-building activity."</p>
+                    <div class="tcard-author">
+                        <div class="tcard-avatar" style="background: linear-gradient(135deg,#10b981,#065f46);">L</div>
+                        <div class="tcard-author-info">
+                            <div class="tcard-name">Laura K.</div>
+                            <div class="tcard-role">HR Director · Sydney</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tcard">
+                    <div class="tcard-stars">
+                        <i class="bx bxs-star"></i><i class="bx bxs-star"></i><i class="bx bxs-star"></i><i class="bx bxs-star"></i><i class="bx bx-star half"></i>
+                    </div>
+                    <p class="tcard-quote">"The art style that gets generated perfectly matched the mood of my dream — dark, moody, cinematic. It felt like stepping into a Studio Ghibli nightmare."</p>
+                    <div class="tcard-author">
+                        <div class="tcard-avatar" style="background: linear-gradient(135deg,#8b5cf6,#4c1d95);">M</div>
+                        <div class="tcard-author-info">
+                            <div class="tcard-name">Marco V.</div>
+                            <div class="tcard-role">Illustrator · Milan</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tcard">
+                    <div class="tcard-stars">
+                        <i class="bx bxs-star"></i><i class="bx bxs-star"></i><i class="bx bxs-star"></i><i class="bx bxs-star"></i><i class="bx bxs-star"></i>
+                    </div>
+                    <p class="tcard-quote">"I've tried dozens of mindfulness apps. DreamBreaker is the first one that actually made me excited to go to sleep so I'd have a new dream to play tomorrow."</p>
+                    <div class="tcard-author">
+                        <div class="tcard-avatar" style="background: linear-gradient(135deg,#f97316,#9a3412);">P</div>
+                        <div class="tcard-author-info">
+                            <div class="tcard-name">Priya N.</div>
+                            <div class="tcard-role">Therapist · Singapore</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
     <footer class="footer">

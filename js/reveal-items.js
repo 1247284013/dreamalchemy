@@ -21,7 +21,10 @@
     'tech-cards': 'tech-card',
     'tech-section': 'section-label,tech-title,tech-subtitle,metric-bar,tech-cards,logo-loop-section',
     'disclaimer-section': 'section-label,disclaimer-title,disclaimer-subheading,disclaimer-box',
-    'narrative-inner': 'hook,p,.cta-line'
+    'narrative-inner': 'hook,p,.cta-line',
+    'services-split': 'services-col',
+    'team-grid': 'team-card',
+    'faq-body': 'faq-category'
   };
   var CONTAINER_DIRECT_ONLY = { 'tech-section': 1, 'disclaimer-section': 1 };
 
@@ -47,14 +50,31 @@
     return null;
   }
 
+  var SKIP_CLASSES = [
+    'heading', 'sub-heading', 'pricing-intro',
+    'section-title', 'section-subtitle', 'section-label',
+    'faq-title', 'team-title', 'dash-title',
+    'tech-title', 'tech-subtitle',
+    'b2b-section-label', 'page-section-bg'
+  ];
+
+  function shouldSkip(el) {
+    return SKIP_CLASSES.some(function (cls) { return el.classList.contains(cls); });
+  }
+
   function collectItems(root) {
     var items = [];
-    var sections = root.querySelectorAll('section.page-section, section.narrative-section, section.steps-section');
+    var sections = root.querySelectorAll(
+      'section.page-section, section.narrative-section, section.steps-section, ' +
+      'section.game-section, section.testimonials-section, section.serve-section, ' +
+      'section.services-section, section.faq-section, section.team-section, ' +
+      'section.b2b-section, section.live-dashboard-section'
+    );
     sections.forEach(function (sec) {
       var direct = sec.children;
       for (var i = 0; i < direct.length; i++) {
         var el = direct[i];
-        if (el.classList.contains('heading') || el.classList.contains('sub-heading') || el.classList.contains('pricing-intro')) continue;
+        if (shouldSkip(el)) continue;
         var children = expandContainer(el);
         if (children) {
           children.forEach(function (c) {
