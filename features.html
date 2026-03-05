@@ -67,10 +67,16 @@
         }
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(32rem, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 2.4rem;
             width: 100%;
             max-width: clamp(1100px, 80vw, 1600px);
+        }
+        @media (max-width: 900px) {
+            .features-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 600px) {
+            .features-grid { grid-template-columns: 1fr; }
         }
         .feature-card {
             display: flex;
