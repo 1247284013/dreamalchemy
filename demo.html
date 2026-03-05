@@ -39,7 +39,7 @@
         }
         .video-wrapper {
             width: 100%;
-            max-width: clamp(900px, 65vw, 1300px);
+            max-width: min(65vw, 1300px);
             border-radius: 1.5rem;
             overflow: hidden;
             border: .2rem solid rgba(124, 130, 255, 0.3);
@@ -78,7 +78,7 @@
         .game-section .sub-heading { font-size: 1.6rem; color: var(--text-color); opacity: 0.7; text-align: center; margin-bottom: 2rem; max-width: 700px; }
         .game-frame-wrap {
             width: 100%;
-            max-width: clamp(980px, 70vw, 1400px);
+            max-width: min(70vw, 1400px);
             aspect-ratio: 16 / 9;
             border-radius: 1.8rem;
             overflow: hidden;
@@ -250,6 +250,79 @@
             color: var(--text-color);
             opacity: 0.5;
             margin-top: .2rem;
+        }
+
+        /* ── Responsive: Tablet / Mobile ── */
+        @media (max-width: 1048px) {
+            .page-section {
+                min-height: auto;
+                padding: 10rem 5% 3rem;
+            }
+            .game-section {
+                padding: 4rem 5% 3rem;
+            }
+            .video-wrapper {
+                max-width: 100%;
+            }
+            .demo-desc {
+                max-width: 100%;
+            }
+            /* Game iframe: full width, maintain 16:9 */
+            .game-frame-wrap {
+                max-width: 100%;
+                width: 100%;
+                border-radius: 1rem;
+            }
+            /* Download buttons: stay in one row, shrink to fit */
+            .download-btns {
+                flex-wrap: nowrap;
+                gap: 0.8rem;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                padding-bottom: 0.5rem;
+                justify-content: flex-start;
+                /* hide scrollbar visually */
+                scrollbar-width: none;
+            }
+            .download-btns::-webkit-scrollbar { display: none; }
+            .dl-btn {
+                flex-shrink: 0;
+                padding: 0.9rem 1.4rem;
+                gap: 0.7rem;
+                border-radius: 0.8rem;
+            }
+            .dl-btn i { font-size: 1.8rem; }
+            .dl-btn .dl-sub  { font-size: 0.95rem; }
+            .dl-btn .dl-name { font-size: 1.25rem; }
+        }
+
+        @media (max-width: 520px) {
+            .page-section {
+                padding: 9rem 4% 2rem;
+            }
+            .game-section {
+                padding: 3rem 4% 2rem;
+            }
+            .page-section .heading,
+            .game-section .heading {
+                font-size: 2.8rem;
+            }
+            .page-section .sub-heading,
+            .game-section .sub-heading {
+                font-size: 1.4rem;
+                margin-bottom: 1.5rem;
+            }
+            .dl-btn {
+                padding: 0.8rem 1rem;
+                gap: 0.5rem;
+            }
+            .dl-btn i { font-size: 1.6rem; }
+            .dl-btn .dl-sub  { font-size: 0.85rem; }
+            .dl-btn .dl-name { font-size: 1.1rem; }
+            .testimonials-section {
+                height: auto;
+                padding: 3rem 0;
+            }
         }
     </style>
     <script src="https://unpkg.com/scrollreveal"></script>
