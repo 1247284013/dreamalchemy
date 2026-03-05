@@ -313,60 +313,23 @@ Just the plain ID like: chair-good
   }
 };
 
-// Fallback keyword matching function
+// Export name lookup for display in report
+export const getGoodItemName = (id: string): string => {
+  const item = AVAILABLE_ITEMS.find(i => i.id === id);
+  return item ? item.name : id;
+};
+
+// Fallback keyword matching — only returns IDs that exist in AVAILABLE_ITEMS
 const keywordFallback = (userInput: string): string => {
-  console.log('🔑 ==========================================');
-  console.log('🔑 USING KEYWORD FALLBACK (AI not available)');
-  console.log('🔑 Input:', userInput);
-  console.log('🔑 ==========================================');
   const input = userInput.toLowerCase();
-  
-  // Priority 1: Sleep/Rest -> Bed
-  if (input.includes('sleep') || input.includes('bed') || input.includes('night') || input.includes('dream') || 
-      input.includes('rest') || input.includes('tired') || input.includes('nap')) {
-    return 'comfortable_big_bed';
+  if (
+    input.includes('read') || input.includes('book') || input.includes('magazine') ||
+    input.includes('story') || input.includes('article') || input.includes('calm') || input.includes('quiet')
+  ) {
+    return 'good_magezine';
   }
-  
-  // Priority 2: Comfort/Hug -> Teddy
-  if (input.includes('teddy') || input.includes('bear') || input.includes('cuddle') || input.includes('hug') || 
-      input.includes('comfort') || input.includes('warm') || input.includes('love') || input.includes('safe')) {
-    return 'teddytoy';
-  }
-  
-  // Priority 3: Play/Sport -> Football
-  if (input.includes('play') || input.includes('sport') || input.includes('football') || input.includes('soccer') || 
-      input.includes('ball') || input.includes('fun') || input.includes('energy') || input.includes('game')) {
-    return 'football';
-  }
-  
-  // Priority 4: Achievement/Success -> Trophy or Grades
-  if (input.includes('win') || input.includes('prize') || input.includes('trophy') || input.includes('champion') || 
-      input.includes('gold') || input.includes('victory')) {
-    return 'trophy';
-  }
-  if (input.includes('grade') || input.includes('school') || input.includes('study') || input.includes('exam') || 
-      input.includes('test') || input.includes('score') || input.includes('pass') || input.includes('smart')) {
-    // Check specific study context
-    if (input.includes('desk') || input.includes('table')) return 'study desk-good';
-    return 'good_grades';
-  }
-  
-  // Priority 5: Furniture
-  if (input.includes('chair') || input.includes('sit') || input.includes('seat')) {
-    return 'chair-good';
-  }
-  if (input.includes('desk') || input.includes('work') || input.includes('office') || input.includes('write')) {
-    return 'study desk-good';
-  }
-  if (input.includes('table') || input.includes('dining') || input.includes('eat') || input.includes('food')) {
-    return 'cosy_clean_table';
-  }
-  if (input.includes('toy') || input.includes('cabinet') || input.includes('shelf') || input.includes('box')) {
-    return 'toy_cabinet';
-  }
-  
-  console.log('⚠️ No match, using default: comfortable_big_bed (most restful item)');
-  return 'comfortable_big_bed'; // Final fallback
+  // Default to game (fun, relax, play)
+  return 'good_game';
 };
 
 // Deep psychological analysis based on dream + transformations

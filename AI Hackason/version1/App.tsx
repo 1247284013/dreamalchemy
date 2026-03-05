@@ -1541,16 +1541,17 @@ const GameplayScreen = ({ config, onGameOver, onScoreUpdate, transformationRecor
         try {
             // Use AI to select appropriate good item based on user input
             console.log('🤖 Step 1: Importing AI service...');
-            const { selectGoodItem } = await import('./services/geminiService');
+            const { selectGoodItem, getGoodItemName } = await import('./services/geminiService');
             
             console.log('🤖 Step 2: Calling AI to select item for input:', transformInput);
-            const goodItem = await selectGoodItem(transformInput);
-            console.log('✅ AI selected good item:', goodItem);
+            const goodItemId = await selectGoodItem(transformInput);
+            const goodItemName = getGoodItemName(goodItemId);
+            console.log('✅ AI selected good item:', goodItemId, '->', goodItemName);
             
             // Record the transformation
             const transformRecord: TransformationRecord = {
                 badItem: currentBadItem,
-                goodItem: goodItem,
+                goodItem: goodItemName,  // Store friendly name for display
                 reason: transformInput, // Use the single input as the reason/description
                 recentEvent: "User transformation", // Placeholder
                 timestamp: Date.now()
@@ -1568,11 +1569,11 @@ const GameplayScreen = ({ config, onGameOver, onScoreUpdate, transformationRecor
             console.log('✅ Scene ref exists');
             console.log('🎯 Step 4: Calling transformObstacle with:', {
                 obstacleId: selectedObstacleId,
-                goodItem: goodItem
+                goodItem: goodItemId
             });
             
             try {
-                sceneRef.current.transformObstacle(selectedObstacleId, goodItem);
+                sceneRef.current.transformObstacle(selectedObstacleId, goodItemId);
                 console.log('✅ transformObstacle completed without throwing');
             } catch (transformError) {
                 console.error('❌ Error inside transformObstacle:', transformError);
@@ -1948,8 +1949,8 @@ const ResultScreen = ({
                     </div>
 
                     {/* Insight Box (Highlighted) */}
-                    <div className="bg-gradient-to-r from-amber-900/20 to-orange-900/20 border-l-2 border-amber-500 rounded-r-lg p-3">
-                        <p className="text-amber-400 text-xs font-bold uppercase tracking-wider mb-1">💫 Insight</p>
+                    <div className="bg-gradient-to-r from-blue-900/20 to-indigo-900/20 border-l-2 border-blue-400 rounded-r-lg p-3">
+                        <p className="text-blue-300 text-xs font-bold uppercase tracking-wider mb-1">💫 Insight</p>
                         <p className="text-white/90 italic text-sm leading-relaxed">
                             "{analysis?.healingMessage}"
                         </p>
@@ -1957,20 +1958,20 @@ const ResultScreen = ({
 
                     {/* Transformation Records List */}
                     {transformationRecords && transformationRecords.length > 0 && (
-                        <div className="bg-white/5 border border-white/10 rounded-lg p-3">
-                            <p className="text-cyan-300 text-[10px] font-bold uppercase tracking-wider mb-2">🔄 Your Transformations</p>
+                        <div className="bg-blue-950/30 border border-blue-500/20 rounded-lg p-3">
+                            <p className="text-blue-300 text-[10px] font-bold uppercase tracking-wider mb-2">🔄 Your Transformations</p>
                             <div className="flex flex-col gap-2">
                                 {transformationRecords.map((rec, i) => (
                                     <div key={i} className="flex items-start gap-2 bg-white/5 rounded-md p-2">
-                                        <span className="text-red-400 text-xs font-bold shrink-0 mt-0.5">#{i + 1}</span>
+                                        <span className="text-blue-400 text-xs font-bold shrink-0 mt-0.5">#{i + 1}</span>
                                         <div className="flex-1 min-w-0">
                                             <div className="flex items-center gap-1.5 flex-wrap">
-                                                <span className="text-red-300/80 text-[11px] line-through">{rec.badItem}</span>
-                                                <span className="text-white/40 text-[11px]">→</span>
-                                                <span className="text-green-300 text-[11px] font-semibold">{rec.goodItem}</span>
+                                                <span className="text-white/50 text-[11px] line-through">{rec.badItem}</span>
+                                                <span className="text-blue-400/60 text-[11px]">→</span>
+                                                <span className="text-blue-200 text-[11px] font-semibold">{rec.goodItem}</span>
                                             </div>
                                             {rec.reason && (
-                                                <p className="text-white/50 text-[10px] mt-0.5 italic">"{rec.reason}"</p>
+                                                <p className="text-white/40 text-[10px] mt-0.5 italic">"{rec.reason}"</p>
                                             )}
                                         </div>
                                     </div>
@@ -1982,32 +1983,32 @@ const ResultScreen = ({
                     {/* Deep Analysis Grid (2x2) */}
                     {isAnalyzing ? (
                         <div className="bg-white/5 rounded-lg p-6 flex flex-col items-center justify-center gap-3 border border-dashed border-white/10">
-                            <Loader2 className="animate-spin text-purple-300 w-6 h-6" />
-                            <p className="text-purple-200 text-xs animate-pulse">Analyzing your subconscious journey...</p>
+                            <Loader2 className="animate-spin text-blue-300 w-6 h-6" />
+                            <p className="text-blue-200 text-xs animate-pulse">Analyzing your subconscious journey...</p>
                         </div>
                     ) : deepAnalysis && (
                         <div className="grid grid-cols-2 gap-3">
                             {/* 1. Psychological Insight */}
-                            <div className="bg-purple-900/10 border border-purple-500/20 rounded-lg p-3">
-                                <p className="text-purple-300 text-[10px] font-bold uppercase tracking-wider mb-1">💡 Psychological</p>
+                            <div className="bg-blue-900/10 border border-blue-500/20 rounded-lg p-3">
+                                <p className="text-blue-300 text-[10px] font-bold uppercase tracking-wider mb-1">💡 Psychological</p>
                                 <p className="text-white/80 text-xs leading-relaxed">{deepAnalysis.psychologicalInsight}</p>
                             </div>
                             
                             {/* 2. Emotional Pattern */}
-                            <div className="bg-pink-900/10 border border-pink-500/20 rounded-lg p-3">
-                                <p className="text-pink-300 text-[10px] font-bold uppercase tracking-wider mb-1">💗 Emotional</p>
+                            <div className="bg-indigo-900/10 border border-indigo-500/20 rounded-lg p-3">
+                                <p className="text-indigo-300 text-[10px] font-bold uppercase tracking-wider mb-1">💗 Emotional</p>
                                 <p className="text-white/80 text-xs leading-relaxed">{deepAnalysis.emotionalPattern}</p>
                             </div>
                             
                             {/* 3. Transformation Summary */}
-                            <div className="bg-amber-900/10 border border-amber-500/20 rounded-lg p-3">
-                                <p className="text-amber-300 text-[10px] font-bold uppercase tracking-wider mb-1">✨ Transformations</p>
+                            <div className="bg-sky-900/10 border border-sky-500/20 rounded-lg p-3">
+                                <p className="text-sky-300 text-[10px] font-bold uppercase tracking-wider mb-1">✨ Transformations</p>
                                 <p className="text-white/80 text-xs leading-relaxed">{deepAnalysis.transformationSummary}</p>
                             </div>
                             
                             {/* 4. Healing Guidance */}
-                            <div className="bg-emerald-900/10 border border-emerald-500/20 rounded-lg p-3">
-                                <p className="text-emerald-300 text-[10px] font-bold uppercase tracking-wider mb-1">🌱 Guidance</p>
+                            <div className="bg-cyan-900/10 border border-cyan-500/20 rounded-lg p-3">
+                                <p className="text-cyan-300 text-[10px] font-bold uppercase tracking-wider mb-1">🌱 Guidance</p>
                                 <p className="text-white/80 text-xs leading-relaxed">{deepAnalysis.healingGuidance}</p>
                             </div>
                         </div>
