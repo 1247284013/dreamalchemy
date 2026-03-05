@@ -20,10 +20,28 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            background:
-                linear-gradient(to bottom, transparent 90%, rgba(12,3,32,0.85) 95%, rgba(12,3,32,1) 100%),
-                url('src/back6.png') no-repeat center center;
-            background-size: cover;
+            position: relative;
+        }
+        .page-section-bg {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            overflow: hidden;
+        }
+        .page-section-bg img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .page-section-bg::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, transparent 90%, rgba(12,3,32,0.85) 95%, rgba(12,3,32,1) 100%);
+        }
+        .page-section > *:not(.page-section-bg) {
+            position: relative;
+            z-index: 1;
         }
         .page-section .heading {
             font-size: 4rem;
@@ -586,6 +604,9 @@
         </div></header>
 
     <section class="page-section" id="features-what-we-do">
+        <div class="page-section-bg">
+            <img src="src/back6.png" alt="">
+        </div>
         <h2 class="heading">What We <span>Do</span></h2>
         <p class="sub-heading">Discover how DreamAlchemy helps you explore your inner world</p>
         <div class="features-grid magic-bento-grid">
