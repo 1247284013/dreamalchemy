@@ -26,15 +26,7 @@ menuIcon.addEventListener('click', () =>{
     menuIcon.classList.toggle('bx-x');
     navbar.classList.toggle('active');
 });
-document.querySelectorAll('.nav-item-has-dropdown > a').forEach(function (btn) {
-    btn.addEventListener('click', function (e) {
-        if (window.innerWidth <= 1048) {
-            e.preventDefault();
-            var item = btn.closest('.nav-item');
-            item.classList.toggle('open');
-        }
-    });
-});
+// On mobile, nav items with dropdowns navigate directly (no expand behavior)
 if (window.location.hash) {
     setTimeout(function () {
         var el = document.querySelector(window.location.hash);
