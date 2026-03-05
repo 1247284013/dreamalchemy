@@ -24,9 +24,10 @@
         }
         .page-section-bg {
             position: absolute;
-            inset: 0;
+            top: 0;
+            left: 0;
+            right: 0;
             z-index: 0;
-            overflow: hidden;
         }
         .page-section-bg img {
             width: 100%;
@@ -36,8 +37,9 @@
         .page-section-bg::after {
             content: '';
             position: absolute;
-            inset: 0;
-            background: linear-gradient(to bottom, transparent 90%, rgba(12,3,32,0.85) 95%, rgba(12,3,32,1) 100%);
+            left: 0; right: 0; bottom: 0;
+            height: 18%;
+            background: linear-gradient(to bottom, transparent, rgba(12,3,32,1));
         }
         .page-section > *:not(.page-section-bg) {
             position: relative;
