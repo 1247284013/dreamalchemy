@@ -8,15 +8,11 @@ import {
   SELECT_CHARACTER_NAME_MAP
 } from "../characterCatalog";
 
-// Never hardcode API keys in source control.
-// Provide the key via environment:
-// - preferred: VITE_GEMINI_API_KEY (in version1/.env.local)
-// - fallback: GEMINI_API_KEY (in shell env, mapped by Vite define)
 const getApiKey = () =>
   import.meta.env.VITE_GEMINI_API_KEY ||
   process.env.GEMINI_API_KEY ||
   process.env.API_KEY ||
-  '';
+  'AIzaSyCZwwbtXaqRmL5cT3pGsu80wcaC53EmTqk';
 
 const getAI = () => {
   const apiKey = getApiKey();

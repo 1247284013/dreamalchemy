@@ -1830,13 +1830,15 @@ const ResultScreen = ({
   score,
   onRetry,
   deepAnalysis,
-  gameSummary
+  gameSummary,
+  transformationRecords
 }: {
     analysis: DreamAnalysis | null, 
     score: number, 
     onRetry: () => void,
     deepAnalysis: DeepAnalysis | null,
-    gameSummary?: GameSummary | null
+    gameSummary?: GameSummary | null,
+    transformationRecords?: TransformationRecord[]
 }) => {
     const isAnalyzing = !deepAnalysis;
     
@@ -1952,6 +1954,30 @@ const ResultScreen = ({
                             "{analysis?.healingMessage}"
                         </p>
                     </div>
+
+                    {/* Transformation Records List */}
+                    {transformationRecords && transformationRecords.length > 0 && (
+                        <div className="bg-white/5 border border-white/10 rounded-lg p-3">
+                            <p className="text-cyan-300 text-[10px] font-bold uppercase tracking-wider mb-2">🔄 Your Transformations</p>
+                            <div className="flex flex-col gap-2">
+                                {transformationRecords.map((rec, i) => (
+                                    <div key={i} className="flex items-start gap-2 bg-white/5 rounded-md p-2">
+                                        <span className="text-red-400 text-xs font-bold shrink-0 mt-0.5">#{i + 1}</span>
+                                        <div className="flex-1 min-w-0">
+                                            <div className="flex items-center gap-1.5 flex-wrap">
+                                                <span className="text-red-300/80 text-[11px] line-through">{rec.badItem}</span>
+                                                <span className="text-white/40 text-[11px]">→</span>
+                                                <span className="text-green-300 text-[11px] font-semibold">{rec.goodItem}</span>
+                                            </div>
+                                            {rec.reason && (
+                                                <p className="text-white/50 text-[10px] mt-0.5 italic">"{rec.reason}"</p>
+                                            )}
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    )}
 
                     {/* Deep Analysis Grid (2x2) */}
                     {isAnalyzing ? (
@@ -2276,6 +2302,7 @@ export default function App() {
           onRetry={handleRetry}
           deepAnalysis={finalDeepAnalysis}
           gameSummary={lastGameSummary}
+          transformationRecords={transformationRecords}
         />
       );
     
