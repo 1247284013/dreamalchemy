@@ -1088,17 +1088,20 @@ span{
         top:100%;
         left:-110%;
         width:100%;
-        padding:1rem 4%;
-        background: var(--main-color);
-        box-shadow:0 .5rem 1rem rgba(0,0,0,.2);
-        z-index: 1;
+        padding:1rem 4% 2rem;
+        background: var(--bg-color);
+        box-shadow:0 .5rem 1rem rgba(0,0,0,.3);
+        z-index: 100;
         transition:.25s ease;
         transition-delay:.25s;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0;
     }
     .navbar.active{
         left:0;
         transition-delay: 0s;
-
     }
     .navbar .active-nav{
         position:absolute;
@@ -1132,9 +1135,25 @@ span{
     .navbar .nav-item{
         margin-left: 0;
         margin-bottom: 0;
+        width: 100%;
     }
-    .navbar .nav-dropdown{
+    .navbar .nav-item > a {
+        width: 100%;
+        display: block;
+        padding-left: 6%;
+    }
+    /* Hide all dropdowns on mobile — links navigate directly */
+    .navbar .nav-dropdown,
+    .navbar .nav-item:hover .nav-dropdown,
+    .navbar .nav-item.open .nav-dropdown {
         display: none !important;
+        opacity: 0 !important;
+        visibility: hidden !important;
+        pointer-events: none !important;
+    }
+    /* Hide dropdown arrow indicator on mobile */
+    .navbar .nav-item-has-dropdown > a::after {
+        display: none;
     }
 
     .home-imgHover{
