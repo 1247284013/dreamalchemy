@@ -1313,21 +1313,21 @@ span{
 
 /* ── Large screens (1400px+) ── */
 @media (min-width: 1400px) {
-    html { font-size: 65%; }
+    html { font-size: 70%; }
     header { padding: 2rem 11%; }
     section { padding-left: 11%; padding-right: 11%; }
 }
 
 /* ── XL screens (1600px+) ── */
 @media (min-width: 1600px) {
-    html { font-size: 68%; }
+    html { font-size: 75%; }
     header { padding: 2rem 13%; }
     section { padding-left: 13%; padding-right: 13%; }
 }
 
 /* ── 2K / Wide screens (1920px+) ── */
 @media (min-width: 1920px) {
-    html { font-size: 72%; }
+    html { font-size: 82%; }
     header { padding: 2rem 16%; }
     section { padding-left: 16%; padding-right: 16%; }
     .home { padding-left: 16%; padding-right: 16%; }
@@ -1335,7 +1335,7 @@ span{
 
 /* ── 4K screens (2560px+) ── */
 @media (min-width: 2560px) {
-    html { font-size: 80%; }
+    html { font-size: 95%; }
     header { padding: 2rem 20%; }
     section { padding-left: 20%; padding-right: 20%; }
     .home { padding-left: 20%; padding-right: 20%; }
